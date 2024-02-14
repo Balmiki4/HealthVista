@@ -1,4 +1,8 @@
-# README #
+# Team Members#
+**Vishal Manral**
+**Balmiki Padhaya**
+**Keshav Adhikari**
+**Muhammad Qassim**
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
