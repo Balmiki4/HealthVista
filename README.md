@@ -41,41 +41,14 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 
 **Users:** All visitors to the HealthVista website.
 
-**User Story:** As a visitor, I want to quickly understand what HealthVista offers, so I can decide if it aligns with my health management needs.
-
+**User Story:** As a potential user, I would like to see a clear description of the application's features on the landing page so that I can understand its capabilities.
 ### Login Page
 
 **Description:** Design and implement a secure login page for users to access their personalized health dashboards.
 
 **Users:** Registered users of HealthVista.
 
-**User Story:** As a user, I want a secure and user-friendly login page to access my health data and personalized features.
-
-## Getting Started
-
-Follow these steps to set up and run the HealthVista project locally:
-
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/healthvista.git
-    ```
-
-2. **Install dependencies:**
-    ```bash
-    cd healthvista
-    pip install -r requirements.txt
-    ```
-
-3. **Run the application:**
-    ```bash
-    python app.py
-    ```
-
-4. **Access the application in your web browser at http://localhost:5000.**
-
-## Contributions
-
-We welcome contributions and feedback. If you'd like to contribute to HealthVista, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+**User Story:** As a registered user, I would like to have a secure login page so that I can access my personalized health information and features.
 
 ## Future Features
 
