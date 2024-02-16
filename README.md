@@ -52,18 +52,9 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 
 In future sprints, we plan to implement the following features:
 
-### Health Dashboard
-
-**Description:** Develop a personalized health dashboard for users to track and visualize their health data over time.
-
-**Users:** Registered users of HealthVista.
-
-**User Story:** As a user, I want to see a comprehensive dashboard displaying my health metrics, allowing me to monitor my progress.
-
-### Goal Setting
-
-**Description:** Implement a feature that enables users to set health goals and receive guidance on achieving them.
-
-**Users:** All registered users of HealthVista.
-
-**User Story:** As a user, I want to set achievable health goals and receive actionable insights to help me reach them.
+- Wellness/fitness
+- Medication Management
+- Chatbot
+- Content library
+- Hospital/doctor finder
+- Insurance recommender
