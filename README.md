@@ -23,8 +23,7 @@ The primary audience for HealthVista includes individuals who are conscious abou
 We are developing HealthVista to make a positive impact on individuals' lives by providing them with a user-friendly tool to monitor and manage their health proactively. Our goal is to empower users with meaningful insights and encourage healthier lifestyle choices.
 
 ## Image 
-![Image that depicts our project](static/img)
-
+![Image that depicts our project](static/moode.jpeg)
 ## Technologies
 
 - Python
