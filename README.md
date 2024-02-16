@@ -3,9 +3,7 @@
 ## General Information
 
 **Team Members:**
-- Visahl Manral
-- Keshav Adhikari
-- Muhammad Qasim
+ Visahl Manral, Balmiki R. Padhyaya, Keshav Adhikari, and Muhammad Qasim
 
 **Problem Statement:**
 HealthVista aims to address the current challenges in health management by providing a comprehensive and user-centric platform. The project intends to simplify health monitoring, encourage proactive well-being, and deliver personalized health insights.
