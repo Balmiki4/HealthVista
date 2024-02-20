@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import NavBar from './component/NavBar';
 import homePage from './component/homePage';
 import login from './component/login';
+import signup from './component/signup';
 import{
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,8 @@ const App=()=>{
     <div className=''>
       <NavBar/>
       <Switch>
+      <Route path='/signup' exact component={signup}> 
+        </Route> 
         <Route path='/login' exact component={login}> 
         </Route> 
         <Route path='/' exact component={homePage}> 

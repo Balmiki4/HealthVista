@@ -33,8 +33,8 @@ const NavBar = () => {
       </li>
     </ul>
     <div className='logins'>
-      <Link to="/login"><button class="btn btn-outline-success me-2">Signup</button></Link>
-      <button class="btn btn-secondary">Sign In</button>
+    <Link to="/signup"><button class="btn btn-outline-success me-2">Signup</button></Link>
+      <Link to="/login"><button class="btn btn-secondary">Sign In</button></Link>
     </div>
   </div>
 </nav>
