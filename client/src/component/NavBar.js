@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 const NavBar = () => {
     return (
-<nav class="navbar navbar-expand-lg navbar-light bg-white ">
+<nav class="navbar navbar-expand-lg navbar-white bg-white ">
   <div class="container-fluid d-flex justify-content-between m-0 w-100"> 
     <Link class="navbar-brand m-0" to = "/"><h1><strong>Health</strong><strong className='vista'>Vista</strong></h1></Link>
     <ul class="navbar-nav m-0">
