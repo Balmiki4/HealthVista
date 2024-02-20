@@ -1,14 +1,16 @@
-import React from 'react'
 
 import './Navbar.css'
+import {Link} from 'react-router-dom'
+
+
 const NavBar = () => {
     return (
 <nav class="navbar navbar-expand-lg navbar-light bg-white ">
   <div class="container-fluid d-flex justify-content-between m-0 w-100"> 
-    <a class="navbar-brand m-0" href="#"><h1><strong>Health</strong><strong className='vista'>Vista</strong></h1></a>
+    <Link class="navbar-brand m-0" to = "/"><h1><strong>Health</strong><strong className='vista'>Vista</strong></h1></Link>
     <ul class="navbar-nav m-0">
       <li class="nav-item">
-        <a class="nav-link " aria-current="page" href="#">Medical Dashboard</a>
+        <a class="nav-link ">Medical Dashboard</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="trackersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +33,7 @@ const NavBar = () => {
       </li>
     </ul>
     <div className='logins'>
-      <button class="btn btn-outline-success me-2">Signup</button>
+      <Link to="/login"><button class="btn btn-outline-success me-2">Signup</button></Link>
       <button class="btn btn-secondary">Sign In</button>
     </div>
   </div>

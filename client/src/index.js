@@ -4,13 +4,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import NavBar from './component/NavBar';
+import homePage from './component/homePage';
+import login from './component/login';
+import{
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+
 
 
 const App=()=>{
+
+  
   return(
-    <div className='container'>
+    <Router>
+    <div className=''>
       <NavBar/>
+      <Switch>
+        <Route path='/login' exact component={login}> 
+        </Route> 
+        <Route path='/' exact component={homePage}> 
+        </Route> 
+      </Switch>
     </div>
+    </Router>
   )
 }
 
