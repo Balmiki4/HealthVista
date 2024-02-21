@@ -1,0 +1,30 @@
+.WellnessTab {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+  }
+
+  .WellnessTab h1 {
+    color: #42A5F5;
+  }
+  .activity-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .activity-card {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .activity-card h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  .activity-card p {
+    margin: 0;
+  }
