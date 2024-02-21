@@ -82,3 +82,16 @@ label{
     font-weight: 700;
     cursor: pointer;
 }
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px;
+    color: rgb(0,0,0);
+    font-size: 18px;
+}
+
+span{
+    margin-left: 3px;
+}
