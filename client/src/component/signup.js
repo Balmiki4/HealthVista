@@ -1,4 +1,5 @@
 import React from 'react'
+import './signup.css';
 const signup=()=>{
     return(
         <div className='container'>
@@ -7,7 +8,7 @@ const signup=()=>{
                     SIGN UP
                 </div>
                 <div className='underline'></div>
-                </div>
+            </div>
                 <div className="inputs">
                     <div className='input'>
                         <img src="" alt="" />
