@@ -63,7 +63,7 @@ const homePage=()=>{
 						<div class="feature-head">
 							<h3 className=''>Wellness Hub</h3>
 							<p>Your Path to Balance: Achieve wellness goals with guided meditation and exercise/yoga clips. Join us for a healthier, happier you!</p>
-							<Link to="/"><button class="btn btn-outline-success">Learn More</button></Link>
+							<Link to="/wellnesspage"><button class="btn btn-outline-success">Learn More</button></Link>
 						</div>
 					</div>
 				</div>

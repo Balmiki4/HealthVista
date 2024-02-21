@@ -23,7 +23,7 @@ const NavBar = () => {
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Wellness Hub</a>
+        <a class="nav-link" href="/wellnesspage">Wellness Hub</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Vista</a>

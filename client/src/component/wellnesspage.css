@@ -6,7 +6,7 @@
   }
 
   .WellnessTab h1 {
-    color: #42A5F5;
+    color: #3f5765;
   }
   .activity-container {
     display: flex;
@@ -14,17 +14,24 @@
   }
   .activity-card {
     width: 200px;
-    border: 1px solid #ccc;
+    border: 1px solid #4a4a4a;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #4a90e2;
   }
   
   .activity-card h2 {
     margin-top: 0;
     margin-bottom: 5px;
+    color:#fff
   }
   .activity-card p {
     margin: 0;
   }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; 
+}
