@@ -1,0 +1,26 @@
+
+  body {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: var(--color-body);
+  }
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .navbar-brand {
+
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+    padding-left: 1%;
+  }
+
+.logins{
+    padding-right: 1%;
+}
+
+.vista{
+    color: green;
+}
