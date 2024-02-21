@@ -1,0 +1,251 @@
+
+/* General Styles */
+
+html {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+.block {
+  --padding-vertical: 6rem;
+  padding: var(--padding-vertical) 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.block__heading {
+  margin-top: 0;
+}
+.block--dark {
+  color: #7b858b;
+}
+.block__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.block--dark .block__heading {
+  color: white;
+}
+
+/* Hero Banner */
+
+.hero {
+  clip-path: polygon(0 0, 100% 0%, 100% 90%, 0% 100%);
+  background-image: url(./img/hero.gif);
+  background-size: cover;
+  background-position: center;
+  height: 91vh;
+}
+.hero__tagline {
+  font-size: 1.2rem;
+  color: #b9c3cf;
+  letter-spacing: 1px;
+  margin: 2rem 0 3rem;
+}
+
+.grid {
+  display: grid;
+}
+.grid--1x3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.conainer {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Features Section */
+
+.feature {
+  width: 100%;
+  padding: 50px 0 50px;
+}
+.feature .heading {
+  text-align: center;
+  width: 100%;
+  padding: 20px 0 20px;
+}
+.feature .heading h2 {
+  font-size: 32px;
+  font-weight: 400;
+}
+.feature .heading h2 span {
+  color: #117ec3;
+}
+.feature .heading h6 {
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  font-size: 14px;
+  padding: 8px 0 8px;
+}
+.feature .separator {
+  width: 50px;
+  height: 2px;
+  margin-bottom: 50px;
+  background-color: #555555;
+  display: inline-block;
+}
+.feature-main {
+  width: 100%;
+  border-bottom: 2px solid transparent;
+  background-color: #f9f9f9;
+  padding-bottom: 20px;
+}
+
+.cover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.feature .feature-box {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.feature .feature-box img {
+  width: 100%;
+  height: auto;
+}
+.feature .feature-head {
+  text-align: center;
+  padding: 10px 15px;
+  border-top: none;
+}
+.feature .feature-head h3 {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+.feature .feature-head p {
+  color: #999;
+  letter-spacing: 0.4px;
+  line-height: 1.7;
+  margin: 20px 0 20px;
+}
+.feature .feature-head a {
+  color: #000;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.feature .feature-head i {
+  margin-left: 5px;
+}
+.feature .feature-box img {
+  float: left;
+  width: 100%;
+  height: 25vh;
+  object-fit: cover;
+}
+
+/* Subscription Plans Section */
+
+.block-plans .grid {
+  gap: 8rem 4rem;
+}
+.block-plans .card {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.plan {
+  transition: transform 0.2s ease-out;
+}
+.plan__name {
+  color: #fff;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.plan__price {
+  font-size: 3rem;
+}
+.plan__billing-cycle {
+  font-size: 0.8rem;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-right: 1rem;
+}
+.plan__description {
+  display: block;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.plan .list__item {
+  margin-bottom: 2rem;
+}
+.plan--popular .card__header {
+  position: relative;
+}
+.plan--popular {
+  transform: scale(1.1);
+}
+.plan--popular .card__header::before {
+  content: url(./img/popular.svg);
+  width: 40px;
+  display: inline-block;
+  position: absolute;
+  top: -6px;
+  right: 5%;
+}
+.plan:hover {
+  transform: scale(1.05);
+}
+.plan--popular:hover {
+  transform: scale(1.15);
+}
+
+/* Cards for Subscription plan */
+
+.card {
+  border-radius: 7px;
+  box-shadow: 0 0 20px 10px #f3f3f3;
+  overflow: hidden;
+}
+.card__header,
+.card__body {
+  padding: 2rem 3rem;
+}
+.card--primary .card__header {
+  background: #2584ff;
+  color: #fff;
+}
+.card--secondary .card__header {
+  background: #00d9ff;
+  color: #fff;
+}
+.card--primary .badge--primary {
+  background: #126de4;
+  padding: 0.5rem 1.5rem;
+}
+.card--secondary .badge--secondary {
+  background: #02cdf1;
+  padding: 0.5rem 1.5rem;
+}
+
+/* List Styles */
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+.list--inline .list__item {
+  display: inline-block;
+  margin-right: 2rem;
+  font-weight: bold;
+}
+.list--tick {
+  list-style-image: url(./img/tick.svg);
+  padding-left: 3rem;
+  color: #1b0760;
+}
+.list--tick .list__item {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+.list--tick .list__item {
+  padding-left: 0;
+}
