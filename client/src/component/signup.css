@@ -8,6 +8,9 @@ body{
     margin:auto;
     background:rgb(193, 215, 215);
     padding-bottom: 30px;
+    border-radius: 20px; /* Add border radius for rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    max-width: 500px; /* Limit maximum width of the container */
 }
 
 .header{
