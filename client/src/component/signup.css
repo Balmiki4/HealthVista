@@ -8,6 +8,9 @@ body{
     margin:auto;
     background:rgb(193, 215, 215);
     padding-bottom: 30px;
+    border-radius: 20px; /* Add border radius for rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    max-width: 500px; /* Limit maximum width of the container */
 }
 
 .header{
@@ -76,7 +79,7 @@ label{
     width: 220px;
     height: 59px;
     color:rgb(0,0,0);
-    background: rgb(255,255,255);
+    background: #eaeaea;
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
@@ -94,4 +97,20 @@ label{
 
 span{
     margin-left: 3px;
+}
+
+.error {
+    color: red;
+    font-size: 12.5px;
+    margin-top: 5px;
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.input.error input {
+    border: 2px solid red; 
+}
+
+.input.error .error {
+    margin-top: -15px;
+    opacity: 1; 
 }
