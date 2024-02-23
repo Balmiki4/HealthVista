@@ -4,3 +4,9 @@
     bottom: 20px;
     z-index: 1000;
 }
+
+
+label {
+    margin: 0 !important;
+    padding: 0 0 10px;
+}
