@@ -7,6 +7,7 @@ import NavBar from './component/NavBar';
 import homePage from './component/homePage';
 import login from './component/login';
 import signup from './component/signup';
+import wellnesspage from './component/wellnesspage';
 import{
   BrowserRouter as Router,
   Switch,
@@ -28,6 +29,8 @@ const App=()=>{
         <Route path='/login' exact component={login}> 
         </Route> 
         <Route path='/' exact component={homePage}> 
+        </Route> 
+        <Route path='/wellnesspage' exact component={wellnesspage}> 
         </Route> 
       </Switch>
     </div>
