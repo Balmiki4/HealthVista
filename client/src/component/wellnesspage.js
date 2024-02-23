@@ -1,9 +1,9 @@
-import React,{useState} from "react";
+import React,{usestate} from "react";
 import './wellnesspage.css';
 
 
 function wellnesspage(){
-    const[activities, setActivities]=useState([
+    const[activities, setActivities]=usestate([
         {id:1, type:'article',title:'The Benefits of Meditation',category:'Health Benefits',link:''},
         {id:1, type:'article',title:'The Benefits of Meditation',category:'Health Benefits',link:''},
         {id:1, type:'article',title:'The Benefits of Meditation',category:'Health Benefits',link:''},

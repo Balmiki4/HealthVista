@@ -1,4 +1,8 @@
-
+:root{
+  --color-secondary: #14A44D;
+}
+  
+  
   body {
     font-family: Inter, Arial, Helvetica, sans-serif;
     line-height: 1.5;
@@ -22,5 +26,5 @@
 }
 
 .vista{
-    color: green;
+    color: var(--color-secondary);
 }
