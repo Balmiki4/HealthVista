@@ -1,3 +1,32 @@
+/* Color and heading fonts */
+
+:root {
+  --color-primary: rgb(193, 215, 215);
+  --color-secondary: #14a44d;
+  --color-accent: #e6ddc4;
+}
+
+/* Headings with secondary color and font */
+h1.secondary-heading,
+h2.secondary-heading,
+h3.secondary-heading,
+h4.secondary-heading,
+h5.secondary-heading,
+h6.secondary-heading {
+  color: var(--color-secondary);
+  font-family: "Simplifica", sans-serif;
+}
+
+/* Headings with just a different font */
+h1.font-only-heading,
+h2.font-only-heading,
+h3.font-only-heading,
+h4.font-only-heading,
+h5.font-only-heading,
+h6.font-only-heading {
+  font-family: "Simplifica", serif;
+}
+
 /* General Styles */
 
 html {
@@ -81,7 +110,7 @@ html {
   width: 50px;
   height: 2px;
   margin-bottom: 50px;
-  background-color: #555555;
+
   display: inline-block;
 }
 .feature-main {
@@ -115,7 +144,6 @@ html {
 }
 .feature .feature-head h3 {
   font-size: 16px;
-  color: #333;
   font-weight: 600;
 }
 .feature .feature-head p {
@@ -125,7 +153,6 @@ html {
   margin: 20px 0 20px;
 }
 .feature .feature-head a {
-  color: #000;
   font-size: 13px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -199,11 +226,30 @@ html {
   transform: scale(1.15);
 }
 
+.plan-btn {
+  text-align: center;
+  padding: 10px 15px;
+  border-top: none;
+}
+.plan-btn .btn-success {
+  --bs-btn-bg: var(--color-accent);
+  --bs-btn-border-color: var(--color-accent);
+}
+
+.plan-buy-now-btn {
+  --bs-btn-padding-y: 0.5rem;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-font-size: 1.3rem;
+  --bs-btn-font-family: "Simplifica";
+}
+
 /* Cards for Subscription plan */
 
 .card {
   border-radius: 7px;
   box-shadow: 0 0 20px 10px #f3f3f3;
+  border-color: none;
+  border-width: 0;
   overflow: hidden;
 }
 .card__header,
@@ -211,20 +257,12 @@ html {
   padding: 2rem 3rem;
 }
 .card--primary .card__header {
-  background: #2584ff;
+  background: var(--color-secondary);
   color: #fff;
 }
 .card--secondary .card__header {
-  background: #00d9ff;
+  background: var(--color-accent);
   color: #fff;
-}
-.card--primary .badge--primary {
-  background: #126de4;
-  padding: 0.5rem 1.5rem;
-}
-.card--secondary .badge--secondary {
-  background: #02cdf1;
-  padding: 0.5rem 1.5rem;
 }
 
 /* List Styles */
@@ -239,10 +277,11 @@ html {
 }
 .list--tick {
   list-style-image: url(./img/tick.svg);
-  padding-left: 3rem;
+  padding-left: 0;
   color: #1b0760;
 }
 .list--tick .list__item {
+  color: #555;
   padding-left: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -258,8 +297,13 @@ html {
   color: #333;
 }
 .faq {
-  background-color: #117ec3;
+  background-color: var(--color-accent);
   padding: 50px;
+}
+
+.card-body {
+  background-color: #f3f3f3;
+  box-shadow: none;
 }
 
 /* Callouts */
@@ -268,7 +312,7 @@ html {
   border-radius: 5px;
 }
 .callout--primary {
-  background: #00d9ff;
+  background: var(--color-secondary);
   color: white;
 }
 
@@ -294,20 +338,31 @@ html {
 .callout__content {
   text-align: left;
 }
-.callout-btn{
-  display: block;    
-  margin: 0 auto;    
+.callout-btn {
+  display: block;
+  margin: 0 auto;
   padding: 10px 15px;
-  border-top: none; 
+  border-top: none;
   align-self: center;
-
+}
+.buy-now-btn {
+  --bs-btn-padding-y: 0.75rem;
+  --bs-btn-padding-x: 3rem;
+  --bs-btn-font-size: 1.3rem;
+  --bs-btn-font-family: "Simplifica";
 }
 
 /* footer */
+.footer {
+  background-color: var(--color-accent);
+  border-top-right-radius: 50px 50px;
+  border-top-left-radius: 50px 50px;
+}
 
 .footer__copyright {
   margin: 0;
-  color: #f3ffff;
-  font-size: 1.3rem;
-  padding: 5rem 0 2rem 0;
+  color: black;
+  font-family: "Simplifica";
+  font-size: 1.2rem;
+  padding: 5rem 0 1rem 0;
 }
