@@ -1,4 +1,3 @@
-
 /* General Styles */
 
 html {
@@ -32,9 +31,7 @@ html {
 .grid--1x3 {
   grid-template-columns: repeat(3, 1fr);
 }
-.grid--1x2 {
-  grid-template-columns: repeat(2, 1fr);
-}
+
 .conainer {
   max-width: 1140px;
   margin: 0 auto;
@@ -55,8 +52,6 @@ html {
   letter-spacing: 1px;
   margin: 2rem 0 3rem;
 }
-
-
 
 /* Features Section */
 
@@ -255,17 +250,64 @@ html {
   padding-left: 0;
 }
 
-
 /* FAQs */
 
 .overline {
   font-size: 14px;
   font-weight: bold;
-  color: #333; 
+  color: #333;
 }
-.faq{
-
+.faq {
   background-color: #117ec3;
   padding: 50px;
 }
 
+/* Callouts */
+.callout {
+  padding: 2.5rem;
+  border-radius: 5px;
+}
+.callout--primary {
+  background: #00d9ff;
+  color: white;
+}
+
+.callout--signup {
+  transform: translateY(5rem);
+}
+
+.callout__heading {
+  color: white;
+  margin-top: 0;
+  font-size: 3rem;
+}
+.callout .btn {
+  justify-self: center;
+  align-self: center;
+}
+.callout__content {
+  text-align: center;
+}
+.callout .grid--1x2 {
+  grid-template-columns: 1fr auto;
+}
+.callout__content {
+  text-align: left;
+}
+.callout-btn{
+  display: block;    
+  margin: 0 auto;    
+  padding: 10px 15px;
+  border-top: none; 
+  align-self: center;
+
+}
+
+/* footer */
+
+.footer__copyright {
+  margin: 0;
+  color: #f3ffff;
+  font-size: 1.3rem;
+  padding: 5rem 0 2rem 0;
+}
