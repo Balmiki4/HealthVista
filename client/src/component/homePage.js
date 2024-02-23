@@ -3,6 +3,7 @@ import dashboard from "./img/dashboard.jpg";
 import vista from "./img/chatbot.svg";
 import wellness from "./img/wellness.jpg";
 import "./homePage.css";
+import PopupForm from "./PopupFrom";
 
 const homePage = () => {
   return (
@@ -274,6 +275,10 @@ const homePage = () => {
           </div>
         </div>
       </footer>
+
+      <div>
+        <PopupForm />
+      </div>
     </div>
   );
 };
