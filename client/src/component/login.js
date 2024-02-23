@@ -2,11 +2,10 @@ import react, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { login } from "../auth";
 import { useHistory } from "react-router-dom";
-import "./App.css";
+import "./login.css";
 
-const login = () => {
+const LoginPage = () => {
   const [formData, setData] = useState({ username: "", password: "" });
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,9 +30,7 @@ const login = () => {
           <h1>Login Page</h1>
         </div>
 
-        <form>
-          {" "}
-          onSubmit = {handleSubmit}
+        <form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -48,7 +45,7 @@ const login = () => {
           <Form.Group>
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="text"
+              type="password"
               placeholder="Your password"
               value={formData.password}
               onChange={(e) =>
@@ -65,4 +62,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default LoginPage;
