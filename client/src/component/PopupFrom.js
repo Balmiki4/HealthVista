@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ModalFooter from 'react-bootstrap/esm/ModalFooter';
+import './PopupForm.css'
+
 
 
 function PopupForm(){
@@ -16,7 +18,7 @@ function PopupForm(){
 
             <Modal show= {showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Contact Us Form</Modal.Title>
+                    <Modal.Title><h2 className='modal-title text-center'>Contact Us</h2></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {
@@ -25,9 +27,9 @@ function PopupForm(){
                         </div>
                     }
                 </Modal.Body>
-                <ModalFooter>
-                    <Button varinat= 'secondary' onClick={handleClose}>Close</Button>
-                </ModalFooter>
+                <Modal.Footer>
+                    <Button variant= 'success' onClick={handleClose}>Close</Button>
+                </Modal.Footer>
             </Modal>
         </>
     );
