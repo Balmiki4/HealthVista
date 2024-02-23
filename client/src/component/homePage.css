@@ -26,6 +26,20 @@ html {
   color: white;
 }
 
+.grid {
+  display: grid;
+}
+.grid--1x3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid--1x2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.conainer {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
 /* Hero Banner */
 
 .hero {
@@ -42,16 +56,7 @@ html {
   margin: 2rem 0 3rem;
 }
 
-.grid {
-  display: grid;
-}
-.grid--1x3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-.conainer {
-  max-width: 1140px;
-  margin: 0 auto;
-}
+
 
 /* Features Section */
 
@@ -249,3 +254,18 @@ html {
 .list--tick .list__item {
   padding-left: 0;
 }
+
+
+/* FAQs */
+
+.overline {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333; 
+}
+.faq{
+
+  background-color: #117ec3;
+  padding: 50px;
+}
+

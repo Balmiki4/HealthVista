@@ -146,6 +146,41 @@ const homePage=()=>{
         </div>
       </div>
       </div>
+
+<div className='faq'>
+ <div class="conainer">
+  <div class="row">
+    <div class="col-md-3"> 
+      <div class="mb-3"> 
+        <span class="text-muted text-uppercase">FAQ</span>
+        <h2 class="h3">Common questions</h2>
+        <p>
+          Here are some of the most common questions that we get.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-9"> 
+      <div class="card mb-4"> 
+        <div class="card-body">
+          <h4 class="card-title">What is HealthVISTA?</h4>
+          <p class="card-text">
+            HealthVISTA is a website that provides various health tracking...
+          </p>
+          <h4 class="card-title">How can I track my health...</h4>
+          <p class="card-text">
+            HealthVISTA offers a Tracker feature where you can input...
+          </p>
+          <h4 class="card-title">What is the purpose of...</h4>
+          <p class="card-text">
+            The Chatbot feature on HealthVISTA allows users to ask...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 	</div>
 
   )
