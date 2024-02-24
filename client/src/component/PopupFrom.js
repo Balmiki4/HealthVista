@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ModalFooter from "react-bootstrap/esm/ModalFooter";
-import "./PopupForm.css";
+import "./Popupform.css";
 
 function PopupForm() {
   const [showModal, setShowModal] = useState(false);
