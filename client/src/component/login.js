@@ -31,31 +31,37 @@ const LoginPage = () => {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="username or email"
-              value={formData.username}
-              onChange={(e) =>
-                setData({ ...formData, username: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Your password"
-              value={formData.password}
-              onChange={(e) =>
-                setData({ ...formData, password: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group>
-            <Button type="submit" variant="primary"></Button>
-          </Form.Group>
+          <div className="inputs">
+            <Form.Group>
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Username or Email"
+                value={formData.username}
+                onChange={(e) =>
+                  setData({ ...formData, username: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Your password"
+                value={formData.password}
+                onChange={(e) =>
+                  setData({ ...formData, password: e.target.value })
+                }
+              />
+            </Form.Group>
+          </div>
+          <div className="login-button">
+            <Form.Group>
+              <Button type="submit" variant="primary">
+                Login
+              </Button>
+            </Form.Group>
+          </div>
         </form>
       </div>
     </div>
