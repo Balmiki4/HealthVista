@@ -20,10 +20,10 @@ const homePage = () => {
             </p>
             <div className="logins">
               <Link to="/signup">
-                <button class="btn btn-light me-2">Signup</button>
+                <button class="btn btn-light hero-signup-btn me-2">Signup</button>
               </Link>
               <Link to="/">
-                <button class="btn btn-outline-success">Learn More</button>
+                <button class="btn btn-outline-success hero-learn-btn">Learn More</button>
               </Link>
             </div>
           </header>
@@ -34,11 +34,11 @@ const homePage = () => {
         <div class="conainer">
           <div class="row">
             <div class="heading">
-              <h2 className="secondary-heading">Explore Our Features</h2>
-              <h6>
+              <h1 className="secondary-heading">Explore Our Features</h1>
+              <h5 className="font-only-heading">
                 Discover how HealthVISTA can help you improve your health and
                 well-being
-              </h6>
+              </h5>
               <div class="separator"></div>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
@@ -55,7 +55,9 @@ const homePage = () => {
                     your health proactive about your health.
                   </p>
                   <Link to="/">
-                    <button class="btn btn-outline-success">Learn More</button>
+                    <button class="btn btn-outline-success feature-learn-now-btn ">
+                      Learn More
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -74,7 +76,9 @@ const homePage = () => {
                     with our interactive AI-powered therapist.
                   </p>
                   <Link to="/">
-                    <button class="btn btn-outline-success">Learn More</button>
+                    <button class="btn btn-outline-success feature-learn-now-btn ">
+                      Learn More
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -93,7 +97,9 @@ const homePage = () => {
                     happier you!
                   </p>
                   <Link to="/wellnesspage">
-                    <button class="btn btn-outline-success">Learn More</button>
+                    <button class="btn btn-outline-success feature-learn-now-btn ">
+                      Learn More
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -104,9 +110,9 @@ const homePage = () => {
           <div class="row">
             <div class="heading">
               <h1 className="secondary-heading">Subscription Plans</h1>
-              <h6 className="font-only-heading">
+              <h5 className="font-only-heading">
                 Flexible Options to Suit Your Needs
-              </h6>
+              </h5>
               <div class="separator"></div>
             </div>
             <div class="grid grid--1x3">
@@ -129,12 +135,12 @@ const homePage = () => {
                       <li class="list__item">Basic chatbot support</li>
                     </ul>
                     <div className="plan-btn">
-                        <Link to="/">
-                          <button class="btn btn-outline-success plan-buy-now-btn">
-                            Buy Now
-                          </button>
-                        </Link>
-                      </div>
+                      <Link to="/">
+                        <button class="btn btn-outline-success plan-buy-now-btn">
+                          Buy Now
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -213,31 +219,36 @@ const homePage = () => {
             <div class="col-md-3">
               <div class="mb-3">
                 <span class="text-muted text-uppercase">FAQ</span>
-                <h2 class=" font-only-heading h3">Common questions</h2>
+                <h2 class=" font-only-heading">Common questions</h2>
                 <p>Here are some of the most common questions that we get.</p>
               </div>
             </div>
             <div class="col-md-9">
               <div class="card mb-4">
                 <div class="card-body">
-                  <h4 class="secondary-heading card-title">
+                  <h4 class="secondary-heading">
                     What is HealthVISTA?
                   </h4>
-                  <p class="card-text">
+                  <p>
                     HealthVISTA is a website that provides various health
-                    tracking...
+                    tracking tools and resources to help individuals monitor and
+                    improve their overall well-being.
                   </p>
-                  <h4 class="secondary-heading card-title">
-                    How can I track my health...
+                  <h4 class="secondary-heading">
+                    How can I track my health using HealthVISTA?
                   </h4>
-                  <p class="card-text">
-                    HealthVISTA offers a Tracker feature where you can input...
+                  <p>
+                    HealthVISTA offers a Tracker feature where you can input and
+                    monitor various health metrics such as weight, blood
+                    pressure, exercise, and more.
                   </p>
-                  <h4 class="secondary-heading card-title">
-                    What is the purpose of...
+                  <h4 class="secondary-heading">
+                    What is the purpose of the AI thearpist feature?
                   </h4>
-                  <p class="card-text">
-                    The Chatbot feature on HealthVISTA allows users to ask...
+                  <p>
+                    The AI thearpist feature on HealthVISTA allows users to ask
+                    questions, share thoughts and receive personalized responses
+                    related to health and wellness.
                   </p>
                 </div>
               </div>
@@ -251,11 +262,9 @@ const homePage = () => {
           <div class="grid grid--1x2">
             <div class="callout__content">
               <h2 class="font-only-heading callout__heading">
-              A safe space to heal and grow
+                A safe space to heal and grow
               </h2>
-              <p>
-              Your health matters. We're here for you.
-              </p>
+              <p>Your health matters. We're here for you.</p>
             </div>
             <div className="callout-btn">
               <Link to="/">

@@ -3,7 +3,7 @@
 :root {
   --color-primary: rgb(193, 215, 215);
   --color-secondary: #14a44d;
-  --color-accent: #e6ddc4;
+  --color-accent: #F7D9C4;
 }
 
 /* Headings with secondary color and font */
@@ -26,6 +26,7 @@ h5.font-only-heading,
 h6.font-only-heading {
   font-family: "Simplifica", serif;
 }
+
 
 /* General Styles */
 
@@ -82,11 +83,23 @@ html {
   margin: 2rem 0 3rem;
 }
 
+.hero-learn-btn {
+  --bs-btn-padding-y: 0.5rem;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-font-size: 1rem;
+}
+.hero-signup-btn {
+  --bs-btn-padding-y: 0.5rem;
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-font-size: 1rem;
+}
+
 /* Features Section */
 
 .feature {
   width: 100%;
   padding: 50px 0 50px;
+
 }
 .feature .heading {
   text-align: center;
@@ -118,6 +131,7 @@ html {
   border-bottom: 2px solid transparent;
   background-color: #f9f9f9;
   padding-bottom: 20px;
+  border-radius: 10px;
 }
 
 .cover:before {
@@ -147,7 +161,7 @@ html {
   font-weight: 600;
 }
 .feature .feature-head p {
-  color: #999;
+  color: #777;
   letter-spacing: 0.4px;
   line-height: 1.7;
   margin: 20px 0 20px;
@@ -166,6 +180,13 @@ html {
   width: 100%;
   height: 25vh;
   object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.feature-learn-now-btn {
+  --bs-btn-padding-y: 0.5rem;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-font-size: 1rem;
 }
 
 /* Subscription Plans Section */
@@ -239,8 +260,7 @@ html {
 .plan-buy-now-btn {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 2rem;
-  --bs-btn-font-size: 1.3rem;
-  --bs-btn-font-family: "Simplifica";
+  --bs-btn-font-size: 1rem;
 }
 
 /* Cards for Subscription plan */
@@ -281,7 +301,7 @@ html {
   color: #1b0760;
 }
 .list--tick .list__item {
-  color: #555;
+  color: #777;
   padding-left: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -300,6 +320,11 @@ html {
   background-color: var(--color-accent);
   padding: 50px;
 }
+
+.faq p {
+  color: #777;
+}
+
 
 .card-body {
   background-color: #f3f3f3;
@@ -323,7 +348,7 @@ html {
 .callout__heading {
   color: white;
   margin-top: 0;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .callout .btn {
   justify-self: center;
@@ -345,11 +370,12 @@ html {
   border-top: none;
   align-self: center;
 }
+
+
 .buy-now-btn {
   --bs-btn-padding-y: 0.75rem;
   --bs-btn-padding-x: 3rem;
   --bs-btn-font-size: 1.3rem;
-  --bs-btn-font-family: "Simplifica";
 }
 
 /* footer */
