@@ -52,7 +52,7 @@ body{
     border-radius: 20px;
 }
 
-label{
+div.input label{
     margin: 0px 30px;
 }
 

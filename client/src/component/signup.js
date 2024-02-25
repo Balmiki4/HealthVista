@@ -9,7 +9,7 @@ const Signup=()=>{
     username: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    confirmpassword: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -19,7 +19,7 @@ const Signup=()=>{
     setFormData({ ...formData, [id]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Client-side validation
@@ -46,17 +46,33 @@ const Signup=()=>{
     }
 
     if (Object.keys(errors).length === 0) {
-      // If there are no errors, submit the form
-      console.log('Form submitted:', formData);
-      setFormData({
-        username: '',
-        email: '',
-        password: '',
-        confirmpassword: '',
-      });
-      // You can send the formData to your backend here
+      try {
+        const response = await fetch('http://localhost:5000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          console.log('User registered successfully!');
+          setFormData({
+            username: '',
+            email: '',
+            password: '',
+            confirmpassword: '',
+          });
+        } else {
+          const responseData = await response.json();
+          console.error('Error:', responseData.error);
+          setErrors({ backend: responseData.error });
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setErrors({ backend: 'An error occurred. Please try again later.' });
+      }
     } else {
-      // If there are errors, update the state to display error messages
       setErrors(errors);
     }
   };
