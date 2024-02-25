@@ -14,16 +14,17 @@ const LoginPage = () => {
     e.preventDefault();
     // Check if username or password is empty
     const loginErrors = {};
-    if (formData.username) {
+    if (!formData.username) {
       loginErrors.username = "Username or email is required";
     }
-    if (formData.password) {
+    if (!formData.password) {
       loginErrors.password = "Password is required";
     }
     if (Object.keys(loginErrors).length > 0) {
       setErrors(loginErrors);
       return;
     }
+
     const response = await fetch("https://localhost:3000/login", {
       method: "POST",
       headers: { "content-type": "application/JSON" },
@@ -61,10 +62,10 @@ const LoginPage = () => {
                   }}
                   isInvalid={!!errors.username}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {errors.username}
-                </Form.Control.Feedback>
               </Form.Group>
+              {errors.username && (
+                <div className="error-message">{errors.username}</div>
+              )}
             </div>
             <div className="input">
               <label htmlFor="password">
@@ -79,11 +80,12 @@ const LoginPage = () => {
                     setData({ ...formData, password: e.target.value });
                     setErrors({ ...errors, password: "" });
                   }}
+                  isInvalid={!!errors.username}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {errors.password}
-                </Form.Control.Feedback>
               </Form.Group>
+              {errors.username && (
+                <div className="error-message">{errors.password}</div>
+              )}
             </div>
           </div>
           <div className="login-button">
