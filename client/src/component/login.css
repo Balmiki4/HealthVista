@@ -32,26 +32,39 @@ body {
   gap: 25px;
 }
 
-/* .input {
-  display: flex;
-  align-items: center;
-  margin: auto;
-  width: 100%;
-  max-width: 480px;
-  height: 50px;
-  background: #eaeaea;
-  border-radius: 20px;
-} */
-
-/* label {
-  margin: 0px 30px;
-} */
-
 .login-button {
   display: flex;
   align-items: center;
   margin-top: 15px;
   flex-direction: column;
   width: 100%;
-  height: 50px;
+  /* height: 50px; */
+}
+.login-button .btn {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+}
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-right: 150px;
+}
+
+.remember-forgot .form-check-label {
+  margin-left: 3px;
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-right: 80px;
+}
+
+.signup-link span {
+  margin-right: 5px;
 }

@@ -29,7 +29,7 @@ const LoginPage = () => {
     <div className="container">
       <div className="login-form">
         <div className="text">
-          <h1>Login Page</h1>
+          <h1>Welcome back.</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -39,7 +39,6 @@ const LoginPage = () => {
                 <img src={user_icon} alt="user name" />
               </label>
               <Form.Group>
-                <Form.Label>Username</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Username or Email"
@@ -55,10 +54,9 @@ const LoginPage = () => {
                 <img src={password_icon} alt="password" />
               </label>
               <Form.Group>
-                <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Your password"
+                  placeholder="Password"
                   value={formData.password}
                   onChange={(e) =>
                     setData({ ...formData, password: e.target.value })
@@ -69,23 +67,29 @@ const LoginPage = () => {
           </div>
           <div className="login-button">
             <Form.Group>
-              <Button type="submit" variant="primary" onClick={handleSubmit}>
+              <Button
+                class="btn"
+                type="submit"
+                variant="primary"
+                onClick={handleSubmit}
+              >
                 Login
               </Button>
             </Form.Group>
           </div>
         </form>
         <div className="remember-forgot">
-    <Form.Group>
-      <Form.Check type="checkbox" label="Remember me" />
-    </Form.Group>
-    <Link to="/forgot-password">Forgot Password?</Link>
-  </div>
-  <div className="signup-link">
-    <span>Don't have an account? </span>
-    <Link to="/signup">Sign Up</Link>
-  </div>
-  </div>
+          <Form.Group>
+            <Form.Check type="checkbox" label="Remember me" />
+          </Form.Group>
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <div className="signup-link">
+          <span>Don't have an account? </span>
+          <Link to="/signup">Sign Up</Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
