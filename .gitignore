@@ -50,3 +50,7 @@ Thumbs.db
 
 
 client/src/component/.prettierrc
+
+venv/
+
+.env
