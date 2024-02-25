@@ -9,9 +9,21 @@ import password_icon from "./img/password.png";
 
 const LoginPage = () => {
   const [formData, setData] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // Check if username or password is empty
+    const loginErrors = {};
+    if (formData.username) {
+      loginErrors.username = "Username or email is required";
+    }
+    if (formData.password) {
+      loginErrors.password = "Password is required";
+    }
+    if (Object.keys(loginErrors).length > 0) {
+      setErrors(loginErrors);
+      return;
+    }
     const response = await fetch("https://localhost:3000/login", {
       method: "POST",
       headers: { "content-type": "application/JSON" },
@@ -43,10 +55,15 @@ const LoginPage = () => {
                   type="text"
                   placeholder="Username or Email"
                   value={formData.username}
-                  onChange={(e) =>
-                    setData({ ...formData, username: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setData({ ...formData, username: e.target.value });
+                    setErrors({ ...errors, username: "" });
+                  }}
+                  isInvalid={!!errors.username}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {errors.username}
+                </Form.Control.Feedback>
               </Form.Group>
             </div>
             <div className="input">
@@ -58,10 +75,14 @@ const LoginPage = () => {
                   type="password"
                   placeholder="Password"
                   value={formData.password}
-                  onChange={(e) =>
-                    setData({ ...formData, password: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setData({ ...formData, password: e.target.value });
+                    setErrors({ ...errors, password: "" });
+                  }}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {errors.password}
+                </Form.Control.Feedback>
               </Form.Group>
             </div>
           </div>
