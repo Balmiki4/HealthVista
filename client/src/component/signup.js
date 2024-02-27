@@ -26,7 +26,10 @@ const Signup=()=>{
     const errors = {};
     if (!formData.username) {
       errors.username = 'Username is required';
+    }else if (!/^[a-zA-Z]/.test(formData.username)) {
+      errors.username = 'Username must start with a letter';
     }
+    
     if (!formData.email) {
       errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
