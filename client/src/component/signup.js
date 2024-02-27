@@ -29,7 +29,7 @@ const Signup=()=>{
     }else if (!/^[a-zA-Z]/.test(formData.username)) {
       errors.username = 'Username must start with a letter';
     }
-    
+
     if (!formData.email) {
       errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -69,6 +69,7 @@ const Signup=()=>{
         } else {
           const responseData = await response.json();
           console.error('Error:', responseData.error);
+          alert(responseData.error);
           setErrors({ backend: responseData.error });
         }
       } catch (error) {
