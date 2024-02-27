@@ -18,12 +18,12 @@ def login():
         # Get data from request
         username = request.json.get('username')
         password = request.json.get('password')
+        remember_me = request.json.get('remember_me', False)
         
         #Athunticate user
         user = User.authenticate(username, password)
         
-        if user:
-            
+        if user:  
             # details for the user's session
             user_data = {
                 'user_id': str(user['id']),
@@ -32,3 +32,5 @@ def login():
             return jsonify({'message': 'Login successful', 'user_data': 'user_data'}), 200
         else: 
             return jsonify({'error': 'Invalid usrname or password'}), 401
+        
+        refresh_token = jwt.encode
