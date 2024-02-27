@@ -25,7 +25,7 @@ const LoginPage = () => {
       return;
     }
 
-    const response = await fetch("https://localhost:3000/login", {
+    const response = await fetch("/login", {
       method: "POST",
       headers: { "content-type": "application/JSON" },
       body: JSON.stringify(formData),
