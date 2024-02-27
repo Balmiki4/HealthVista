@@ -13,7 +13,7 @@ class User:
     def find_username(self, username):
         return users_collection.find_one({'username': username})
     
-    def authenticate(self, password):
+    def authenticate(self,username, password):
         user = self.find_username(username)
         
         # check if the user's password is correct
