@@ -4,16 +4,32 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import "./login.css";
+import user_icon from "./img/person.png";
+import password_icon from "./img/password.png";
 
 const LoginPage = () => {
   const [formData, setData] = useState({ username: "", password: "" });
+  const [rememberMe, setRememberMe] = useState(false);
+  const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check if username or password is empty
+    const loginErrors = {};
+    if (!formData.username) {
+      loginErrors.username = "Username or email is required";
+    }
+    if (!formData.password) {
+      loginErrors.password = "Password is required";
+    }
+    if (Object.keys(loginErrors).length > 0) {
+      setErrors(loginErrors);
+      return;
+    }
 
-    const response = await fetch("https://localhost:3000/login", {
+    const response = await fetch("/login", {
       method: "POST",
       headers: { "content-type": "application/JSON" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ formData, remember_me: rememberMe }),
     });
     const data = await response.json();
 
@@ -27,36 +43,80 @@ const LoginPage = () => {
     <div className="container">
       <div className="login-form">
         <div className="text">
-          <h1>Login Page</h1>
+          <h1>Welcome back.</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="username or email"
-              value={formData.username}
-              onChange={(e) =>
-                setData({ ...formData, username: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Your password"
-              value={formData.password}
-              onChange={(e) =>
-                setData({ ...formData, password: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group>
-            <Button type="submit" variant="primary"></Button>
-          </Form.Group>
+          <div className="inputs">
+            <div className="input">
+              <label htmlFor="username">
+                <img src={user_icon} alt="user name" />
+              </label>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="Username or Email"
+                  value={formData.username}
+                  onChange={(e) => {
+                    setData({ ...formData, username: e.target.value });
+                    setErrors({ ...errors, username: "" });
+                  }}
+                  isInvalid={!!errors.username}
+                />
+              </Form.Group>
+              {errors.username && (
+                <div className="error-message">{errors.username}</div>
+              )}
+            </div>
+            <div className="input">
+              <label htmlFor="password">
+                <img src={password_icon} alt="password" />
+              </label>
+              <Form.Group>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={(e) => {
+                    setData({ ...formData, password: e.target.value });
+                    setErrors({ ...errors, password: "" });
+                  }}
+                  isInvalid={!!errors.username}
+                />
+              </Form.Group>
+              {errors.username && (
+                <div className="error-message">{errors.password}</div>
+              )}
+            </div>
+          </div>
+          <div className="login-button">
+            <Form.Group>
+              <Button
+                class="btn"
+                type="submit"
+                variant="primary"
+                onClick={handleSubmit}
+              >
+                Login
+              </Button>
+            </Form.Group>
+          </div>
         </form>
+        <div className="remember-forgot">
+          <Form.Group>
+            <Form.Check
+              type="checkbox"
+              label="Remember me"
+              onChange={() => setRememberMe(!rememberMe)} //change the checkbox to true
+              checked={rememberMe}
+            />
+          </Form.Group>
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <div className="signup-link">
+          <span>Don't have an account? </span>
+          <Link to="/signup">Sign Up</Link>
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@
     transform:rotate(-90deg);
 }
 
-label {
+div.mb-3 label {
     margin: 0 !important;
     padding: 0 0 10px;
 }
