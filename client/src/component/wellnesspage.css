@@ -1,43 +1,43 @@
 .WellnessTab {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 800px;
-  }
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+}
 
-  .WellnessTab h1 {
-    color: #3f5765;
-  }
-  .activity-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .activity-card {
-    width: 300px;
-    border: 1px solid #4a4a4a;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #4a90e2;
-  }
-  
-  .activity-card h2 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    color:#fff
-  }
-  .activity-card p {
-    margin: 0;
-  }
-  body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0; 
+
+.WellnessTab h1 {
+  color: #3f5765;
+}
+.activity-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.activity-card {
+  width: 300px;
+  border: 1px solid #4a4a4a;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #4a90e2;
+}
+ .activity-card h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color:#fff
+}
+.activity-card p {
+  margin: 0;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 .video-container iframe {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
 }
