@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './signup.css';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import user_icon from './img/person.png';
 import email_icon from './img/email.png';
 import password_icon from './img/password.png';
@@ -13,6 +14,7 @@ const Signup=()=>{
   });
 
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
   const handleChange = (e) => {
     const {id, value} = e.target
@@ -65,7 +67,9 @@ const Signup=()=>{
             email: '',
             password: '',
             confirmpassword: '',
-          });
+          }
+          );
+          history.push('/paymentPlan');
         } else {
           const responseData = await response.json();
           console.error('Error:', responseData.error);
@@ -80,6 +84,7 @@ const Signup=()=>{
       setErrors(errors);
     }
   };
+
 
     return(
         <div className='container'>

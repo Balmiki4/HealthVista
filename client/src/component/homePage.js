@@ -134,13 +134,7 @@ const homePage = () => {
                       </li>
                       <li class="list__item">Basic chatbot support</li>
                     </ul>
-                    <div className="plan-btn">
-                      <Link to="/">
-                        <button class="btn btn-outline-success plan-buy-now-btn">
-                          Buy Now
-                        </button>
-                      </Link>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -165,13 +159,6 @@ const homePage = () => {
                         </li>
                         <li class="list__item">Virutal Therapist</li>
                       </ul>
-                      <div className="plan-btn">
-                        <Link to="/">
-                          <button class="btn btn-outline-success plan-buy-now-btn">
-                            Buy Now
-                          </button>
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -197,13 +184,6 @@ const homePage = () => {
                         </li>
                         <li class="list__item">Expanded tracker options</li>
                       </ul>
-                      <div className="plan-btn">
-                        <Link to="/">
-                          <button class="btn btn-outline-success plan-buy-now-btn">
-                            Buy Now
-                          </button>
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 </div>

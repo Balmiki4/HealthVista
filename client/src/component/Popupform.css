@@ -1,10 +1,18 @@
 .Popup-btn{
     position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 1000;
-}
+    border-radius: 0;
 
+    font-size: 1rem;
+    text-transform: uppercase ;
+    --bs-btn-padding-x: 2rem;
+    --bs-btn-font-family: 'Simplifica';
+
+    top: 60%;
+    right: 0;
+    z-index: 1000;
+    transform-origin: bottom right;
+    transform:rotate(-90deg);
+}
 
 div.mb-3 label {
     margin: 0 !important;
