@@ -2,19 +2,12 @@ import React, { useState,useEffect } from "react";
 import './wellnesspage.css';
 
 function WellnessPage() {
-  const [activities, setActivities] = useState([
-    { id: 1, type: 'video', title: 'The Benefits of Meditation', category: 'Meditation', link: "JogJf_8MuN8" },
-    { id: 2, type: 'video', title: 'The Benefits of Exercise', category: 'Exercise', link: '9o0UPuDBM8M' },
-    { id: 3, type: 'video', title: 'The Benefits of Cultivating Calm', category: 'Mindfulness', link: 'TLKxdTmk-zc' },
-    { id: 4, type: 'video', title: 'The Benefits of Exercise', category: 'Exercise', link: 'LHFnS-7zKwI' },
-    { id: 5, type: 'video', title: 'The Benefits of Healthy Habits', category: 'Health', link: 'Y8HIFRPU6pM' },
-  ]);
-
   // State for filtering
   const [filter, setFilter] = useState('All');
+  const [filteredVideos, setFilteredVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
-  // Filtered activities based on selected filter
-  const filteredActivities = filter === 'All' ? activities : activities.filter(activity => activity.category === filter);
+  
 
   // Function to handle filter change
   const handleFilterChange = (e) => {
@@ -24,33 +17,31 @@ function WellnessPage() {
   useEffect(() => {
     // Function to fetch video details for activities of type 'video'
     const fetchVideoDetails = async () => {
-      // Map through activities array and update video activities with their details
-      const updatedActivities = await Promise.all(
-        activities.map(async activity => {
-          // Check if activity type is 'video'
-          if (activity.type === 'video') {
-            const videoId = activity.link; // Extract video ID
-            try {
-              // Fetch video details from YouTube API
-              const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=youtubeAPI`);
-              const data = await response.json(); 
-              // If video details are available
-              if (data.items && data.items.length > 0) {
-                const { title, thumbnails } = data.items[0].snippet; 
-                // Return updated activity object with title and thumbnail
-                return { ...activity, title, thumbnail: thumbnails.default.url };
-              }
-            } catch (error) {
-              console.error('Error fetching video details:', error); // Log any errors
-            }
-          }
-          // Return the activity unchanged if it's not a video
-          return activity;
-        })
-      );
-      // Update state with the updated activities array
-      setActivities(updatedActivities);
-    };
+    
+
+   const fetchVideos = async () => {
+    try {
+      let apiUrl = 'https://www.googleapis.com/youtube/v3/search?key=&type=video&part=snippet';
+      // Adjust API URL based on selected filter
+      switch (filter) {
+        case 'Meditation':
+          apiUrl += '&q=meditation';
+          break;
+        case 'Exercise':
+          apiUrl += '&q=exercise';
+          break;
+        case 'Mindfulness':
+          apiUrl += '&q=mindfulness';
+          break;
+        case 'Health':
+          apiUrl += '&q=healthbenefits';
+          break;
+        default:
+          apiUrl += '&q=wellness'; 
+          // Default to 'wellness' if 'All' or unknown filter selected
+          break;
+      }
+
   
     // Invoke the fetchVideoDetails function when the activities array changes
     fetchVideoDetails();
