@@ -20,6 +20,44 @@ function WellnessPage() {
     setFilter(e.target.value);
   };
 
+  useEffect(() => {
+    // Function to fetch video details for activities of type 'video'
+    const fetchVideoDetails = async () => {
+      // Map through activities array and update video activities with their details
+      const updatedActivities = await Promise.all(
+        activities.map(async activity => {
+          // Check if activity type is 'video'
+          if (activity.type === 'video') {
+            const videoId = activity.link; // Extract video ID
+            try {
+              // Fetch video details from YouTube API
+              const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=API_KEY`);
+              const data = await response.json(); 
+              // If video details are available
+              if (data.items && data.items.length > 0) {
+                const { title, thumbnails } = data.items[0].snippet; 
+                // Return updated activity object with title and thumbnail
+                return { ...activity, title, thumbnail: thumbnails.default.url };
+              }
+            } catch (error) {
+              console.error('Error fetching video details:', error); // Log any errors
+            }
+          }
+          // Return the activity unchanged if it's not a video
+          return activity;
+        })
+      );
+      // Update state with the updated activities array
+      setActivities(updatedActivities);
+    };
+  
+    // Invoke the fetchVideoDetails function when the activities array changes
+    fetchVideoDetails();
+  }, [activities]); // Re-run effect when activities array changes
+   
+
+
+
   return (
     <div className="WellnessPage">
       <h1>Wellness</h1>
