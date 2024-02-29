@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './wellnesspage.css';
 
 function WellnessPage() {
@@ -68,6 +68,7 @@ function WellnessPage() {
           <option value="Meditation">Meditation</option>
           <option value="Exercise">Exercise</option>
           <option value="Mindfulness">Mindfulness</option>
+          <option value="Health">Health</option>
         </select>
       </div>
 
@@ -75,13 +76,23 @@ function WellnessPage() {
         {filteredActivities.map(activity => (
           <div key={activity.id} className="activity-card">
             <h2>{activity.title}</h2>
-            <p><strong>Category:</strong> {activity.category}</p>
-            <a href={activity.link} className="activity-link" target="_blank" rel="noopener noreferrer">
-              {activity.type === 'article' ? 'Read Article' : 'Watch Video'}
-            </a>
+            
+            {activity.type === 'video' && (
+              <div className="video-container">
+                {/* Embedded YouTube video */}
+                <iframe
+                  title={activity.title}
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${activity.link}`}
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
           </div>
-        ))}
+        )}
       </div>
+        ))}
+    </div>
     </div>
   );
 }
