@@ -32,18 +32,17 @@ def signup():
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
         # Check if username or email or password already exists
-        existing_user = users_collection.find_one({'username':username})
+        existing_user = users_collection.find_one({'$or': [{'username': username}, {'email': email}]})
         if existing_user:
-            return jsonify({'error': 'Username already taken'}), 400
+            if existing_user.get('username') == username:
+                return jsonify({'error': 'Username already taken'}), 400
+            if existing_user.get('email') == email:
+                return jsonify({'error': 'Email already taken'}), 400
         
-        existing_user_by_email = users_collection.find_one({'email': email})
-        if existing_user_by_email:
-            return jsonify({'error': 'Email already taken'}), 400
-        
-        for user in users_collection.find({}):
-            if bcrypt.checkpw(password.encode('utf-8'), user['password']):
-                return jsonify({'error': 'Password already taken'}), 400
+        # Create new user object and store username, email, and hashed password
+        new_user = User(username, email, hashed_password)
 
+        
         # Create new user object and store username, email, and hashedpassword
         new_user = User(username, email, hashed_password)
 
