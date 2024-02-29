@@ -7,7 +7,7 @@ function WellnessPage() {
     { id: 2, type: 'video', title: 'The Benefits of Exercise', category: 'Exercise', link: '9o0UPuDBM8M' },
     { id: 3, type: 'video', title: 'The Benefits of Cultivating Calm', category: 'Mindfulness', link: 'TLKxdTmk-zc' },
     { id: 4, type: 'video', title: 'The Benefits of Exercise', category: 'Exercise', link: 'LHFnS-7zKwI' },
-    { id: 4, type: 'video', title: 'The Benefits of Healthy Habits', category: 'Health ', link: 'Y8HIFRPU6pM' },
+    { id: 5, type: 'video', title: 'The Benefits of Healthy Habits', category: 'Health', link: 'Y8HIFRPU6pM' },
   ]);
 
   // State for filtering
@@ -32,7 +32,7 @@ function WellnessPage() {
             const videoId = activity.link; // Extract video ID
             try {
               // Fetch video details from YouTube API
-              const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=API_KEY`);
+              const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=youtubeAPI`);
               const data = await response.json(); 
               // If video details are available
               if (data.items && data.items.length > 0) {
@@ -83,10 +83,7 @@ function WellnessPage() {
                 {/* Embedded YouTube video */}
                 <iframe
                   title={activity.title}
-                  width="100%"
-                  height="100%"
                   src={`https://www.youtube.com/embed/${activity.link}`}
-                  frameBorder="0"
                   allowFullScreen
                 ></iframe>
           </div>
