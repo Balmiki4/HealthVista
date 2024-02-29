@@ -9,6 +9,7 @@ import password_icon from "./img/password.png";
 
 const LoginPage = () => {
   const [formData, setData] = useState({ username: "", password: "" });
+  const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,10 +26,10 @@ const LoginPage = () => {
       return;
     }
 
-    const response = await fetch("https://localhost:3000/login", {
+    const response = await fetch("/login", {
       method: "POST",
       headers: { "content-type": "application/JSON" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ formData, remember_me: rememberMe }),
     });
     const data = await response.json();
 
@@ -103,7 +104,12 @@ const LoginPage = () => {
         </form>
         <div className="remember-forgot">
           <Form.Group>
-            <Form.Check type="checkbox" label="Remember me" />
+            <Form.Check
+              type="checkbox"
+              label="Remember me"
+              onChange={() => setRememberMe(!rememberMe)} //change the checkbox to true
+              checked={rememberMe}
+            />
           </Form.Group>
           <Link to="/forgot-password">Forgot Password?</Link>
         </div>

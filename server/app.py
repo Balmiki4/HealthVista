@@ -4,6 +4,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from signup_python.signup_routes import signup_bp
 from payment_python.payment_routes import payment_bp
+from login_python.login_routes import login_bp
 from bson.objectid import ObjectId
 from flask_cors import CORS  
 
@@ -11,6 +12,8 @@ app = Flask(__name__)
 
 app.register_blueprint(signup_bp)
 app.register_blueprint(payment_bp)
+
+app.register_blueprint(login_bp)
 
 CORS(app)
 
