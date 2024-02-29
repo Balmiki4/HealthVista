@@ -6,11 +6,26 @@ import { useHistory } from "react-router-dom";
 import "./login.css";
 import user_icon from "./img/person.png";
 import password_icon from "./img/password.png";
+import { Alert } from "react-bootstrap";
 
 const LoginPage = () => {
   const [formData, setData] = useState({ username: "", password: "" });
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState({});
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertVariant, setAlertVariant] = useState("success"); // Default to success
+
+  const handleAlertClose = () => {
+    setShowAlert(false);
+  };
+
+  const displayAlert = (variant, message) => {
+    setAlertVariant(variant);
+    setAlertMessage(message);
+    setShowAlert(true);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Check if username or password is empty
@@ -26,17 +41,40 @@ const LoginPage = () => {
       return;
     }
 
-    const response = await fetch("/login", {
+    // console.log("formData:", formData);
+    // console.log("rememberMe:", rememberMe);
+    const response = await fetch("http://localhost:5000/login", {
       method: "POST",
-      headers: { "content-type": "application/JSON" },
-      body: JSON.stringify({ formData, remember_me: rememberMe }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: formData.username,
+        password: formData.password,
+        remember_me: rememberMe,
+      }),
     });
+
     const data = await response.json();
 
     if (response.ok) {
       console.log("Login successful");
+
+      // Clear the form fields upon successful login
+      setData({ username: "", password: "" });
+
+      // Show success alert
+      displayAlert("success", "Login successful");
+    } else if (response.status === 401) {
+      console.log("Invalid username or password");
+
+      // Reset the form fields
+      setData({ username: "", password: "" });
+      displayAlert("danger", "Login failed. Invalid username or password");
     } else {
-      console.log("Login failed", data.console.error());
+      console.log("Login failed", data.error());
+      setData({ username: "", password: "" });
+      displayAlert("danger", "Login failed. Invalid username or password");
     }
   };
   return (
@@ -81,7 +119,7 @@ const LoginPage = () => {
                     setData({ ...formData, password: e.target.value });
                     setErrors({ ...errors, password: "" });
                   }}
-                  isInvalid={!!errors.username}
+                  isInvalid={!!errors.password}
                 />
               </Form.Group>
               {errors.username && (
@@ -92,7 +130,7 @@ const LoginPage = () => {
           <div className="login-button">
             <Form.Group>
               <Button
-                class="btn"
+                className="btn"
                 type="submit"
                 variant="primary"
                 onClick={handleSubmit}
@@ -111,13 +149,22 @@ const LoginPage = () => {
               checked={rememberMe}
             />
           </Form.Group>
-          <Link to="/forgot-password">Forgot Password?</Link>
+          <Link to="/">Forgot Password?</Link>
         </div>
         <div className="signup-link">
           <span>Don't have an account? </span>
           <Link to="/signup">Sign Up</Link>
         </div>
       </div>
+      {/* Alert */}
+      <Alert
+        variant={alertVariant}
+        show={showAlert}
+        onClose={handleAlertClose}
+        dismissible
+      >
+        {alertMessage}
+      </Alert>
     </div>
   );
 };
