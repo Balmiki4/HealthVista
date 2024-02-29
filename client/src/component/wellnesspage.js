@@ -3,10 +3,11 @@ import './wellnesspage.css';
 
 function WellnessPage() {
   const [activities, setActivities] = useState([
-    { id: 1, type: 'Exercise Clip', title: 'The Benefits of Meditation', category: 'Mindfulness', link: "https://www.youtube.com/watch?v=mKxu_dyzrj4&list=RDmKxu_dyzrj4&start_radio=1" },
-    { id: 2, type: 'article', title: 'The Benefits of Exercise', category: 'Exercise', link: 'https://www.youtube.com/watch?v=JogJf_8MuN8' },
-    { id: 3, type: 'article', title: 'The Benefits of Meditation', category: 'Health Benefits', link: '' },
-    { id: 4, type: 'article', title: 'The Benefits of Meditation', category: 'Health Benefits', link: '' },
+    { id: 1, type: 'video', title: 'The Benefits of Meditation', category: 'Meditation', link: "JogJf_8MuN8" },
+    { id: 2, type: 'video', title: 'The Benefits of Exercise', category: 'Exercise', link: '9o0UPuDBM8M' },
+    { id: 3, type: 'video', title: 'The Benefits of Cultivating Calm', category: 'Mindfulness', link: 'TLKxdTmk-zc' },
+    { id: 4, type: 'video', title: 'The Benefits of Exercise', category: 'Exercise', link: 'LHFnS-7zKwI' },
+    { id: 4, type: 'video', title: 'The Benefits of Healthy Habits', category: 'Health ', link: 'Y8HIFRPU6pM' },
   ]);
 
   // State for filtering
