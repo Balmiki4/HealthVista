@@ -10,6 +10,7 @@ import wellnesspage from './component/wellnesspage';
 import paymentPlan from './component/paymentPlan';
 import SuccessPage from './component/SuccessPage';
 import ProfilePage  from './component/createProfile';
+import Footer from './component/Footer';
 import{
   BrowserRouter as Router,
   Switch,
@@ -40,7 +41,9 @@ const App=()=>{
         </Route> 
         <Route path='/createProfile' exact component={ProfilePage}> 
         </Route>
+        
       </Switch>
+      <Footer/>
     </div>
     </Router>
   )
