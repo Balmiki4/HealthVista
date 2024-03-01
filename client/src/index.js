@@ -9,6 +9,7 @@ import signup from './component/signup';
 import wellnesspage from './component/wellnesspage';
 import paymentPlan from './component/paymentPlan';
 import SuccessPage from './component/SuccessPage';
+import Footer from './component/Footer';
 import{
   BrowserRouter as Router,
   Switch,
@@ -37,7 +38,9 @@ const App=()=>{
         </Route> 
         <Route path='/wellnesspage' exact component={wellnesspage}> 
         </Route> 
+        
       </Switch>
+      <Footer/>
     </div>
     </Router>
   )
