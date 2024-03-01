@@ -1,51 +1,100 @@
-import React, { useState } from "react";
-import './wellnesspage.css';
+import React, { useState, useEffect } from "react";
 
+//api=os.getenv('youtubeAPI')
 function WellnessPage() {
-  const [activities, setActivities] = useState([
-    { id: 1, type: 'Exercise Clip', title: 'The Benefits of Meditation', category: 'Mindfulness', link: "https://www.youtube.com/watch?v=mKxu_dyzrj4&list=RDmKxu_dyzrj4&start_radio=1" },
-    { id: 2, type: 'article', title: 'The Benefits of Exercise', category: 'Exercise', link: 'https://www.youtube.com/watch?v=JogJf_8MuN8' },
-    { id: 3, type: 'article', title: 'The Benefits of Meditation', category: 'Health Benefits', link: '' },
-    { id: 4, type: 'article', title: 'The Benefits of Meditation', category: 'Health Benefits', link: '' },
-  ]);
+ const [videos, setVideos] = useState([]);
+ const [filteredVideos, setFilteredVideos] = useState([]);
+ const [filter, setFilter] = useState('All');
 
-  // State for filtering
-  const [filter, setFilter] = useState('All');
 
-  // Filtered activities based on selected filter
-  const filteredActivities = filter === 'All' ? activities : activities.filter(activity => activity.category === filter);
+ useEffect(() => {
+   const fetchVideos = async () => {
+     try {
+       let apiUrl = 'https://www.googleapis.com/youtube/v3/search?key=YouTubeAPI&part=snippet';
+       // Adjust API URL based on selected filter
+       switch (filter) {
+         case 'Meditation':
+           apiUrl += '&q=meditation';
+           break;
+         case 'Exercise':
+           apiUrl += '&q=exercise';
+           break;
+         case 'Mindfulness':
+           apiUrl += '&q=mindfulness';
+           break;
+         case 'Health':
+           apiUrl += '&q=healthbenefits';
+           break;
+         default:
+           apiUrl += '&q=wellness'; // Default to 'wellness' if 'All' or unknown filter selected
+           break;
+       }
+       // Fetch video details from YouTube API
+       const response = await fetch(apiUrl);
+       const data = await response.json();
+       // Extract relevant video information
+       const videosData = data.items.map(item => ({
+         id: item.id.videoId,
+         title: item.snippet.title,
+         thumbnail: item.snippet.thumbnails.default.url,
+         category: filter // Store filter category in video data
+       }));
+       // Update state with video data
+       setVideos(videosData);
+       setFilteredVideos(videosData); // Set filtered videos initially
+     } catch (error) {
+       console.error("Error fetching videos:", error);
+     }
+   };
 
-  // Function to handle filter change
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
-  };
 
-  return (
-    <div className="WellnessPage">
-      <h1>Wellness</h1>
-      <div className="filter-container">
-        <label htmlFor="filter">Filter by:</label>
-        <select id="filter" onChange={handleFilterChange} value={filter}>
-          <option value="All">All</option>
-          <option value="Meditation">Meditation</option>
-          <option value="Exercise">Exercise</option>
-          <option value="Mindfulness">Mindfulness</option>
-        </select>
-      </div>
+   fetchVideos();
+ }, [filter]);
 
-      <div className="activity-container">
-        {filteredActivities.map(activity => (
-          <div key={activity.id} className="activity-card">
-            <h2>{activity.title}</h2>
-            <p><strong>Category:</strong> {activity.category}</p>
-            <a href={activity.link} className="activity-link" target="_blank" rel="noopener noreferrer">
-              {activity.type === 'article' ? 'Read Article' : 'Watch Video'}
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+
+ // Function to handle filter change
+ const handleFilterChange = (e) => {
+   setFilter(e.target.value);
+ };
+
+
+ return (
+   <div className="WellnessPage">
+     <h1>Wellness</h1>
+     {/* Filter dropdown */}
+     <div className="filter-container">
+       <label htmlFor="filter">Filter by:</label>
+       <select id="filter" onChange={handleFilterChange} value={filter}>
+         <option value="All">All</option>
+         <option value="Meditation">Meditation</option>
+         <option value="Exercise">Exercise</option>
+         <option value="Mindfulness">Mindfulness</option>
+         <option value="Health">Health</option>
+       </select>
+     </div>
+
+
+     {/* Video container */}
+     <div className="activity-container">
+       {filteredVideos.map(video => (
+         <div key={video.id} className="video-card">
+           <div className="video-wrapper">
+             <h2 className="video-title">{video.title}</h2>
+             <div className="video-container">
+               <iframe
+                 src={`https://www.youtube.com/embed/${video.id}`}
+                 title={video.title}
+                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                 allowFullScreen
+               ></iframe>
+             </div>
+           </div>
+         </div>
+       ))}
+     </div>
+   </div>
+ );
 }
+
 
 export default WellnessPage;
