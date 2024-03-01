@@ -19,11 +19,9 @@ const homePage = () => {
               Health Companion.
             </p>
             <div className="logins">
-              <Link to="/signup">
-                <button class="btn btn-light hero-signup-btn me-2">Signup</button>
-              </Link>
+              
               <Link to="/">
-                <button class="btn btn-outline-success hero-learn-btn">Learn More</button>
+                <button class="btn btn-outline-light hero-learn-btn">Learn More</button>
               </Link>
             </div>
           </header>
@@ -52,7 +50,7 @@ const homePage = () => {
                   <p>
                     Manage Your Health: Effortlessly track your medical records
                     in one secure location. Stay organized and proactive about
-                    your health proactive about your health.
+                    your health.
                   </p>
                   <Link to="/">
                     <button class="btn btn-outline-success feature-learn-now-btn ">
@@ -257,13 +255,7 @@ const homePage = () => {
         </div>
       </div>
 
-      <footer class="footer text-black">
-        <div class="conainer">
-          <div class="col-md-12 mt-4 text-center">
-            <p class="footer__copyright">HealthVISTA &#169; 2024</p>
-          </div>
-        </div>
-      </footer>
+      
 
       <div>
         <PopupForm />
