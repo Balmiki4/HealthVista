@@ -54,6 +54,7 @@ const ProfilePage = () => {
                 phoneNumber:'',
                 zipCode: '',
             });
+            setErrors({});
         }
         else {
             setErrors(errors);
