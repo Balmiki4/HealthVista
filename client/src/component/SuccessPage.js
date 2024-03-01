@@ -5,7 +5,7 @@ import { useLocation  } from 'react-router-dom';
 function SuccessPage() {
   
     return (
-      <div className='conainer feature'>
+      <div className='conainer feature ct1'>
       <div class="heading">
         <h1 className="secondary-heading">Payment Successful!</h1>
         <h3 className="font-only-heading">Your subscription has been updated. Thank you!</h3>
