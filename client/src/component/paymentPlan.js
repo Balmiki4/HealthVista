@@ -68,12 +68,14 @@ function paymentPlan() {
                     <li class="list__item">Basic chatbot support</li>
                   </ul>
                   <div className="plan-btn">
+                  <Link to="/createProfile">
                     <button
                       class="btn btn-outline-success plan-buy-now-btn"
-                      onClick={()=>handlePayment('Free tier')}
+                      //onClick={()=>handlePayment('Free tier')}
                     >
                       Buy Now
                     </button>
+                    </Link>
                   </div>
                 </div>
               </div>
