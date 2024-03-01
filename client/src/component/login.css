@@ -1,13 +1,6 @@
-body {
-  background-color: rgb(193, 215, 215);
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  background: rgb(193, 215, 215);
-  padding-bottom: 30px;
+.ct{
+  margin-top: 10.5vh !important;
+  margin-bottom: 11vh !important;
 }
 
 .login-form {
@@ -19,18 +12,10 @@ body {
   margin-top: 30px;
 }
 
-.text {
-  color: rgb(0, 0, 0);
-  font-size: 48px;
-  font-weight: 700;
+form.control placeholder{
+  color: #797979;;
 }
 
-.inputs {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
 
 .error-message {
   color: red;
@@ -40,37 +25,28 @@ body {
 }
 
 .login-button {
-  display: flex;
   align-items: center;
-  margin-top: 15px;
   flex-direction: column;
-  width: 100%;
+  margin-bottom: 10px !important;
 }
-.login-button .btn {
-  width: 100%;
-  background-color: #007bff;
-  color: #fff;
-}
+
 .remember-forgot {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 15px;
-  margin-right: 150px;
+  color:white;
 }
 
-.remember-forgot .form-check-label {
-  margin-left: 3px;
-}
+
 
 .signup-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
-  margin-right: 80px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: white;
 }
 
-.signup-link span {
-  margin-right: 5px;
-}
+
