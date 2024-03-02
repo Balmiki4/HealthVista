@@ -1,7 +1,10 @@
-:root{
-  --color-secondary: #14A44D;
+nav-link{
+  color: #fff;
 }
-  
+
+.dropdown-item{
+  color: white;
+}
   
   body {
     font-family: Inter, Arial, Helvetica, sans-serif;
@@ -17,7 +20,7 @@
   .navbar-brand {
 
     font-family: 'Times New Roman', Times, serif;
-    color: #000;
+    color: #fff;
     padding-left: 1%;
   }
 

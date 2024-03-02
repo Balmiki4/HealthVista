@@ -1,9 +1,16 @@
 /* Color and heading fonts */
 
 :root {
-  --color-primary: rgb(193, 215, 215);
-  --color-secondary: #14a44d;
-  --color-accent: #F7D9C4;
+  --color-secondary: #198754;
+  --color-accent: #A9D2C0;
+}
+body{
+  background-color: #FAF9F7;
+}
+.btn-outline-light:hover{
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: white;
 }
 
 /* Headings with secondary color and font */
@@ -85,14 +92,10 @@ html {
 
 .hero-learn-btn {
   --bs-btn-padding-y: 0.5rem;
-  --bs-btn-padding-x: 2rem;
+  --bs-btn-padding-x: 3rem;
   --bs-btn-font-size: 1rem;
 }
-.hero-signup-btn {
-  --bs-btn-padding-y: 0.5rem;
-  --bs-btn-padding-x: 1rem;
-  --bs-btn-font-size: 1rem;
-}
+
 
 /* Features Section */
 
@@ -129,7 +132,7 @@ html {
 .feature-main {
   width: 100%;
   border-bottom: 2px solid transparent;
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding-bottom: 20px;
   border-radius: 10px;
 }
@@ -317,7 +320,6 @@ html {
   color: #333;
 }
 .faq {
-  background-color: var(--color-accent);
   padding: 50px;
 }
 
@@ -342,7 +344,7 @@ html {
 }
 
 .callout--signup {
-  transform: translateY(5rem);
+  transform: translateY(4rem);
 }
 
 .callout__heading {
@@ -370,7 +372,10 @@ html {
   border-top: none;
   align-self: center;
 }
-
+.callout-btn .btn-outline-light:hover{
+  background-color: #212529;
+  color: white;
+}
 
 .buy-now-btn {
   --bs-btn-padding-y: 0.75rem;
@@ -381,14 +386,17 @@ html {
 /* footer */
 .footer {
   background-color: var(--color-accent);
-  border-top-right-radius: 50px 50px;
-  border-top-left-radius: 50px 50px;
+  margin:0;
 }
 
 .footer__copyright {
   margin: 0;
-  color: black;
+  color: white;
   font-family: "Simplifica";
   font-size: 1.2rem;
-  padding: 5rem 0 1rem 0;
+  padding: 2rem ;
+  text-align: left;
+}
+.ct1{
+  margin: 24.5vh auto ;
 }
