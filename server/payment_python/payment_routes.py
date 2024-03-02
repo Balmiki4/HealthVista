@@ -7,6 +7,9 @@ import logging
 import jwt
 from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
+import stripe
+from pymongo import MongoClient
+
 
 payment_bp = Blueprint('payment', __name__)
     
@@ -23,3 +26,47 @@ def get_price_id():
         print(f"Error in get_price_id: {e}") # Log exceptions
         return jsonify({"error": "Error retrieving price id"}), 500 
     
+@payment_bp.route('/stripe-webhook', methods=['POST'])
+def stripe_webhook():
+    payload = request.get_data(as_text=True)
+    sig_header = request.headers.get('Stripe-Signature')
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, os.getenv('STRIPE_WEBHOOK_SECRET')
+        )
+    except ValueError as e:
+        return jsonify(error=str(e)), 400
+    except stripe.error.SignatureVerificationError as e:
+        return jsonify(error=str(e)), 400
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        customer_id = session['customer']
+        selected_plan = session['client_reference_id']
+
+        print(f"Received event: {event}")
+        print(f"Customer ID: {customer_id}")
+        print(f"Selected Plan: {selected_plan}")
+
+        # Retrieve the user from the database based on the customer ID
+        uri = os.getenv('MONGO_URI')
+        client = MongoClient(uri)
+        db = client['healthvista']
+        users_collection = db['userdata']
+
+        user = users_collection.find_one({'customer_id': customer_id})
+
+        if user:
+            print(f"User found: {user}")
+            # Update the user's plan in the database
+            result = users_collection.update_one(
+                {'_id': user['_id']},
+                {'$set': {'plan': selected_plan}}
+            )
+            print(f"Update result: {result.raw_result}")
+        else:
+            print(f"User not found for customer ID: {customer_id}")
+
+
+    return jsonify(success=True), 200
