@@ -23,12 +23,12 @@ def get_price_id():
     try:
         selected_plan = request.get_json()['selectedPlan']
         price_id = get_stripe_price_id(selected_plan)  
-        print("Retrieved Price ID:", price_id) # Add this logging
+        print("Retrieved Price ID:", price_id) 
         response = jsonify({'priceId': price_id})
         response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
         return response
     except Exception as e:
-        print(f"Error in get_price_id: {e}") # Log exceptions
+        print(f"Error in get_price_id: {e}") 
         return jsonify({"error": "Error retrieving price id"}), 500 
     
 @payment_bp.route('/stripe-webhook', methods=['POST'])
