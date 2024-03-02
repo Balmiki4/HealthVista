@@ -69,3 +69,27 @@ def stripe_webhook():
 
 
     return jsonify(success=True), 200
+
+@payment_bp.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    try:
+        data = request.get_json()
+        price_id = data['priceId']
+        customer_id = data['customerId']
+        selected_plan = data['selectedPlan']
+
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            mode="subscription",
+            line_items=[{"price": price_id,"quantity": 1,}],
+            success_url="http://localhost:3000/SuccessPage",
+            cancel_url="http://localhost:3000/cancel",
+            metadata={
+                "selected_plan": selected_plan,
+            },
+            client_reference_id=customer_id,
+        )
+
+        return jsonify({"sessionId": checkout_session.id}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
