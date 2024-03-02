@@ -12,6 +12,11 @@ from pymongo import MongoClient
 
 
 payment_bp = Blueprint('payment', __name__)
+
+uri = os.getenv('MONGO_URI')
+client = MongoClient(uri)
+db = client['healthvista']
+users_collection = db['userdata']
     
 @payment_bp.route('/get-stripe-price-id', methods=['POST'])
 def get_price_id():
@@ -42,18 +47,12 @@ def stripe_webhook():
 
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        customer_id = session['customer']
-        selected_plan = session['client_reference_id']
+        customer_id = session['client_reference_id']
+        selected_plan = session['metadata'].get('selected_plan')
 
         print(f"Received event: {event}")
         print(f"Customer ID: {customer_id}")
         print(f"Selected Plan: {selected_plan}")
-
-        # Retrieve the user from the database based on the customer ID
-        uri = os.getenv('MONGO_URI')
-        client = MongoClient(uri)
-        db = client['healthvista']
-        users_collection = db['userdata']
 
         user = users_collection.find_one({'customer_id': customer_id})
 
