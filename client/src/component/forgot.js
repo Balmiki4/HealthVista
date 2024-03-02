@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
   const [step, setStep] = useState(1);
@@ -7,14 +7,72 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
   const [token, setToken] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleRequestToken = async () => {
-    onForgotPassword({ username });
-    setStep(2);
+    try {
+      const response = await fetch(
+        "http://localhost:5000/forgot-password/request-token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+          }),
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        setSuccessMessage(responseData.message);
+        setErrorMessage("");
+        setStep(2);
+      } else {
+        setErrorMessage(responseData.error);
+        setSuccessMessage("");
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
   };
 
   const handleResetPassword = async () => {
-    onResetPassword({ username, token, newPassword });
+    try {
+      const response = await fetch(
+        "http://localhost:5000/forgot-password/reset-password",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            token: token,
+            new_password: newPassword,
+          }),
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        setSuccessMessage(responseData.message);
+        setErrorMessage("");
+        // Redirect to the login page after successful password reset
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 3000); // Redirect after 3 seconds (adjust as needed)
+      } else {
+        setErrorMessage(responseData.error);
+        setSuccessMessage("");
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
   };
 
   return (
@@ -36,7 +94,12 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
               Request Token
             </Button>
           </Form>
-          <p>{message}</p>
+          <Alert variant="success" show={successMessage !== ""}>
+            {successMessage}
+          </Alert>
+          <Alert variant="danger" show={errorMessage !== ""}>
+            {errorMessage}
+          </Alert>
         </div>
       )}
 
@@ -66,7 +129,12 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
               Reset Password
             </Button>
           </Form>
-          <p>{message}</p>
+          <Alert variant="success" show={successMessage !== ""}>
+            {successMessage}
+          </Alert>
+          <Alert variant="danger" show={errorMessage !== ""}>
+            {errorMessage}
+          </Alert>
         </div>
       )}
     </div>

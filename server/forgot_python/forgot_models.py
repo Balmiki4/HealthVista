@@ -18,7 +18,11 @@ class Forgot:
 
     def save_token(self, username, token):
         tokens_collection.insert_one({'username': username, 'token': token})
-
+    def validate_token(self, token, username):
+        # Implement token validation logic (e.g., check if the token exists in the database for the given username)
+        token_data = tokens_collection.find_one({'username': username, 'token': token})
+        return token_data is not None
+    
     def send_otp_email(self, email, token):
         subject = 'Password Reset OTP'
         body = f'Hello,\n\n'

@@ -5,6 +5,7 @@ from flask_mail import Message
 from login_python.login_models import User
 from forgot_python.forgot_models import Forgot
 import pyotp
+from mail_config import mail
 
 forgot_bp = Blueprint('forgot', __name__)
 
@@ -19,9 +20,10 @@ def request_token():
 
     if user:
         # Generate and send OTP token
-        token = Forgot.generate_token()
-        Forgot.save_token(username, token)
-        Forgot().send_otp_email(user['email'], token)
+        forgot_instance = Forgot()
+        token = forgot_instance.generate_token()
+        forgot_instance.save_token(username, token)
+        forgot_instance.send_otp_email(user['email'], token)
 
         return jsonify({'message': 'Token sent successfully'}), 200
     else:
@@ -34,8 +36,9 @@ def reset_password():
     token = data.get('token')
     new_password = data.get('new_password')
 
-    # Validate the token
-    if Forgot.validate_token(token, username):
+   # Validate the token
+    forgot_instance = Forgot()
+    if forgot_instance.validate_token(token, username):
         user = User().find_username(username)
 
         if user:
@@ -49,6 +52,10 @@ def reset_password():
         return jsonify({'error': 'Invalid token'}), 401
 
 def send_otp_email(email, token):
-    msg = Message('Password Reset OTP', sender='sender_email', recipients=[email])
-    msg.body = f'Your password reset OTP is: {token}'
-    mail.send(msg)
+    try:
+        msg = Message('Password Reset OTP', sender='sender_email', recipients=[email])
+        msg.body = f'Your password reset OTP is: {token}'
+        mail.send(msg)
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")
