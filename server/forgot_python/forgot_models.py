@@ -3,8 +3,8 @@ import os
 import secrets
 from pymongo import MongoClient
 from flask_mail import Message
-from app import mail  # Importing mail directly from app
-from mail_config import configure_mail  # Importing configure_mail
+# from app import mail  # Importing mail directly from app
+from mail_config import mail  # Importing configure_mail
 
 uri = os.getenv("MONGO_URI")
 client = MongoClient(uri)
