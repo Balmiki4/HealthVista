@@ -4,9 +4,11 @@ from flask import Blueprint
 from signup_python.signup_models import User
 from flask import request, jsonify
 from pymongo import MongoClient
-
+import stripe
 
 signup_bp = Blueprint('signup', __name__)
+
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 uri = os.getenv('MONGO_URI')
 client = MongoClient(uri)
@@ -38,13 +40,18 @@ def signup():
                 return jsonify({'error': 'Username already taken'}), 400
             if existing_user.get('email') == email:
                 return jsonify({'error': 'Email already taken'}), 400
+            
+
+        stripe_customer = stripe.Customer.create(
+              name=username,
+              email=email,
+            )
+        customer_id = stripe_customer.id
+        print("Stripe Customer ID (during signup):", customer_id) 
         
         # Create new user object and store username, email, and hashed password
-        new_user = User(username, email, hashed_password)
+        new_user = User(username, email, hashed_password, customer_id=customer_id)
 
-        
-        # Create new user object and store username, email, and hashedpassword
-        new_user = User(username, email, hashed_password)
 
         # Insert new user into MongoDB
         users_collection.insert_one(new_user.__dict__)
