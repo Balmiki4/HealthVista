@@ -56,4 +56,4 @@ def signup():
         # Insert new user into MongoDB
         users_collection.insert_one(new_user.__dict__)
 
-        return jsonify({'message': 'User registered successfully'}), 200
+        return jsonify({'message': 'User registered successfully', 'customerId' : customer_id}), 200
