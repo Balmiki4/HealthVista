@@ -2,7 +2,7 @@ from login_python.login_models import User
 from flask import jsonify, request
 from flask import Blueprint
 import datetime
-from jose import jwt
+import jwt
 
 
 login_bp = Blueprint('login', __name__)

@@ -61,6 +61,7 @@ const Signup=()=>{
         });
 
         if (response.ok) {
+          const responseData = await response.json();
           console.log('User registered successfully!');
           setFormData({
             username: '',
@@ -69,7 +70,10 @@ const Signup=()=>{
             confirmpassword: '',
           }
           );
-          history.push('/paymentPlan');
+
+          const customerId = responseData.customerId;
+          history.push(`/PaymentPlan?customerId=${encodeURIComponent(customerId)}`);
+
         } else {
           const responseData = await response.json();
           console.error('Error:', responseData.error);

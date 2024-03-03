@@ -7,7 +7,7 @@ import homePage from './component/homePage';
 import login from './component/login';
 import signup from './component/signup';
 import wellnesspage from './component/wellnesspage';
-import paymentPlan from './component/paymentPlan';
+import PaymentPlan from './component/PaymentPlan';
 import SuccessPage from './component/SuccessPage';
 import ProfilePage  from './component/createProfile';
 import Footer from './component/Footer';
@@ -29,7 +29,7 @@ const App=()=>{
       <Switch>
       <Route path='/SuccessPage' exact component={SuccessPage}> 
         </Route>
-      <Route path='/paymentPlan' exact component={paymentPlan}> 
+      <Route path='/PaymentPlan' exact component={PaymentPlan}> 
         </Route> 
       <Route path='/signup' exact component={signup}> 
         </Route> 
