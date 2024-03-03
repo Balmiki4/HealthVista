@@ -63,7 +63,8 @@ const ProfilePage = () => {
 
     return (
         <div className="profile-container">
-        <h2 className="profile-heading">Create Profile</h2>
+        <h2 className="font-only-heading">Create Profile</h2>
+        <div className="underline"></div>
         <form className="profile-form">
             <div className="form-group">
             <label htmlFor="firstName" className="form-label">First Name:</label>
@@ -134,7 +135,7 @@ const ProfilePage = () => {
             />
             {errors.zipCode && <div className='error'>{errors.zipCode}</div>}
             </div>
-            <button type="submit" className="submit-button" onClick={handleSubmit}>Save Changes</button>
+            <button type="submit" className="btn btn-outline-light" onClick={handleSubmit}>Save Changes</button>
         </form>
         </div>
     );
