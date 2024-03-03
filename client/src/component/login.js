@@ -118,90 +118,11 @@ const LoginPage = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="container ct">
-      <div className="login-form">
-=======
     <div className="container">
       <div className="header">
->>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
         <div className="text">
-        <h1 className="font-only-heading">Welcome back.</h1>
+          <h1 className="font-only-heading">Welcome back.</h1>
         </div>
-<<<<<<< HEAD
-        <div className='underline'></div>
-        <form onSubmit={handleSubmit}>
-          <div className="inputs">
-            <div className="input">
-              <label htmlFor="username">
-                <img src={user_icon} alt="user name" />
-              </label>
-              <Form.Group>
-                <Form.Control
-                  type="text"
-                  placeholder="Username or Email"
-                  value={formData.username}
-                  onChange={(e) => {
-                    setData({ ...formData, username: e.target.value });
-                    setErrors({ ...errors, username: "" });
-                  }}
-                  isInvalid={!!errors.username}
-                />
-              </Form.Group>
-              {errors.username && (
-                <div className="error-message">{errors.username}</div>
-              )}
-            </div>
-            <div className="input">
-              <label htmlFor="password">
-                <img src={password_icon} alt="password" />
-              </label>
-              <Form.Group>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={(e) => {
-                    setData({ ...formData, password: e.target.value });
-                    setErrors({ ...errors, password: "" });
-                  }}
-                  isInvalid={!!errors.password}
-                />
-              </Form.Group>
-              {errors.username && (
-                <div className="error-message">{errors.password}</div>
-              )}
-            </div>
-          </div>
-          <div className="login-button submitContainer">
-            <Form.Group>
-              <Button
-                type="submit"
-                variant="btn btn-outline-light"
-                onClick={handleSubmit}
-              >
-                Login
-              </Button>
-            </Form.Group>
-          </div>
-        </form>
-        <div className="remember-forgot">
-          <Form.Group>
-            <Form.Check
-              type="checkbox"
-              label="Remember me &nbsp; &nbsp;"
-              onChange={() => setRememberMe(!rememberMe)} //change the checkbox to true
-              checked={rememberMe}
-            />
-          </Form.Group>
-          <Link className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" to="/">Forgot Password?</Link>
-        </div>
-        <div className="signup-link">
-        <span>Don't have an account?&nbsp; &nbsp; </span>
-          <Link className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" to="/signup">Sign Up</Link>
-        </div>
-=======
->>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
       </div>
 
       <form onSubmit={handleSubmit}>

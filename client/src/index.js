@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import NavBar from './component/NavBar';
-import homePage from './component/homePage';
-import login from './component/login';
-import signup from './component/signup';
-import wellnesspage from './component/wellnesspage';
-import PaymentPlan from './component/PaymentPlan';
-import SuccessPage from './component/SuccessPage';
-import ProfilePage  from './component/createProfile';
-import Footer from './component/Footer';
-import{
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
-=======
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
@@ -25,49 +5,32 @@ import ReactDOM from "react-dom";
 import NavBar from "./component/NavBar";
 import homePage from "./component/homePage";
 import login from "./component/login";
+import forgot from "./component/forgot";
 import signup from "./component/signup";
 import wellnesspage from "./component/wellnesspage";
-import forgot from "./component/forgot";
+import PaymentPlan from "./component/PaymentPlan";
+import SuccessPage from "./component/SuccessPage";
+import ProfilePage from "./component/createProfile";
+import Footer from "./component/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
->>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
 
 const App = () => {
   return (
     <Router>
-<<<<<<< HEAD
-    <div className=''>
-      <NavBar/>
-      <Switch>
-      <Route path='/SuccessPage' exact component={SuccessPage}> 
-        </Route>
-      <Route path='/PaymentPlan' exact component={PaymentPlan}> 
-        </Route> 
-      <Route path='/signup' exact component={signup}> 
-        </Route> 
-        <Route path='/login' exact component={login}> 
-        </Route> 
-        <Route path='/' exact component={homePage}> 
-        </Route> 
-        <Route path='/wellnesspage' exact component={wellnesspage}> 
-        </Route> 
-        <Route path='/createProfile' exact component={ProfilePage}> 
-        </Route>
-        
-      </Switch>
-      <Footer/>
-    </div>
-=======
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/SuccessPage" exact component={SuccessPage}></Route>
+          <Route path="/PaymentPlan" exact component={PaymentPlan}></Route>
           <Route path="/signup" exact component={signup}></Route>
           <Route path="/login" exact component={login}></Route>
+          <Route path="/forgot" exact component={forgot}></Route>
           <Route path="/" exact component={homePage}></Route>
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
-          <Route path="/forgot" exact component={forgot}></Route>
+          <Route path="/createProfile" exact component={ProfilePage}></Route>
         </Switch>
+        <Footer />
       </div>
->>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
     </Router>
   );
 };
