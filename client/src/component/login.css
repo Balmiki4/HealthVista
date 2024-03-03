@@ -1,9 +1,25 @@
+<<<<<<< HEAD
 .ct{
   margin-top: 10.5vh !important;
   margin-bottom: 11vh !important;
+=======
+body {
+  background-color: rgb(193, 215, 215);
 }
 
-.login-form {
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background: rgb(193, 215, 215);
+  padding-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+>>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
+}
+
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +43,17 @@ form.control placeholder{
 .login-button {
   align-items: center;
   flex-direction: column;
+<<<<<<< HEAD
   margin-bottom: 10px !important;
+=======
+  width: 100%;
+}
+
+.login-button .btn {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+>>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
 }
 
 .remember-forgot {
@@ -38,7 +64,17 @@ form.control placeholder{
   color:white;
 }
 
+<<<<<<< HEAD
 
+=======
+.remember-forgot .form-check {
+  margin-left: 20px;
+}
+
+.remember-forgot .form-check-label {
+  margin-left: 3px;
+}
+>>>>>>> SCRUM-41-design-backend-and-frontend-for-forgot-password
 
 .signup-link {
   display: flex;
