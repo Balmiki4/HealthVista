@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import React, { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import "./homePage.css";
 
 const stripePromise = loadStripe(
@@ -11,27 +11,33 @@ const stripePromise = loadStripe(
 function PaymentPlan() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const customerId = searchParams.get('customerId');
+  const customerId = searchParams.get("customerId");
 
   const handlePayment = async (selectedPlan) => {
     try {
-      const response = await fetch('http://localhost:5000/get-stripe-price-id', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ selectedPlan })
-      });
+      const response = await fetch(
+        "http://localhost:5000/get-stripe-price-id",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ selectedPlan }),
+        }
+      );
       const { priceId } = await response.json();
-  
-      const sessionResponse = await fetch('http://localhost:5000/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, customerId, selectedPlan })
-      });
+
+      const sessionResponse = await fetch(
+        "http://localhost:5000/create-checkout-session",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ priceId, customerId, selectedPlan }),
+        }
+      );
       const { sessionId } = await sessionResponse.json();
-  
+
       const stripe = await stripePromise;
       const { error } = await stripe.redirectToCheckout({ sessionId });
-  
+
       if (error) {
         console.error("Error:", error);
         // Display error message to the user here
@@ -70,13 +76,13 @@ function PaymentPlan() {
                     <li class="list__item">Basic chatbot support</li>
                   </ul>
                   <div className="plan-btn">
-                  <Link to="/createProfile">
-                    <button
-                      class="btn btn-outline-success plan-buy-now-btn"
-                      //onClick={()=>handlePayment('Free tier')}
-                    >
-                      Buy Now
-                    </button>
+                    <Link to="/createProfile">
+                      <button
+                        class="btn btn-outline-success plan-buy-now-btn"
+                        //onClick={()=>handlePayment('Free tier')}
+                      >
+                        Buy Now
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -106,7 +112,7 @@ function PaymentPlan() {
                     <div className="plan-btn">
                       <button
                         class="btn btn-outline-success plan-buy-now-btn"
-                        onClick={()=>handlePayment('Pro tier')}
+                        onClick={() => handlePayment("Pro tier")}
                       >
                         Buy Now
                       </button>
@@ -137,7 +143,7 @@ function PaymentPlan() {
                     <div className="plan-btn">
                       <button
                         class="btn btn-outline-success plan-buy-now-btn"
-                        onClick={()=>handlePayment('Basic tier')}
+                        onClick={() => handlePayment("Basic tier")}
                       >
                         Buy Now
                       </button>
