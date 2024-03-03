@@ -61,6 +61,7 @@ const Signup=()=>{
         });
 
         if (response.ok) {
+          const responseData = await response.json();
           console.log('User registered successfully!');
           setFormData({
             username: '',
@@ -69,7 +70,10 @@ const Signup=()=>{
             confirmpassword: '',
           }
           );
-          history.push('/paymentPlan');
+
+          const customerId = responseData.customerId;
+          history.push(`/PaymentPlan?customerId=${encodeURIComponent(customerId)}`);
+
         } else {
           const responseData = await response.json();
           console.error('Error:', responseData.error);
@@ -90,7 +94,7 @@ const Signup=()=>{
         <div className='container'>
             <div className="header">
                 <div className='text'>
-                    SIGN UP
+                <h1 className='font-only-heading'>REGISTER</h1>
                 </div>
                 <div className='underline'></div>
             </div>
@@ -117,9 +121,9 @@ const Signup=()=>{
                     </div>
             </div>
             <div className="submitContainer">
-                <button className="submit" onClick={handleSubmit}>SIGN UP</button>
+                <button className="btn btn-outline-light" onClick={handleSubmit}>SIGN UP</button>
             </div>
-            <div className="login">Already a user? {' '}<span>{' '} <Link to="/login">Click here to login</Link></span></div>
+            <div className="login">Already a user? {' '}<span>{' '} <Link className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" to="/login">Click here to login</Link></span></div>
         </div>
     )
 }

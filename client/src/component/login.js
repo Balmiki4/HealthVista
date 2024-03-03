@@ -78,12 +78,12 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className="container">
+    <div className="container ct">
       <div className="login-form">
         <div className="text">
-          <h1>Welcome back.</h1>
+        <h1 className="font-only-heading">Welcome back.</h1>
         </div>
-
+        <div className='underline'></div>
         <form onSubmit={handleSubmit}>
           <div className="inputs">
             <div className="input">
@@ -127,12 +127,11 @@ const LoginPage = () => {
               )}
             </div>
           </div>
-          <div className="login-button">
+          <div className="login-button submitContainer">
             <Form.Group>
               <Button
-                className="btn"
                 type="submit"
-                variant="primary"
+                variant="btn btn-outline-light"
                 onClick={handleSubmit}
               >
                 Login
@@ -144,16 +143,16 @@ const LoginPage = () => {
           <Form.Group>
             <Form.Check
               type="checkbox"
-              label="Remember me"
+              label="Remember me &nbsp; &nbsp;"
               onChange={() => setRememberMe(!rememberMe)} //change the checkbox to true
               checked={rememberMe}
             />
           </Form.Group>
-          <Link to="/">Forgot Password?</Link>
+          <Link className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" to="/">Forgot Password?</Link>
         </div>
         <div className="signup-link">
-          <span>Don't have an account? </span>
-          <Link to="/signup">Sign Up</Link>
+        <span>Don't have an account?&nbsp; &nbsp; </span>
+          <Link className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" to="/signup">Sign Up</Link>
         </div>
       </div>
       {/* Alert */}

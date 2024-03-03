@@ -1,16 +1,17 @@
-body{
-    background-color: rgb(193, 215, 215);
-}
+
 
 .container{
     display: flex;
     flex-direction: column;
     margin:auto;
-    background:rgb(193, 215, 215);
+    background: var(--color-secondary);
     padding-bottom: 0px;
     border-radius: 20px; /* Add border radius for rounded corners */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-    max-width: 500px; /* Limit maximum width of the container */
+    max-width: 600px; /* Limit maximum width of the container */
+    margin-top: 6.1vh;
+    padding: 1rem 0 1rem;
+    margin-bottom: 6.1vh;
 }
 
 .header{
@@ -22,16 +23,16 @@ body{
     margin-top: 30px;
 }
 
-.text{
-    color: rgb(0,0,0);
-    font-size: 48px;
-    font-weight:700;
+.text .font-only-heading{
+    font-size: 2.5rem;
+    font-weight:600;
+    color: white;
 }
 
 .underline{
     width: 60px;
     height: 4px;
-    background: rgb(0,0,0);
+    background:white;
     border-radius: 9px;
 }
 
@@ -72,17 +73,13 @@ div.input label{
     margin: 55px auto;
 }
 
-.submit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 220px;
-    height: 59px;
-    color:rgb(255,255,255);
-    background: #007bff;
-    border-radius: 20px;
-    font-size: 19px;
-    font-weight: 200;
+.submitContainer .btn-outline-light{
+    --bs-btn-padding-y: 0.75rem;
+    --bs-btn-padding-x: 3rem;
+    --bs-btn-font-size: 1.2rem;
+}
+.submitContainer .btn-outline-light:hover{
+    background-color: #212529;
 }
 
 .login{
@@ -90,7 +87,7 @@ div.input label{
     align-items: center;
     justify-content: center;
     margin-top: -31px;
-    color: rgb(0,0,0);
+    color: white;
     font-size: 18px;
     padding-bottom: 10px;
 }
