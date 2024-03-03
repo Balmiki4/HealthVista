@@ -193,13 +193,15 @@ const LoginPage = () => {
             checked={rememberMe}
           />
         </Form.Group>
-        <Link to="/forgot" onClick={handleForgotPasswordClick}>
+        <Link to="/forgot" className="link" onClick={handleForgotPasswordClick}>
           Forgot Password?
         </Link>
       </div>
       <div className="signup-link">
         <span>Don't have an account? </span>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/signup" className="link">
+          Sign Up
+        </Link>
       </div>
 
       {/* Forgot Password Form */}

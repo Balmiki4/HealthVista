@@ -82,7 +82,11 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
       {/* First page of forgot password */}
       {step === 1 && (
         <div>
-          <h1>Step 1: Request Token</h1>
+          <div className="header">
+            <div className="text">
+              <h1 className="font-only-heading">Request Token</h1>
+            </div>
+          </div>
           <Form className="forgot-form">
             <div className="inputs">
               <div className="input">
@@ -103,13 +107,17 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
                 )}
               </div>
             </div>
-            <Button
-              variant="primary"
-              className="reset-button"
-              onClick={handleRequestToken}
-            >
-              Request Token
-            </Button>
+            <div className="button">
+              <Form.Group>
+                <Button
+                  // variant="primary"
+                  className="reset-button"
+                  onClick={handleRequestToken}
+                >
+                  Request Token
+                </Button>
+              </Form.Group>
+            </div>
           </Form>
           <Alert variant="success" show={successMessage !== ""}>
             {successMessage}
@@ -119,7 +127,11 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
       {/* Second page of forgot password */}
       {step === 2 && (
         <div>
-          <h1>Step 2: Reset Password</h1>
+          <div className="header">
+            <div className="text">
+              <h1 className="font-only-heading">Reset Password</h1>
+            </div>
+          </div>
           <Form className="forgot-form">
             <div className="inputs">
               <div className="input">
@@ -157,13 +169,17 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
                 )}
               </div>
             </div>
-            <Button
-              variant="primary"
-              className="reset-button"
-              onClick={handleResetPassword}
-            >
-              Reset Password
-            </Button>
+            <div className="button">
+              <Form.Group>
+                <Button
+                  // variant="primary"
+                  className="reset-button"
+                  onClick={handleRequestToken}
+                >
+                  Reset Password
+                </Button>
+              </Form.Group>
+            </div>
           </Form>
           <Alert variant="success" show={successMessage !== ""}>
             {successMessage}
