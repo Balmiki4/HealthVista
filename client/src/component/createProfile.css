@@ -1,18 +1,32 @@
 .profile-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: rgb(193, 215, 215);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    border-radius: 20px;
+    padding-bottom: 0px;
+    background: var(--color-secondary);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    max-width: 600px; /* Limit maximum width of the container */
+    margin-top: 6.1vh;
+    padding: 1rem 0rem 1rem;
+    margin-bottom: 6.1vh;
 }
 
-.profile-heading {
+
+.profile-container .font-only-heading {
     text-align: center;
+    font-size: 2.5rem;
+    font-weight:600;
+    color: white;
+}
+
+.underline{
+    width: 60px;
+    height: 4px;
+    background:white;
+    border-radius: 9px;
     margin-bottom: 30px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight:300;
 }
 
 .profile-form {
@@ -25,7 +39,7 @@
 }
 
 .form-label {
-    font-size: 16px;
+    font-size: 20px;
     margin-right: 5px;
     margin-bottom: 5px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -35,28 +49,25 @@
 .form-input {
     padding: 10px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px solid #ccc;
     width: 100%;
+    color: #797979;
 }
 
-.submit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.btn-outline-light{
+    --bs-btn-padding-y: 0.75rem;
+    --bs-btn-padding-x: 3rem;
+    --bs-btn-font-size: 1.2rem;
 }
 
-.submit-button:hover {
-    background-color: #0056b3;
+.btn-outline-light:hover {
+    background-color: #212529;
 }
 
 .error {
-    color: red;
-    font-size: 14px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(129, 5, 5);
+    font-size: 20px;
     transition: opacity 0.3s ease-in-out; 
 }
