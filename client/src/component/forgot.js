@@ -33,6 +33,10 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
         setSuccessMessage(responseData.message);
         setErrorMessage("");
         setStep(2);
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 5000);
       } else {
         setErrorMessage(responseData.error);
         setSuccessMessage("");
@@ -68,6 +72,11 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
         setTimeout(() => {
           window.location.href = "/login";
         }, 2000); // Redirect after 2 seconds
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 5000);
       } else {
         setErrorMessage(responseData.error);
         setSuccessMessage("");
