@@ -87,7 +87,7 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
   };
 
   return (
-    <div className="container">
+    <div className="mgf container">
       {/* First page of forgot password */}
       {step === 1 && (
         <div>

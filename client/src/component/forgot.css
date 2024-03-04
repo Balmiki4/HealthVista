@@ -1,5 +1,9 @@
 /* forgot.css */
 
+.mgf{
+  margin: 20vh auto !important;   /* Temporary fix footer */ 
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -48,7 +52,7 @@
 .button {
   display: flex;
   gap: 30px;
-  margin: 55px auto;
+  margin: 55px auto !important;
   align-items: center;
   margin-top: 15px;
   flex-direction: column;
@@ -64,4 +68,6 @@
 }
 .button .reset-button:hover {
   background-color: #212529;
+  border: 0;
+  margin-top: 2px;
 }
