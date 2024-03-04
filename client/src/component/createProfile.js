@@ -92,7 +92,7 @@ const ProfilePage = () => {
             </div>
             <div className="form-group">
             <label htmlFor="gender" className="form-label">Gender:</label>
-            <select id="gender" className="form-input" value={formData.gender} onChange={handleChange}>
+            <select id="gender" className="form-input " value={formData.gender} onChange={handleChange}>
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -135,7 +135,9 @@ const ProfilePage = () => {
             />
             {errors.zipCode && <div className='error'>{errors.zipCode}</div>}
             </div>
+            <div className="profile-btn">
             <button type="submit" className="btn btn-outline-light" onClick={handleSubmit}>Save Changes</button>
+            </div>
         </form>
         </div>
     );

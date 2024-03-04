@@ -1,73 +1,85 @@
 .profile-container {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    border-radius: 20px;
-    padding-bottom: 0px;
-    background: var(--color-secondary);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-    max-width: 600px; /* Limit maximum width of the container */
-    margin-top: 6.1vh;
-    padding: 1rem 0rem 1rem;
-    margin-bottom: 6.1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border-radius: 20px;
+  padding-bottom: 0px;
+  background: var(--color-secondary);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  max-width: 600px; /* Limit maximum width of the container */
+  margin-top: 6.1vh;
+  padding: 1rem 0rem 1rem;
+  margin-bottom: 6.1vh;
 }
-
 
 .profile-container .font-only-heading {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight:600;
-    color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 1.5rem;
 }
 
-.underline{
-    width: 60px;
-    height: 4px;
-    background:white;
-    border-radius: 9px;
-    margin-bottom: 30px;
+.underline {
+  width: 60px;
+  height: 4px;
+  background: white;
+  border-radius: 9px;
+  margin-bottom: 30px;
 }
 
 .profile-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-label {
-    font-size: 20px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight:600;
+  font-size: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-family: "Simplifica", sans-serif;
+  font-weight: 600;
 }
 
 .form-input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    width: 100%;
-    color: #797979;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 100%;
+  color: #797979;
+  background-color: #f3f3f3;
 }
 
-.btn-outline-light{
-    --bs-btn-padding-y: 0.75rem;
-    --bs-btn-padding-x: 3rem;
-    --bs-btn-font-size: 1.2rem;
+.profile-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 15px;
+  border-top: none;
+  align-self: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.btn-outline-light:hover {
-    background-color: #212529;
+.profile-btn .btn-outline-light {
+  --bs-btn-padding-y: 0.75rem;
+  --bs-btn-padding-x: 3rem;
+  --bs-btn-font-size: 1.2rem;
+}
+
+.profile-btn .btn-outline-light:hover {
+  background-color: #212529;
 }
 
 .error {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(129, 5, 5);
-    font-size: 20px;
-    transition: opacity 0.3s ease-in-out; 
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(129, 5, 5);
+  font-size: 20px;
+  transition: opacity 0.3s ease-in-out;
 }
