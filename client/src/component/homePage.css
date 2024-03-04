@@ -6,6 +6,8 @@
 }
 body{
   background-color: #FAF9F7;
+  min-height: 100vh;
+  margin: 0;
 }
 .btn-outline-light:hover{
   background-color: var(--color-secondary);
@@ -345,6 +347,8 @@ html {
 
 .callout--signup {
   transform: translateY(4rem);
+  position: relative;
+  z-index: 1;
 }
 
 .callout__heading {
@@ -386,7 +390,9 @@ html {
 /* footer */
 .footer {
   background-color: var(--color-accent);
-  margin:0;
+  position: absolute;
+  margin-top:1.6rem ;
+  width: 100%;
 }
 
 .footer__copyright {
@@ -398,5 +404,5 @@ html {
   text-align: left;
 }
 .ct1{
-  margin: 24.5vh auto ;
+  margin: 20vh auto ;
 }
