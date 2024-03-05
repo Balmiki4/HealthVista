@@ -29,7 +29,7 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - Python
 - React
 - Flask
-- MongoDB (MERN Stack)
+- MongoDB
 - CSS
 - HTML
 
@@ -54,6 +54,24 @@ We are developing HealthVista to make a positive impact on individuals' lives by
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
       
     <br/>
+
+**Vishal**: "Set up a fully functioning Sign Up page of our web application and also created a create profile page "
+
+- `Jira Task: Task 1: Design Sign-Up Page UI Component`
+    - [Scrum-59](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-59),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/Vishal_trq7)
+- `Jira Task: Task 2: Create Sign-Up Page Frontend Logic`
+    - [Scrum-61](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-61),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-61-create-sign-up-page-frontend-logic)
+- `Jira Task: Task 3: Implement Sign-Up Page Backend Functionality`
+    - [Scrum-60](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-60),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-60-task-3-implement-sign-up-page-backend-functionality)
+- `Jira Task: Task 4:  Create Register Profile Page`
+    - [Scrum-62](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-62),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-62-task-4-create-register-profile-page)
+
+    <br/>
+
 **Keshav Adhikari**: "Created a wellness page and also used youtube API to integrate the wellness videos from youtube based on users' needs. Also Implemented the UI color scheme for better experience for the users. "
 
 - 'Jira Task: Design Frontend for implementation of Wellness Page'
@@ -80,6 +98,12 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - Integrate personal dashboard of registered user
 - Implement map feature for finding nearby hospitals and health professionals
 - Develop consistent layout for application
+
+**Vishal**:
+
+- Implement backend of Create Profile page and connect Create Profile page to database
+- Implement medicine tracker 
+- Implement blog tab UI
 
 **Keshav**
 
