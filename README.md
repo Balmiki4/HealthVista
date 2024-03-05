@@ -81,6 +81,10 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - Implement map feature for finding nearby hospitals and health professionals
 - Develop consistent layout for application
 
+**Keshav**
+- Implement a insurance recommender feature for the users 
+- Test the insurance recommender feature thoroughly to ensure accuracy, relevance, and usability.
+
 ## Future Features
 
 In future sprints, we plan to implement the following features:
