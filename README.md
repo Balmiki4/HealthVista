@@ -53,6 +53,10 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - [Bitbucket] (https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
   <br/>
 
+## Reports
+
+![Burnup report of sprint 1](static/report_sprint1.png)
+
 ## Future Features
 
 In future sprints, we plan to implement the following features:
