@@ -40,17 +40,17 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 **Balmiki**: "Set up the Health Vista login page and improved user experience by getting necessary info from MongoDB. "
 
 - `Jira Task: Design and planning of Login page`
-  - [Scrum-11](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-11),
-    [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/Balmiki_bfv12)
+    - [Scrum-11](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-11),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/Balmiki_bfv12)
 - `Jira Task: Backend Implementation for text fields in Login Page`
-  - [Scrum-14](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-14),
-    [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
+    - [Scrum-14](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-14),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
 - `Jira Task: Frontend Implementation of Login Page`
-  - [Scrum-13](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-13),
-    [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-13-frontend-implementation-of-login-page)
+    - [Scrum-13](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-13),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-13-frontend-implementation-of-login-page)
 - `Jira Task: Design backend and frontend for "forgot password" and "remember me" feature in login page`
-  - [Scrum-41](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-41),
-    [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
+    - [Scrum-41](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-41),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
     <br/>
 
 ## Reports
