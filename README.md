@@ -34,19 +34,7 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - HTML
 
 ## Features (Sprint 1)
-Keshav Adhikari: "Created a wellness page and also used youtube API to integrate the wellness videos from youtube based on users' needs. Also Implemented the UI color scheme for better experience for the users. "
 
-Jira Task: Design Frontend for implementation of Wellness Page
-[Scrum-16] (https://cs3398s24europa.atlassian.net/browse/SCRUM-16),
-[Bitbucket] (https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-16-design-frontend-for-wellnesspage)
-
-Jira Task: Integrate YouTube API for Wellness Video Display
-[Scrum-52] (https://cs3398s24europa.atlassian.net/browse/SCRUM-52),
-[Bitbucket] (https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-52-integrate-youtube-api-for-wellnesspage)
-
-Jira Task: Improve UI Color Scheme for UX
-[Scrum-15] (https://cs3398s24europa.atlassian.net/browse/SCRUM-15),
-[Bitbucket] (https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-15-improve-ui-color-scheme-for-ux)
 
 ## Contributions
 
@@ -64,8 +52,23 @@ Jira Task: Improve UI Color Scheme for UX
 - `Jira Task: Design backend and frontend for "forgot password" and "remember me" feature in login page`
     - [Scrum-41](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-41),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
+      
     <br/>
+**Keshav Adhikari**: "Created a wellness page and also used youtube API to integrate the wellness videos from youtube based on users' needs. Also Implemented the UI color scheme for better experience for the users. "
 
+- 'Jira Task: Design Frontend for implementation of Wellness Page'
+-[Scrum-16] (https://cs3398s24europa.atlassian.net/browse/SCRUM-16),
+-[Bitbucket] (https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-16-design-frontend-for-wellnesspage)
+
+- 'Jira Task: Integrate YouTube API for Wellness Video Display'
+[Scrum-52] (https://cs3398s24europa.atlassian.net/browse/SCRUM-52),
+[Bitbucket] (https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-52-integrate-youtube-api-for-wellnesspage)
+
+- 'Jira Task: Improve UI Color Scheme for UX'
+[Scrum-15] (https://cs3398s24europa.atlassian.net/browse/SCRUM-15),
+[Bitbucket] (https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-15-improve-ui-color-scheme-for-ux)
+ 
+ <br/>
 ## Reports
 
 ![Burnup report of sprint 1](static/report_sprint1.png)
