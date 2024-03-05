@@ -3,7 +3,7 @@
 ## General Information
 
 **Team Members:**
- Visahl Manral, Balmiki R. Padhyaya, Keshav Adhikari, and Muhammad Qasim
+Visahl Manral, Balmiki R. Padhyaya, Keshav Adhikari, and Muhammad Qasim
 
 **Problem Statement:**
 HealthVista aims to address the current challenges in health management by providing a comprehensive and user-centric platform. The project intends to simplify health monitoring, encourage proactive well-being, and deliver personalized health insights.
@@ -20,8 +20,10 @@ The primary audience for HealthVista includes individuals who are conscious abou
 
 We are developing HealthVista to make a positive impact on individuals' lives by providing them with a user-friendly tool to monitor and manage their health proactively. Our goal is to empower users with meaningful insights and encourage healthier lifestyle choices.
 
-## Image 
+## Image
+
 ![Image that depicts our project](static/moode.jpeg)
+
 ## Technologies
 
 - Python
@@ -46,20 +48,35 @@ Jira Task: Improve UI Color Scheme for UX
 [Scrum-15] (https://cs3398s24europa.atlassian.net/browse/SCRUM-15),
 [Bitbucket] (https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-15-improve-ui-color-scheme-for-ux)
 
-### Landing Page
+## Contributions
 
-**Description:** Design and implement a welcoming landing page that provides an overview of HealthVista.
+**Balmiki**: "Set up the Health Vista login page and improved user experience by getting necessary info from MongoDB. "
 
-**Users:** All visitors to the HealthVista website.
+- `Jira Task: Design and planning of Login page`
+    - [Scrum-11](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-11),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/Balmiki_bfv12)
+- `Jira Task: Backend Implementation for text fields in Login Page`
+    - [Scrum-14](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-14),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
+- `Jira Task: Frontend Implementation of Login Page`
+    - [Scrum-13](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-13),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-13-frontend-implementation-of-login-page)
+- `Jira Task: Design backend and frontend for "forgot password" and "remember me" feature in login page`
+    - [Scrum-41](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-41),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-14-backend-implementation-of-login-page)
+    <br/>
 
-**User Story:** As a potential user, I would like to see a clear description of the application's features on the landing page so that I can understand its capabilities.
-### Login Page
+## Reports
 
-**Description:** Design and implement a secure login page for users to access their personalized health dashboards.
+![Burnup report of sprint 1](static/report_sprint1.png)
 
-**Users:** Registered users of HealthVista.
+## Next Steps
 
-**User Story:** As a registered user, I would like to have a secure login page so that I can access my personalized health information and features.
+**Balmiki**:
+
+- Integrate personal dashboard of registered user
+- Implement map feature for finding nearby hospitals and health professionals
+- Develop consistent layout for application
 
 ## Future Features
 
