@@ -84,6 +84,25 @@ We are developing HealthVista to make a positive impact on individuals' lives by
     - [Scrum-15](https://cs3398s24europa.atlassian.net/browse/SCRUM-15),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-15-improve-ui-color-scheme-for-ux)
     <br/>
+**Muhammad**: "Made the navbar and connected all the pages, designed the homepage,set up the popup contact form, and payment page UI. I also integrated the Stripe API to implement the payment backend and stored the selected plan in the database."
+
+- `Jira Task: Design Component and link the homepage to other pages for Landing Page`
+    - [Scrum-29](https://cs3398s24europa.atlassian.net/browse/SCRUM-29),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/Muhammad-Ned44)
+- `Jira Task: Add FAQ Section, Implement Footer, and Update Color Scheme in Landing page`
+    - [Scrum-38](https://cs3398s24europa.atlassian.net/browse/SCRUM-38),
+      [Bitbucket]https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-38-add-faq-section-implement-foote)
+- `Jira Task: Popup Contact form on the Landing page`
+    - [Scrum-35](https://cs3398s24europa.atlassian.net/browse/SCRUM-35),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-35-popup-contact-form-on-the-landi)
+- `Jira Task:  Implement Payment Plan Feature on sign up `
+    - [Scrum-33](https://cs3398s24europa.atlassian.net/browse/SCRUM-33),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-33-implement-payment-plan-feature-)
+- `Jira Task:  Update Database for Upgrade Payment Plan Post-Signup `
+    - [Scrum-76](https://cs3398s24europa.atlassian.net/browse/SCRUM-76),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-76-update-database-for-upgrade-pay)
+    <br/>
+
 
 ## Reports
 
@@ -107,6 +126,12 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 
 - Implement a insurance recommender feature for the users 
 - Test the insurance recommender feature thoroughly to ensure accuracy, relevance, and usability.
+
+**Muhammad**:
+
+- Design chatbot UI
+- Implement chatbot functionality 
+- Implement nutrition tracker
 
 ## Future Features
 
