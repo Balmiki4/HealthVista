@@ -83,7 +83,9 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - `Jira Task: Improve UI Color Scheme for UX`
     - [Scrum-15](https://cs3398s24europa.atlassian.net/browse/SCRUM-15),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-15-improve-ui-color-scheme-for-ux)
+      
     <br/>
+    
 **Muhammad**: "Made the navbar and connected all the pages, designed the homepage,set up the popup contact form, and payment page UI. I also integrated the Stripe API to implement the payment backend and stored the selected plan in the database."
 
 - `Jira Task: Design Component and link the homepage to other pages for Landing Page`
