@@ -12,6 +12,7 @@ import PaymentPlan from "./component/PaymentPlan";
 import SuccessPage from "./component/SuccessPage";
 import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
+import insurancepage from "./component/insurancepage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/forgot" exact component={forgot}></Route>
           <Route path="/" exact component={homePage}></Route>
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
+          <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
         </Switch>
         <Footer />
