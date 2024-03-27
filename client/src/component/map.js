@@ -21,6 +21,9 @@ const Map = () => {
 
   return (
     <div className="map-container">
+      <div className="map header">
+        <h1>Find & compare providers near you.</h1>
+      </div>
       <div className="provider-types">
         <div className="provider-type">
           <span>Welcome</span>
@@ -41,6 +44,35 @@ const Map = () => {
           Administration (VA) medical centers and over 50 military hospitals,
           across the country.
         </p>
+        <Form>
+          <Form.Group>
+            <InputGroup>
+              <Form.Control
+                type="text"
+                placeholder="MY LOCATION *"
+                value={location}
+                onChange={handleLocationChange}
+              />
+            </InputGroup>
+          </Form.Group>
+
+          <Form.Group>
+            <InputGroup>
+              <Form.Control
+                type="text"
+                placeholder="NAME & TYPE (optional)"
+                value={facilityName}
+                onChange={handleFacilityNameChange}
+              />
+            </InputGroup>
+          </Form.Group>
+
+          <Button variant="success" onClick={handleSearch}>
+            Search
+          </Button>
+        </Form>
+
+        <a href="#">Show past search results</a>
       </div>
     </div>
   );
