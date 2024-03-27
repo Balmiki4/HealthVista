@@ -6,6 +6,7 @@ from signup_python.signup_routes import signup_bp
 from payment_python.payment_routes import payment_bp
 from login_python.login_routes import login_bp
 from forgot_python.forgot_routes import forgot_bp
+from profile_python.profile_routes import profile_bp
 
 app = Flask(__name__)
 
@@ -16,6 +17,8 @@ app.register_blueprint(payment_bp)
 
 app.register_blueprint(login_bp)
 app.register_blueprint(forgot_bp)
+
+app.register_blueprint(profile_bp)
 
 CORS(app)
 
