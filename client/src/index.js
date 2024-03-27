@@ -12,8 +12,7 @@ import PaymentPlan from "./component/PaymentPlan";
 import SuccessPage from "./component/SuccessPage";
 import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
-import insurancepage from "./component/insurancepage";
-import Vista from "./component/vista";
+import Vista from "./component/vista/Vista";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
