@@ -1,10 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import "./map.css";
 
 const Map = () => {
   const [location, setLocation] = useState("");
   const [facilityName, setFacilityName] = useState("");
+
+  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
+  useEffect(() => {
+    const loadGoogleMapsScript = () => {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key={apiKey}&libraries=places`;
+      script.defer = true;
+      script.async = true;
+      document.head.appendChild(script);
+    };
+
+    loadGoogleMapsScript();
+
+    // Clean up function to remove the script when the component unmounts
+    return () => {
+      const googleMapsScript = document.querySelector(
+        'script[src^="https://maps.googleapis.com"]'
+      );
+      if (googleMapsScript) {
+        googleMapsScript.remove();
+      }
+    };
+  }, [apiKey]);
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
@@ -17,6 +41,7 @@ const Map = () => {
   const handleSearch = () => {
     console.log("Searching for hospitals near:", location);
     console.log("Facility name or type:", facilityName);
+    // Implement search functionality using Google Maps Places API if needed
   };
 
   return (
@@ -74,6 +99,9 @@ const Map = () => {
 
         <a href="#">Show past search results</a>
       </div>
+
+      {/* Render map container */}
+      <div id="map" className="map"></div>
     </div>
   );
 };
