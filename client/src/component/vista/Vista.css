@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --color-secondary: #198754;
+    --color-accent: #A9D2C0;
+  }
+
+.body {
+    height: 95vh;
+    background: 
+    url('https://images.unsplash.com/photo-1497384401032-2182d2687715?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: 100% 100%;
+    display: grid;
+    place-items: center;
+}
+
+.section {
+    box-shadow: var(--box-shadow);
+    width: 900px;
+    background: rgba(33, 37,41, 0.5);
+    border-radius: 10px;
+    height: 80vh;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffffff21;
+    overflow: auto;
+}
+
+.group {
+    display: grid;
+    grid-template-columns: 55px calc(100% - 55px);
+    grid-template-rows: repeat(2, 30px);
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 10px;
+    list-style-type: none;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.avatar {
+    grid-row: 1/span 2;
+    background: url(../img/chatbot-new.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: -4px; 
+    background-size: 120%;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+
+.GroupName {
+    padding: 5px 10px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.group:hover {
+    background-color: #ffffff21;
+}
+
+.avatar img {
+    height: 80%;
+    width: auto;
+    margin: auto;
+}
+
+.ChatHead {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ffffff21;
+
+
+}
+
+.ChatHead .group:hover {
+    background-color: transparent;
+}
+
+.ChatHead .group {
+    display: flex;
+    align-items: center;
+}
+
+.ChatHead .group .GroupName {
+    font-size: 1.3rem;
+    padding-left: 20px;
+}
+
+.ChatHead .group .avatar {
+    padding: 5px;
+    height: 40px;
+    width: 40px;
+}
+
+
+.MessageContainer {
+    flex: 1;
+}
+
+#MessageForm {
+    padding: 10px;
+    display: flex;
+    width: 100%;
+}
+
+#MessageForm input {
+    padding: 10px;
+    flex: 1;
+    border-radius: 10px;
+    border: none;
+
+    background-color: #ebebebc6;
+}
+
+#MessageForm button {
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    cursor:pointer;
+
+    border-radius: 10px;
+
+    margin: 0px 5px;
+    font-size: 1.2rem
+}
+#MessageForm input:focus{
+    outline:none;
+    border:1px solid #00f5d4;
+}
+.MessageContainer{
+    display: flex;
+    height:100%;
+    width:100%;
+    padding:10px;
+    flex-direction: column;
+    overflow: auto;
+}
+.MessageContainer span{
+    margin-bottom: auto;
+}
+.message{
+    display: flex;
+    padding:10px 15px;
+    width:fit-content;
+    flex-direction: column;
+    border-radius: 15px;
+    margin:5px;
+    position: relative;
+}
+.you{
+    background-color: var(--color-secondary);
+    color: #fff;;
+    text-align:left;
+}
+.message i{
+    color:#00f5d4
+}
+.messageDetails{
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: flex-end;
+    width:100%;
+    text-align: right;
+    align-items: center;
+    padding:2px 0px;
+
+    
+}
+.messageContent{
+    font-size: 0.9rem;
+    margin: 0 !important;
+}
+.messageDetails .messageTime{
+    margin-left: auto;
+    padding-right:5px;
+    font-weight: 300;
+    color:#c3c1c1;
+
+
+
+}
+.you i{
+    color:#036666;
+}
+.me{
+    margin-left:auto;
+    background-color: var(--color-accent);
+    
+    text-align: right;
+}
+.messageSeperator{
+    margin: 10px auto;
+    padding:8px 15px;
+    border-radius:20px ;
+    width:fit-content;
+    background-color: #212529;
+    color: #fff;
+    font-size: 0.8rem;
+}
