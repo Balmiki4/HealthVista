@@ -3,11 +3,9 @@ import { Form, Button, InputGroup } from "react-bootstrap";
 import "./map.css";
 
 const Map = () => {
-  const [location, setLocation] = useState("");
-  const [facilityName, setFacilityName] = useState("");
+  const [zipCode, setZipCode] = useState("");
   const [hospitals, setHospitals] = useState([]);
-  const apiKey = process.env.MAP_API;
-
+  let apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
@@ -32,20 +30,20 @@ const Map = () => {
   }, [apiKey]);
 
   const fetchNearbyHospitals = async () => {
-    if (!location) {
-      alert("Please enter a location (zip code).");
+    if (!zipCode) {
+      alert("Please enter a ZIP code.");
       return;
     }
 
     try {
       // Fetch latitude and longitude coordinates for the provided zip code
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${apiKey}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`
       );
       const data = await response.json();
 
       if (data.results.length === 0) {
-        alert("No results found for the provided location.");
+        alert("No results found for the provided ZIP code.");
         return;
       }
 
@@ -63,6 +61,10 @@ const Map = () => {
 
       service.nearbySearch(request, (results, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+          // Sort hospitals by distance from the entered ZIP code
+          results.sort((a, b) => {
+            return a.distance - b.distance;
+          });
           setHospitals(results);
         }
       });
@@ -74,12 +76,8 @@ const Map = () => {
     }
   };
 
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
-  };
-
-  const handleFacilityNameChange = (event) => {
-    setFacilityName(event.target.value);
+  const handleZipCodeChange = (event) => {
+    setZipCode(event.target.value);
   };
 
   const handleSearch = async () => {
@@ -88,70 +86,44 @@ const Map = () => {
 
   return (
     <div className="map-container">
-      <div className="map header">
-        <h1>Find & compare providers near you.</h1>
-      </div>
-      <div className="provider-types">
-        <div className="provider-type">
-          <span>Welcome</span>
-        </div>
-        <div className="provider-type">
-          <span>Doctors & clinicians</span>
-        </div>
-        <div className="provider-type">
-          <span>Hospitals</span>
-        </div>
-      </div>
-
       <div className="search-container">
         <h2>Find hospitals near me</h2>
-        <p>
-          Find and compare information about the quality of care at over 4,000
-          Medicare-certified hospitals, including over 130 Veterans
-          Administration (VA) medical centers and over 50 military hospitals,
-          across the country.
-        </p>
         <Form>
           <Form.Group>
             <InputGroup>
               <Form.Control
                 type="text"
-                placeholder="ZIP CODE *"
-                value={location}
-                onChange={handleLocationChange}
+                placeholder="Enter ZIP code"
+                value={zipCode}
+                onChange={handleZipCodeChange}
               />
             </InputGroup>
           </Form.Group>
-
-          <Form.Group>
-            <InputGroup>
-              <Form.Control
-                type="text"
-                placeholder="NAME & TYPE (optional)"
-                value={facilityName}
-                onChange={handleFacilityNameChange}
-              />
-            </InputGroup>
-          </Form.Group>
-
           <Button variant="success" onClick={handleSearch}>
             Search
           </Button>
         </Form>
-
-        <a href="#">Show past search results</a>
       </div>
-
       <div className="map-results">
+        {/* Display the list of nearby hospitals */}
         <div className="hospital-list">
           <h3>Nearby Hospitals</h3>
           <ul>
             {hospitals.map((hospital, index) => (
-              <li key={index}>{hospital.name}</li>
+              <li key={index}>
+                <strong>{hospital.name}</strong>
+                <p>Distance: {hospital.distance} meters</p>
+                <p>Address: {hospital.vicinity}</p>
+                <p>Phone: {hospital.formatted_phone_number}</p>
+                {hospital.website && <a href={hospital.website}>Website</a>}
+              </li>
             ))}
           </ul>
         </div>
-        <div id="map" className="map"></div>
+        {/* Display the map showing the locations of nearby hospitals */}
+        <div id="map" className="map">
+          {/* Render Google Map here */}
+        </div>
       </div>
     </div>
   );
