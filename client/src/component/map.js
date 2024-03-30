@@ -5,8 +5,8 @@ import "./map.css";
 const Map = () => {
   const [location, setLocation] = useState("");
   const [facilityName, setFacilityName] = useState("");
-
-  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+  const [hospitals, setHospitals] = useState([]);
+  const apiKey = process.env.MAP_API;
 
   useEffect(() => {
     const loadGoogleMapsScript = () => {
@@ -14,6 +14,7 @@ const Map = () => {
       script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
       script.defer = true;
       script.async = true;
+      script.onload = fetchNearbyHospitals;
       document.head.appendChild(script);
     };
 
@@ -30,6 +31,49 @@ const Map = () => {
     };
   }, [apiKey]);
 
+  const fetchNearbyHospitals = async () => {
+    if (!location) {
+      alert("Please enter a location (zip code).");
+      return;
+    }
+
+    try {
+      // Fetch latitude and longitude coordinates for the provided zip code
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${apiKey}`
+      );
+      const data = await response.json();
+
+      if (data.results.length === 0) {
+        alert("No results found for the provided location.");
+        return;
+      }
+
+      const { lat, lng } = data.results[0].geometry.location;
+
+      // Perform search for hospitals based on latitude and longitude coordinates
+      const service = new window.google.maps.places.PlacesService(
+        document.createElement("div")
+      );
+      const request = {
+        location: { lat, lng },
+        radius: 5000, // Search radius in meters
+        type: "hospital", // Search type
+      };
+
+      service.nearbySearch(request, (results, status) => {
+        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+          setHospitals(results);
+        }
+      });
+    } catch (error) {
+      console.error("Error searching for hospitals:", error);
+      alert(
+        "An error occurred while searching for hospitals. Please try again later."
+      );
+    }
+  };
+
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
   };
@@ -38,10 +82,8 @@ const Map = () => {
     setFacilityName(event.target.value);
   };
 
-  const handleSearch = () => {
-    console.log("Searching for hospitals near:", location);
-    console.log("Facility name or type:", facilityName);
-    // Implement search functionality using Google Maps Places API if needed
+  const handleSearch = async () => {
+    await fetchNearbyHospitals();
   };
 
   return (
@@ -74,7 +116,7 @@ const Map = () => {
             <InputGroup>
               <Form.Control
                 type="text"
-                placeholder="MY LOCATION *"
+                placeholder="ZIP CODE *"
                 value={location}
                 onChange={handleLocationChange}
               />
@@ -99,8 +141,8 @@ const Map = () => {
 
         <a href="#">Show past search results</a>
       </div>
+
       <div className="map-results">
-        {/* Left side: Display list of nearby hospitals */}
         <div className="hospital-list">
           <h3>Nearby Hospitals</h3>
           <ul>
@@ -109,7 +151,6 @@ const Map = () => {
             ))}
           </ul>
         </div>
-        {/* Render map container */}
         <div id="map" className="map"></div>
       </div>
     </div>
