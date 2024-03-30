@@ -5,14 +5,17 @@ import "./map.css";
 const Map = () => {
   const [zipCode, setZipCode] = useState("");
   const [hospitals, setHospitals] = useState([]);
-  let apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
+  const [map, setMap] = useState(null);
+  const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+  const apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
+
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&crossorigin=anonymous`;
       script.defer = true;
       script.async = true;
-      script.onload = fetchNearbyHospitals;
+      script.onload = initializeMap;
       document.head.appendChild(script);
     };
 
@@ -28,6 +31,17 @@ const Map = () => {
       }
     };
   }, [apiKey]);
+
+  const initializeMap = () => {
+    const mapInstance = new window.google.maps.Map(
+      document.getElementById("map"),
+      {
+        center: mapCenter, // Use the mapCenter state for the initial center
+        zoom: 10, // Default zoom level
+      }
+    );
+    setMap(mapInstance);
+  };
 
   const fetchNearbyHospitals = async () => {
     if (!zipCode) {
@@ -48,6 +62,7 @@ const Map = () => {
       }
 
       const { lat, lng } = data.results[0].geometry.location;
+      setMapCenter({ lat, lng }); // Update the mapCenter state with the new coordinates
 
       // Perform search for hospitals based on latitude and longitude coordinates
       const service = new window.google.maps.places.PlacesService(
@@ -66,6 +81,9 @@ const Map = () => {
             return a.distance - b.distance;
           });
           setHospitals(results);
+          if (map) {
+            map.setCenter({ lat, lng }); // Center the map on the new coordinates
+          }
         }
       });
     } catch (error) {
@@ -105,25 +123,31 @@ const Map = () => {
         </Form>
       </div>
       <div className="map-results">
-        {/* Display the list of nearby hospitals */}
         <div className="hospital-list">
           <h3>Nearby Hospitals</h3>
           <ul>
             {hospitals.map((hospital, index) => (
               <li key={index}>
                 <strong>{hospital.name}</strong>
-                <p>Distance: {hospital.distance} meters</p>
+                <p>Distance: {(hospital.distance / 1000).toFixed(2)} km</p>
                 <p>Address: {hospital.vicinity}</p>
-                <p>Phone: {hospital.formatted_phone_number}</p>
-                {hospital.website && <a href={hospital.website}>Website</a>}
+                {hospital.formatted_phone_number && (
+                  <p>Phone: {hospital.formatted_phone_number}</p>
+                )}
+                {hospital.website && (
+                  <a
+                    href={hospital.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Website
+                  </a>
+                )}
               </li>
             ))}
           </ul>
         </div>
-        {/* Display the map showing the locations of nearby hospitals */}
-        <div id="map" className="map">
-          {/* Render Google Map here */}
-        </div>
+        <div id="map" className="map"></div>
       </div>
     </div>
   );
