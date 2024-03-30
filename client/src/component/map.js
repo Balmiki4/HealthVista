@@ -11,7 +11,7 @@ const Map = () => {
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key={apiKey}&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
       script.defer = true;
       script.async = true;
       document.head.appendChild(script);
@@ -99,9 +99,19 @@ const Map = () => {
 
         <a href="#">Show past search results</a>
       </div>
-
-      {/* Render map container */}
-      <div id="map" className="map"></div>
+      <div className="map-results">
+        {/* Left side: Display list of nearby hospitals */}
+        <div className="hospital-list">
+          <h3>Nearby Hospitals</h3>
+          <ul>
+            {hospitals.map((hospital, index) => (
+              <li key={index}>{hospital.name}</li>
+            ))}
+          </ul>
+        </div>
+        {/* Render map container */}
+        <div id="map" className="map"></div>
+      </div>
     </div>
   );
 };

@@ -63,9 +63,9 @@ const NavBar = () => {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/map">
+            <Link class="nav-link" to="/map">
               Care Finder
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="logins">
