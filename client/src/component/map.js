@@ -7,6 +7,7 @@ const Map = () => {
   const [hospitals, setHospitals] = useState([]);
   const [map, setMap] = useState(null);
   const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+  const [markers, setMarkers] = useState([]);
   const apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
 
   useEffect(() => {
@@ -83,6 +84,7 @@ const Map = () => {
           setHospitals(results);
           if (map) {
             map.setCenter({ lat, lng }); // Center the map on the new coordinates
+            addMarkers(results, map); // Add markers to the map
           }
         }
       });
@@ -92,6 +94,23 @@ const Map = () => {
         "An error occurred while searching for hospitals. Please try again later."
       );
     }
+  };
+
+  const addMarkers = (hospitals, map) => {
+    // Remove any existing markers
+    markers.forEach((marker) => marker.setMap(null));
+
+    // Create a new marker for each hospital
+    const newMarkers = hospitals.map((hospital) => {
+      const marker = new window.google.maps.Marker({
+        position: hospital.geometry.location,
+        map: map,
+        title: hospital.name,
+      });
+      return marker;
+    });
+
+    setMarkers(newMarkers);
   };
 
   const handleZipCodeChange = (event) => {
