@@ -1,11 +1,40 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import "./Vista.css";
 
 function Vista() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef(null);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const [customerId, setCustomerId] = useState(null);
+
+  useEffect(() => {
+    const urlCustomerId = searchParams.get("customerId");
+    const localStorageCustomerId = localStorage.getItem('customerId');
+
+    if (urlCustomerId) {
+      setCustomerId(urlCustomerId);
+      localStorage.setItem('customerId', urlCustomerId);
+    } else if (localStorageCustomerId) {
+      setCustomerId(localStorageCustomerId);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (customerId) {
+      // Fetch chat history from the backend
+      axios.get(`http://localhost:5000/get_chat_history/${customerId}`)
+        .then(response => {
+          setMessages(response.data.messages);
+        })
+        .catch(error => {
+          console.error('Error fetching chat history:', error);
+        });
+    }
+  }, [customerId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
