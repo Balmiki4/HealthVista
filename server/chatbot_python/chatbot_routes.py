@@ -3,6 +3,8 @@ import openai
 from openai import OpenAI
 import os
 
+from pymongo import MongoClient
+
 chatbot_bp = Blueprint('chat_routes', __name__)
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
@@ -39,3 +41,38 @@ def chatbot():
     response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
 
     return response
+
+uri = os.getenv('MONGO_URI')
+client = MongoClient(uri)
+db = client['healthvista']
+users_collection = db['userdata']
+
+@chatbot_bp.route('/save_chat', methods=['OPTIONS','POST'])
+def save_chat():
+    if request.method == 'OPTIONS':
+    # Handle preflight request
+        response_headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'POST',
+        }
+        return ('', 204, response_headers)
+    
+    elif request.method == 'POST':
+        customer_id = request.json.get('customer_id')
+        messages = request.json.get('messages')
+
+        if not customer_id:
+            return jsonify({'error': 'Missing customer_id'}), 400
+
+        # Create a new user with an associated customer ID if they don't exist
+        user_exists = users_collection.find_one({'customer_id': customer_id})
+        if not user_exists :
+            result = users_collection.insert_one({'customer_id': customer_id, 'messages': []})
+
+        # Update the existing user's messages
+        result = users_collection.update_one(
+            {'customer_id': customer_id},
+            {'$set': {'messages': messages}}
+        )
+        return jsonify({'message': 'Chat messages saved successfully'}), 200
