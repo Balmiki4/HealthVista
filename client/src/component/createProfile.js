@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import './createProfile.css';
-
+import { useLocation } from "react-router-dom";
 
 const ProfilePage = () => {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const customerId = searchParams.get("customerId");
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -45,12 +49,12 @@ const ProfilePage = () => {
     
         if (Object.keys(errors).length === 0) {
             // Send a POST request to the server with the form data and customerId
-            const response = await fetch('http://localhost:5000/createProfile', {
+            const response = await fetch('http://localhost:5000/profile', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ ...formData, customerId: 'customerID' }),
+                body: JSON.stringify({...formData, customerId }),
             });
     
             if (response.ok) {

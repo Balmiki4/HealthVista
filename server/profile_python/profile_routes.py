@@ -12,7 +12,7 @@ client = MongoClient(uri)
 db = client['healthvista']
 users_collection = db['userdata']
 
-@profile_bp.route('/createProfile', methods=['OPTIONS', 'POST'])
+@profile_bp.route('/profile', methods=['OPTIONS', 'POST'])
 def create_profile():
     if request.method == 'OPTIONS':
         # Handle preflight request
