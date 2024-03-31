@@ -53,7 +53,7 @@ const NavBar = () => {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/Vista">
               Vista
             </a>
           </li>
@@ -68,22 +68,17 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/wellnesspage">Wellness Hub</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Vista">Vista</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Blog</a>
-      </li>
-    </ul>
-    <div className='logins'>
-    <Link to="/signup"><button class="btn btn-outline-light me-2">Sign Up</button></Link>
-      <Link to="/login"><button class="btn btn-dark">Sign In</button></Link>
-    </div>
-  </div>
-</nav>
+        <div className="logins">
+          <Link to="/signup">
+            <button class="btn btn-outline-light me-2">Sign Up</button>
+          </Link>
+          <Link to="/login">
+            <button class="btn btn-dark">Sign In</button>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default NavBar;

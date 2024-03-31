@@ -6,6 +6,8 @@ function SuccessPage() {
   const history = useHistory();
   const [showLink, setShowLink] = useState(true);
   const [countdown, setCountdown] = useState(6);
+  const customerId = localStorage.getItem('customerId');
+
 
   useEffect(() => {
     let intervalId;
@@ -15,12 +17,17 @@ function SuccessPage() {
         setCountdown(countdown - 1);
       }, 1000);
     } else {
-      history.push("/createProfile");
+      redirectToProfilePage();
     }
 
     return () => {
       clearInterval(intervalId);    };
-  }, [history, countdown]);
+  }, [countdown]);
+
+  const redirectToProfilePage = () => {
+    const profilePageUrl = `/createProfile?customerId=${customerId}`;
+    history.push(profilePageUrl);
+  };
 
   return (
     <div className="conainer feature ct1">
