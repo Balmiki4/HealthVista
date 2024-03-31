@@ -3,6 +3,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./homePage.css";
+import { useHistory } from "react-router-dom";
+
 
 const stripePromise = loadStripe(
   "pk_test_51OoPbHB45mq7hp813JIWoPpJikuO9iKzVOB9mpOGHdQqXneTDqBfQkoiXUvXfUUamBMLpPpbo5MgKeOGUfBwzFmE00ktXQjloo"
@@ -10,8 +12,15 @@ const stripePromise = loadStripe(
 
 function PaymentPlan() {
   const location = useLocation();
+  const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const customerId = searchParams.get("customerId");
+
+  useEffect(() => {
+    if (customerId) {
+      localStorage.setItem('customerId', customerId);
+    }
+  }, [customerId]);
 
   const handlePayment = async (selectedPlan) => {
     try {
@@ -42,6 +51,9 @@ function PaymentPlan() {
         console.error("Error:", error);
         // Display error message to the user here
       }
+      else{
+        history.push('/success');
+      } 
     } catch (error) {
       console.error("Error in payment process:", error);
       // Display error message to the user here
@@ -76,7 +88,7 @@ function PaymentPlan() {
                     <li class="list__item">Basic chatbot support</li>
                   </ul>
                   <div className="plan-btn">
-                    <Link to="/createProfile">
+                    <Link to={`/createProfile?customerId=${customerId}`}>
                       <button
                         class="btn btn-outline-success plan-buy-now-btn"
                         //onClick={()=>handlePayment('Free tier')}
