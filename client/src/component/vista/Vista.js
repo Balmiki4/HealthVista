@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios"; // You'll need to install axios or use another library for HTTP requests
+import axios from "axios";
 import "./Vista.css";
 
 function Vista() {
@@ -31,10 +31,18 @@ function Vista() {
       });
 
       if (response.data && response.data.response) {
-        setMessages((prevMessages) => [
-          ...prevMessages,
+        const newMessages= [
+          ...messages,
+          {role: "user", content: inputValue },
           { role: "psychologist", content: response.data.response },
-        ]);
+        ];
+        setMessages(newMessages);
+
+        axios.post("http://localhost:5000/save_chat", {
+          customer_id: customerId,
+          messages: newMessages,
+        });
+
       } else {
         console.error("Invalid response from API:", response.data);
       }
