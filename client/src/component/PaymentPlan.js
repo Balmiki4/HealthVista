@@ -16,6 +16,12 @@ function PaymentPlan() {
   const searchParams = new URLSearchParams(location.search);
   const customerId = searchParams.get("customerId");
 
+  useEffect(() => {
+    if (customerId) {
+      localStorage.setItem('customerId', customerId);
+    }
+  }, [customerId]);
+
   const handlePayment = async (selectedPlan) => {
     try {
       const response = await fetch(
@@ -46,8 +52,8 @@ function PaymentPlan() {
         // Display error message to the user here
       }
       else{
-        history.push(`/createProfile?customerId=${customerId}`);
-      }
+        history.push('/success');
+      } 
     } catch (error) {
       console.error("Error in payment process:", error);
       // Display error message to the user here
