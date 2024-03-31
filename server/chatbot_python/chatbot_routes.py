@@ -76,3 +76,16 @@ def save_chat():
             {'$set': {'messages': messages}}
         )
         return jsonify({'message': 'Chat messages saved successfully'}), 200
+    
+
+@chatbot_bp.route('/get_chat_history/<customer_id>', methods=['GET'])
+def get_chat_history(customer_id):
+    print(f"customer_id: {customer_id}")
+    # Retrieve the chat history from MongoDB for the given user_id
+    chat_history = users_collection.find_one({'customer_id': customer_id})
+
+    if chat_history:
+        messages = chat_history.get('messages', [])
+        return jsonify({'messages': messages}), 200
+    else:
+        return jsonify({'messages': []}), 200
