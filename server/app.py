@@ -7,6 +7,7 @@ from payment_python.payment_routes import payment_bp
 from login_python.login_routes import login_bp
 from forgot_python.forgot_routes import forgot_bp
 from profile_python.profile_routes import profile_bp
+from chatbot_python.chatbot_routes import chatbot_bp
 
 app = Flask(__name__)
 
@@ -19,6 +20,8 @@ app.register_blueprint(login_bp)
 app.register_blueprint(forgot_bp)
 
 app.register_blueprint(profile_bp)
+
+app.register_blueprint(chatbot_bp)
 
 CORS(app)
 

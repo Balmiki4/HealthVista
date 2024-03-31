@@ -12,6 +12,8 @@ import PaymentPlan from "./component/PaymentPlan";
 import SuccessPage from "./component/SuccessPage";
 import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
+import Vista from "./component/vista/Vista";
+import Map from "./component/map";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/Vista" exact component={Vista}></Route>
           <Route path="/SuccessPage" exact component={SuccessPage}></Route>
           <Route path="/PaymentPlan" exact component={PaymentPlan}></Route>
           <Route path="/signup" exact component={signup}></Route>
@@ -28,6 +31,7 @@ const App = () => {
           <Route path="/" exact component={homePage}></Route>
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
+          <Route path="/map" exact component={Map}></Route>
         </Switch>
         <Footer />
       </div>

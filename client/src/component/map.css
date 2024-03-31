@@ -1,0 +1,88 @@
+/* Global Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Search Container */
+.search-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.search-container h2 {
+  margin-top: 0;
+}
+
+.search-container .form-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container .form-control {
+  width: 300px;
+  margin-right: 10px;
+}
+
+/* Map Results */
+.map-results {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.hospital-list {
+  background-color: #f8f8f8;
+  padding: 20px;
+  width: 300px;
+  overflow-y: auto;
+}
+
+.hospital-list h3 {
+  margin-top: 0;
+}
+
+.hospital-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hospital-list li {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.hospital-list li strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.hospital-list li p {
+  margin: 5px 0;
+}
+
+.hospital-list li a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.hospital-list li a:hover {
+  text-decoration: underline;
+}
+
+.map {
+  flex-grow: 1;
+  height: 100%;
+}
