@@ -53,12 +53,12 @@ const NavBar = () => {
             </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/Vista">
               Vista
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/article">
               Blog
             </a>
           </li>
@@ -68,7 +68,7 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
-        <div class="logins">
+        <div className="logins">
           <Link to="/signup">
             <button class="btn btn-outline-light me-2">Sign Up</button>
           </Link>
