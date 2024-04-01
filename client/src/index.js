@@ -32,6 +32,8 @@ const App = () => {
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
           <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
+         <Route path="/map" exact component={Map}></Route>
+
         </Switch>
         <Footer />
       </div>
