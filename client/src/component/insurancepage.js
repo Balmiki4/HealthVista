@@ -21,26 +21,25 @@ const InsurancePage = () => {
     e.preventDefault();
     try {
       // Validation checks
-      if (!income || !Age || !zipCode || !year) {
+      if (!income || !Age || !zipCode || !year|| !city || !state) {
         throw new Error('Please fill in all required fields');
       }
       if (isNaN(parseInt(income))) {
-        setIncomeError('Income must be a valid integer');
+        setIncomeError('Income must be valid ');
         return;
       }
       if (isNaN(parseInt(Age))) {
-        setAgeError('Age must be a valid integer');
+        setAgeError('Age must be valid');
         return;
       }
       if (isNaN(parseInt(zipCode))) {
-        setZipCodeError('Zip code must be a valid integer');
+        setZipCodeError('Zip code must be valid');
         return;
       }
       if (isNaN(parseInt(year))) {
-        setYearError('Year must be a valid integer');
+        setYearError('Year must be valid');
         return;
-      }
-
+      } 
       const response = await fetch('/get_recommendations', {
         method: 'POST',
         headers: {
