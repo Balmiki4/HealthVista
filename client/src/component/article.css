@@ -1,0 +1,48 @@
+/* ArticlesPage.css */
+
+/* Article container */
+.article-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Article card */
+  .article-card {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 0; /* Reset the minimum height */
+  }
+  
+  .article-card img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .article-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .article-description {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .article-details a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  
+  
+  
