@@ -1,103 +1,184 @@
 import React, { useState } from 'react';
+import './insurancepage.css';
+
 
 const InsurancePage = () => {
- const [premium, setPremium] = useState('');
- const [coverage, setCoverage] = useState('');
- const [doctor, setDoctor] = useState('');
- const [city, setCity] = useState('');
- const [state, setState] = useState('');
- const [zipCode, setzipCode] = useState('');
- const [hospital, setHospital] = useState('');
- const [recommendations, setRecommendations] = useState([]);
+  const [Gender, setGender] = useState('');
+  const [Age, setAge] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [income, setIncome] = useState('');
+  const [year, setYear] = useState('');
+  const [recommendations, setRecommendations] = useState([]);
+  const [incomeError, setIncomeError] = useState(null);
+  const [ageError, setAgeError] = useState(null);
+  const [zipCodeError, setZipCodeError] = useState(null);
+  const [yearError, setYearError] = useState(null);
+  const [error, setError] = useState(null);
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
- 
- 
     try {
-      const response = await fetch('', {
+      // Validation checks
+      if (!income || !Age || !zipCode || !year) {
+        throw new Error('Please fill in all required fields');
+      }
+      if (isNaN(parseInt(income))) {
+        setIncomeError('Income must be a valid integer');
+        return;
+      }
+      if (isNaN(parseInt(Age))) {
+        setAgeError('Age must be a valid integer');
+        return;
+      }
+      if (isNaN(parseInt(zipCode))) {
+        setZipCodeError('Zip code must be a valid integer');
+        return;
+      }
+      if (isNaN(parseInt(year))) {
+        setYearError('Year must be a valid integer');
+        return;
+      }
+
+      const response = await fetch('/get_recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ premium, coverage, doctor, city,state,zipCode, hospital }),
+        body: JSON.stringify({
+          income: parseFloat(income), 
+          age: parseInt(Age), 
+          gender: Gender,
+          city: city,
+          state: state,
+          zipCode: zipCode,
+          year: year
+        }),
       });
- 
- 
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
- 
- 
+
       const data = await response.json();
       setRecommendations(data.recommendations);
+      setError(null); // Clear any previous errors
     } catch (error) {
       console.error('Error fetching data:', error);
+      setError(error.message); // Set error state to display validation error
     }
   };
-  return (
-    <div>
-      <h1>Insurance Recommendation</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Premium:
-          <input type="text" value={premium} onChange={(e) => setPremium(e.target.value)} />
-        </label>
-        <br />
-        <br />
-        <label>
-          Coverage:
-          <input type="text" value={coverage} onChange={(e) => setCoverage(e.target.value)} />
-        </label>
-        <br />
-        <br />
-        <label>
-          Doctor:
-          <input type="text" value={doctor} onChange={(e) => setDoctor(e.target.value)} />
-        </label>
-        <br />
-        <br />
-        <label>
-          Hospital:
-          <input type="text" value={hospital} onChange={(e) => setHospital(e.target.value)} />
-        </label>
-        <br />
-        <br />
-        
-        <label>
-          City:
-          <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-        </label>
-        <br />
-        <br />
-        <label>
-          State:
-          <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
-        </label>
-        <br />
-        <br />
-        <label>
-          zipCode:
-          <input type="text" value={zipCode} onChange={(e) => setzipCode(e.target.value)} />
-        </label>
-        <br />
-        <br />
 
-        <button type="submit">Get Recommendations</button>
-      </form>
-      <h2>Recommendations:</h2>
-      <ul>
-        {recommendations.map((recommendation, index) => (
-          <li key={index}>
-            <strong>Policy:</strong> {recommendation.policy}, <strong>Premium:</strong> {recommendation.premium}, <strong>Coverage:</strong> {recommendation.coverage}
-          </li>
-        ))}
-      </ul>
+  return (
+    <div className="center-container">
+      <div className="form-container">
+        <h1>Insurance Recommendation</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Income:
+            <br />
+            <input
+              type="text"
+              value={income}
+              onChange={(e) => {
+                setIncome(e.target.value);
+                setIncomeError(null); // Clear error when input changes
+              }}
+            />
+            {incomeError && <span className="error">{incomeError}</span>} 
+          </label>
+          <br />
+          <label>
+            Age:
+            <br />
+            <input
+              type="text"
+              value={Age}
+              onChange={(e) => {
+                setAge(e.target.value);
+                setAgeError(null); // Clear error when input changes
+              }}
+            />
+            {ageError && <span className="error">{ageError}</span>} 
+          </label>
+          <br />
+          <label>
+            Gender:
+            <br />
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              checked={Gender === 'male'}
+              onChange={(e) => setGender(e.target.value)}
+            />{' '}
+            Male
+            <br />
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              checked={Gender === 'female'}
+              onChange={(e) => setGender(e.target.value)}
+            />{' '}
+            Female
+          </label>
+          <br />
+          <label>
+            City:
+            <br />
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            State:
+            <br />
+            <input
+              type="text"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            ZipCode:
+            <br />
+            <input
+              type="text"
+              value={zipCode}
+              onChange={(e) => {
+                setZipCode(e.target.value);
+                setZipCodeError(null); // Clear error when input changes
+              }}
+            />
+            {zipCodeError && <span className="error">{zipCodeError}</span>} 
+          </label>
+          <br />
+          <label>
+            Year:
+            <br />
+            <input
+              type="text"
+              value={year}
+              onChange={(e) => {
+                setYear(e.target.value);
+                setYearError(null); // Clear error when input changes
+              }}
+            />
+            {yearError && <span className="error">{yearError}</span>} 
+          </label>
+          <br />
+          <button type="submit">Get Recommendations</button>
+        </form>
+        {error && <p className="error">{error}</p>} 
+      </div>
     </div>
   );
- };
- 
- 
- export default InsurancePage;
- 
- 
+};
+
+export default InsurancePage;
