@@ -6,7 +6,8 @@ const Map = () => {
   const [zipCode, setZipCode] = useState("");
   const [hospitals, setHospitals] = useState([]);
   const [map, setMap] = useState(null);
-  const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+  const [mapCenter, setMapCenter] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const [markers, setMarkers] = useState([]);
   const apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
 
@@ -33,58 +34,120 @@ const Map = () => {
     };
   }, [apiKey]);
 
+  useEffect(() => {
+    const getGeolocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setUserLocation({ lat: latitude, lng: longitude });
+            setMapCenter({ lat: latitude, lng: longitude });
+          },
+          (error) => {
+            console.error("Error getting geolocation:", error);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    };
+
+    getGeolocation();
+  }, []);
+
   const initializeMap = () => {
     const mapInstance = new window.google.maps.Map(
       document.getElementById("map"),
       {
-        center: mapCenter, // Use the mapCenter state for the initial center
+        center: mapCenter || { lat: 0, lng: 0 }, // Use the mapCenter state or default center
         zoom: 10, // Default zoom level
       }
     );
     setMap(mapInstance);
+
+    const sortHospitalsByDistance = (hospitals, searchLocation) => {
+      return hospitals.sort((a, b) => {
+        const distanceA =
+          window.google.maps.geometry.spherical.computeDistanceBetween(
+            searchLocation,
+            a.geometry.location
+          );
+        const distanceB =
+          window.google.maps.geometry.spherical.computeDistanceBetween(
+            searchLocation,
+            b.geometry.location
+          );
+        return distanceA - distanceB;
+      });
+    };
+
+    const addMarkers = (hospitals, map) => {
+      // Remove any existing markers
+      markers.forEach((marker) => marker.setMap(null));
+
+      // Create a new marker for each hospital
+      const newMarkers = hospitals.map((hospital) => {
+        const marker = new window.google.maps.Marker({
+          position: hospital.geometry.location,
+          map: map,
+          title: hospital.name,
+        });
+        return marker;
+      });
+
+      setMarkers(newMarkers);
+    };
+
+    fetchNearbyHospitals(sortHospitalsByDistance, addMarkers);
   };
 
-  const fetchNearbyHospitals = async () => {
-    if (!zipCode) {
-      alert("Please enter a ZIP code.");
+  const fetchNearbyHospitals = async (sortHospitalsByDistance, addMarkers) => {
+    if (!userLocation) {
+      alert("Unable to get your current location.");
       return;
     }
 
     try {
-      // Fetch latitude and longitude coordinates for the provided zip code
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`
-      );
-      const data = await response.json();
+      let searchLocation;
+      if (zipCode) {
+        // Fetch latitude and longitude coordinates for the provided zip code
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`
+        );
+        const data = await response.json();
 
-      if (data.results.length === 0) {
-        alert("No results found for the provided ZIP code.");
-        return;
+        if (data.results.length === 0) {
+          alert("No results found for the provided ZIP code.");
+          return;
+        }
+
+        const { lat, lng } = data.results[0].geometry.location;
+        searchLocation = { lat, lng };
+        setMapCenter({ lat, lng }); // Update the mapCenter state with the new coordinates
+      } else {
+        searchLocation = userLocation;
       }
-
-      const { lat, lng } = data.results[0].geometry.location;
-      setMapCenter({ lat, lng }); // Update the mapCenter state with the new coordinates
 
       // Perform search for hospitals based on latitude and longitude coordinates
       const service = new window.google.maps.places.PlacesService(
         document.createElement("div")
       );
       const request = {
-        location: { lat, lng },
+        location: searchLocation,
         radius: 5000, // Search radius in meters
         type: "hospital", // Search type
       };
 
       service.nearbySearch(request, (results, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          // Sort hospitals by distance from the entered ZIP code
-          results.sort((a, b) => {
-            return a.distance - b.distance;
-          });
-          setHospitals(results);
+          const sortedHospitals = sortHospitalsByDistance(
+            results,
+            searchLocation
+          );
+          setHospitals(sortedHospitals);
           if (map) {
-            map.setCenter({ lat, lng }); // Center the map on the new coordinates
-            addMarkers(results, map); // Add markers to the map
+            map.setCenter(searchLocation); // Center the map on the search location
+            addMarkers(sortedHospitals, map); // Add markers to the map
           }
         }
       });
@@ -96,29 +159,12 @@ const Map = () => {
     }
   };
 
-  const addMarkers = (hospitals, map) => {
-    // Remove any existing markers
-    markers.forEach((marker) => marker.setMap(null));
-
-    // Create a new marker for each hospital
-    const newMarkers = hospitals.map((hospital) => {
-      const marker = new window.google.maps.Marker({
-        position: hospital.geometry.location,
-        map: map,
-        title: hospital.name,
-      });
-      return marker;
-    });
-
-    setMarkers(newMarkers);
-  };
-
   const handleZipCodeChange = (event) => {
     setZipCode(event.target.value);
   };
 
   const handleSearch = async () => {
-    await fetchNearbyHospitals();
+    await initializeMap();
   };
 
   return (
@@ -130,7 +176,7 @@ const Map = () => {
             <InputGroup>
               <Form.Control
                 type="text"
-                placeholder="Enter ZIP code"
+                placeholder="Enter ZIP code (optional)"
                 value={zipCode}
                 onChange={handleZipCodeChange}
               />
@@ -148,7 +194,12 @@ const Map = () => {
             {hospitals.map((hospital, index) => (
               <li key={index}>
                 <strong>{hospital.name}</strong>
-                <p>Distance: {(hospital.distance / 1000).toFixed(2)} km</p>
+                <p>
+                  Distance:{" "}
+                  {hospital.distance
+                    ? `${(hospital.distance / 1609.34).toFixed(2)} mi`
+                    : "N/A"}
+                </p>
                 <p>Address: {hospital.vicinity}</p>
                 {hospital.formatted_phone_number && (
                   <p>Phone: {hospital.formatted_phone_number}</p>
