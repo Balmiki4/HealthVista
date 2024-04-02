@@ -1,5 +1,9 @@
 # Comparison of APIs for Finding Nearby Hospitals
 
+## It will affect the code related to the map feature in my project:
+
+## Task/User Story: Researching map API and their required tools.
+
 ## Google Maps Platform
 
 Google Maps Platform offers several APIs that can be used to find nearby hospitals, including:
