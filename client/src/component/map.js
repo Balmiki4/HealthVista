@@ -175,7 +175,7 @@ const Map = () => {
   return (
     <div className="map-container">
       <div className="search-container">
-        <h2>Find hospitals near me</h2>
+        <h2>Find hospitals near you</h2>
         <Form>
           <Form.Group>
             <InputGroup>
