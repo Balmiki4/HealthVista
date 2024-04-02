@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import "./map.css";
+import reading_icon from "./img/reading_book.png";
+import hospital_icon from "./img/hv_icon.png";
 
 const Map = () => {
   const [zipCode, setZipCode] = useState("");
@@ -176,12 +178,13 @@ const Map = () => {
     <div className="map-container">
       <div className="search-container">
         <h2>Find hospitals near you</h2>
+        <img src={reading_icon} alt="reading book icon" />
         <Form>
           <Form.Group>
             <InputGroup>
               <Form.Control
                 type="text"
-                placeholder="Enter ZIP code (optional)"
+                placeholder="Enter ZIP code"
                 value={zipCode}
                 onChange={handleZipCodeChange}
               />
@@ -198,7 +201,10 @@ const Map = () => {
           <ul>
             {hospitals.map((hospital, index) => (
               <li key={index}>
-                <strong>{hospital.name}</strong>
+                <strong>
+                  {hospital.name}
+                  <img src={hospital_icon} alt="hospital icon" />
+                </strong>
                 <p>
                   Distance:{" "}
                   {hospital.geometry && userLocation
