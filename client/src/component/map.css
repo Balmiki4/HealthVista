@@ -86,12 +86,12 @@ body {
   color: #6c757d;
 }
 
-.hospital-list li a {
-  color: #007bff;
+.hospital-list li strong {
+  color: #168c3d;
   text-decoration: none;
 }
 
-.hospital-list li a:hover {
+.hospital-list li strong:hover {
   text-decoration: underline;
 }
 
