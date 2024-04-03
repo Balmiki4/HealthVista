@@ -125,3 +125,34 @@ body {
 }
 
 /* star ratings  */
+.rating-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.rating-container p {
+  margin-right: 0.5rem;
+}
+
+.rating {
+  display: flex;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: #3510ca;
+  margin-right: 0.2rem;
+}
+
+.star.filled:before {
+  content: "\2605";
+}
+
+.star.half:before {
+  content: "\2605\00fe0e";
+}
+
+.star.empty:before {
+  content: "\2606";
+}
