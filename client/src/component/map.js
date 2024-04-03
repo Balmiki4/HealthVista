@@ -101,6 +101,9 @@ const Map = () => {
           "name",
           "geometry",
           "vicinity",
+          "place_id",
+          "icon",
+          "url",
           "formatted_phone_number",
           "website",
         ], // Include the website field
@@ -233,43 +236,54 @@ const Map = () => {
           <h3>Nearby Hospitals</h3>
 
           <ul>
-            {hospitals.map((hospital, index) => (
-              <li key={index}>
-                <strong>
-                  {hospital.name}
-                  <img src={hospital_icon} alt="hospital icon" />
-                </strong>
-                <p>
-                  Distance:{" "}
-                  {hospital.geometry && userLocation
-                    ? (
-                        window.google.maps.geometry.spherical.computeDistanceBetween(
-                          userLocation,
-                          hospital.geometry.location
-                        ) / 1609.34
-                      ).toFixed(2) + " mi"
-                    : "N/A"}
-                </p>
-                <p>Address: {hospital.vicinity}</p>
-                {hospital.formatted_phone_number && (
-                  <p>Phone: {hospital.formatted_phone_number}</p>
-                  // Add console.log here:
-                )}
-                {hospital.website && (
-                  <p>
-                    Website:{" "}
+            {hospitals.map((hospital, index) => {
+              console.log("Hospital Name:", hospital.name);
+              console.log("Website:", hospital.website);
+              console.log("Phone number:", hospital.formatted_phone_number);
+
+              return (
+                <li key={index}>
+                  <strong>
                     <a
-                      href={hospital.website}
+                      href={hospital.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {hospital.website}
+                      {hospital.name}
                     </a>
+                    <img src={hospital_icon} alt="hospital icon" />
+                  </strong>
+                  <p>
+                    Distance:{" "}
+                    {hospital.geometry && userLocation
+                      ? (
+                          window.google.maps.geometry.spherical.computeDistanceBetween(
+                            userLocation,
+                            hospital.geometry.location
+                          ) / 1609.34
+                        ).toFixed(2) + " mi"
+                      : "N/A"}
                   </p>
-                  // Add console.log here:
-                )}
-              </li>
-            ))}
+                  <p>Address: {hospital.vicinity}</p>
+
+                  {hospital.formatted_phone_number && (
+                    <p>Phone: {hospital.formatted_phone_number}</p>
+                  )}
+                  {hospital.website && (
+                    <p>
+                      Website:{" "}
+                      <a
+                        href={hospital.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {hospital.website}
+                      </a>
+                    </p>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div id="map" className="map"></div>
