@@ -1,9 +1,11 @@
 from flask import Blueprint, Flask, request, jsonify
 import requests
+import os
+
 
 app = Flask(__name__)
 
-API_KEY = " "  
+API_KEY = os.environ.get("HEALTHCARE_API_KEY") 
 
 insurance_bp = Blueprint('insurance_routes', __name__)
 @insurance_bp.route('/get_recommendations', methods=['OPTIONS', 'POST'])
@@ -54,3 +56,12 @@ def get_recommendations():
             },
             "year": year
         }
+        # Make the API call to get the recommendations
+        response = requests.post(f"https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey={API_KEY}", json=request_data)
+        data = response.json()
+        print("API response:", data)
+
+        if response.status_code != 200:
+            return jsonify({"error": "Error fetching insurance recommendations"}), response.status_code
+
+        return jsonify({"recommendations": data})

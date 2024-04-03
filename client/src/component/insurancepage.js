@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './insurancepage.css';
 
 const InsurancePage = () => {
@@ -173,6 +173,7 @@ const InsurancePage = () => {
             />
             {yearError && <span className="error">{yearError}</span>} 
           </label>
+          <br />
           <br />
           <button type="submit">Get Recommendations</button>
         </form>
