@@ -125,6 +125,7 @@ body {
 }
 
 /* star ratings  */
+
 .rating-container {
   display: flex;
   align-items: center;
@@ -141,7 +142,7 @@ body {
 
 .star {
   font-size: 1.2rem;
-  color: #3510ca;
+  color: #b55a14;
   margin-right: 0.2rem;
 }
 
