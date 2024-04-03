@@ -97,6 +97,13 @@ const Map = () => {
         location: searchLocation,
         radius: 5000, // Search radius in meters
         type: "hospital", // Search type
+        fields: [
+          "name",
+          "geometry",
+          "vicinity",
+          "formatted_phone_number",
+          "website",
+        ], // Include the website field
       };
 
       service.nearbySearch(request, (results, status) => {
@@ -131,6 +138,32 @@ const Map = () => {
         map: map,
         title: hospital.name,
       });
+
+      // Create an infoWindow for the marker
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: `
+          <div>
+            <h3>${hospital.name}</h3>
+            <p>Address: ${hospital.vicinity}</p>
+            ${
+              hospital.formatted_phone_number
+                ? `<p>Phone: ${hospital.formatted_phone_number}</p>`
+                : ""
+            }
+            ${
+              hospital.website
+                ? `<p><a href="${hospital.website}" target="_blank" rel="noopener noreferrer">Website</a></p>`
+                : ""
+            }
+          </div>
+        `,
+      });
+
+      // Open the infoWindow when the marker is clicked
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+      });
+
       return marker;
     });
 
@@ -198,6 +231,7 @@ const Map = () => {
       <div className="map-results">
         <div className="hospital-list">
           <h3>Nearby Hospitals</h3>
+
           <ul>
             {hospitals.map((hospital, index) => (
               <li key={index}>
@@ -208,26 +242,31 @@ const Map = () => {
                 <p>
                   Distance:{" "}
                   {hospital.geometry && userLocation
-                    ? `${(
+                    ? (
                         window.google.maps.geometry.spherical.computeDistanceBetween(
                           userLocation,
                           hospital.geometry.location
                         ) / 1609.34
-                      ).toFixed(2)} mi`
+                      ).toFixed(2) + " mi"
                     : "N/A"}
                 </p>
                 <p>Address: {hospital.vicinity}</p>
                 {hospital.formatted_phone_number && (
                   <p>Phone: {hospital.formatted_phone_number}</p>
+                  // Add console.log here:
                 )}
                 {hospital.website && (
-                  <a
-                    href={hospital.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Website
-                  </a>
+                  <p>
+                    Website:{" "}
+                    <a
+                      href={hospital.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {hospital.website}
+                    </a>
+                  </p>
+                  // Add console.log here:
                 )}
               </li>
             ))}
