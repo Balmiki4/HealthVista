@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
+import "./wellnesspage.css";
 
-//api=os.getenv('youtubeAPI')
 function WellnessPage() {
  const [videos, setVideos] = useState([]);
  const [filteredVideos, setFilteredVideos] = useState([]);
  const [filter, setFilter] = useState('All');
 
-
  useEffect(() => {
    const fetchVideos = async () => {
      try {
-       let apiUrl = 'https://www.googleapis.com/youtube/v3/search?key=YouTubeAPI&part=snippet';
-       // Adjust API URL based on selected filter
+      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=APIKEY&part=snippet&maxResults=10&cacheBust=${new Date().getTime()}`;
        switch (filter) {
          case 'Meditation':
            apiUrl += '&q=meditation';
@@ -26,42 +24,38 @@ function WellnessPage() {
            apiUrl += '&q=healthbenefits';
            break;
          default:
-           apiUrl += '&q=wellness'; // Default to 'wellness' if 'All' or unknown filter selected
+           apiUrl += '&q=wellness';
            break;
        }
-       // Fetch video details from YouTube API
        const response = await fetch(apiUrl);
        const data = await response.json();
-       // Extract relevant video information
        const videosData = data.items.map(item => ({
          id: item.id.videoId,
-         title: item.snippet.title,
+         title: truncateTitle(item.snippet.title), // Truncate the title
          thumbnail: item.snippet.thumbnails.default.url,
-         category: filter // Store filter category in video data
+         category: filter
        }));
-       // Update state with video data
        setVideos(videosData);
-       setFilteredVideos(videosData); // Set filtered videos initially
+       setFilteredVideos(videosData);
      } catch (error) {
        console.error("Error fetching videos:", error);
      }
    };
 
-
    fetchVideos();
  }, [filter]);
 
+ const truncateTitle = (title, maxLength = 40) => {
+   return title.length > maxLength ? title.substring(0, maxLength) + "..." : title;
+ };
 
- // Function to handle filter change
  const handleFilterChange = (e) => {
    setFilter(e.target.value);
  };
 
-
  return (
    <div className="WellnessPage">
      <h1>Wellness</h1>
-     {/* Filter dropdown */}
      <div className="filter-container">
        <label htmlFor="filter">Filter by:</label>
        <select id="filter" onChange={handleFilterChange} value={filter}>
@@ -72,9 +66,6 @@ function WellnessPage() {
          <option value="Health">Health</option>
        </select>
      </div>
-
-
-     {/* Video container */}
      <div className="activity-container">
        {filteredVideos.map(video => (
          <div key={video.id} className="video-card">
@@ -95,6 +86,5 @@ function WellnessPage() {
    </div>
  );
 }
-
 
 export default WellnessPage;
