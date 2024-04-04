@@ -16,6 +16,7 @@ import Vista from "./component/vista/Vista";
 import insurancepage from "./component/insurancepage";
 import Map from "./component/map";
 import article from "./component/article"
+import Nutrition from "./component/Nutrition/Nutrition"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/Nutrition" exact component={Nutrition}></Route>
           <Route path="/Vista" exact component={Vista}></Route>
           <Route path="/SuccessPage" exact component={SuccessPage}></Route>
           <Route path="/PaymentPlan" exact component={PaymentPlan}></Route>

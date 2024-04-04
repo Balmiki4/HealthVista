@@ -13,6 +13,56 @@ const NavBar = () => {
         <a class="nav-link ">Medical Dashboard</a>
       </li>
           <li class="nav-item">
+            <a class="nav-link ">Medical Dashboard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle bg-dark"
+              href="#"
+              id="trackersDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Trackers
+            </a>
+            <ul
+              class="dropdown-menu bg-dark"
+              aria-labelledby="trackersDropdown"
+            >
+              <li>
+                <a class="dropdown-item" href="#">
+                  Tracker 1
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/Nutrition">
+                Nutrition
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  Tracker 3
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/wellnesspage">
+              Wellness Hub
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Vista">
+              Vista
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Blog
+            </a>
+          </li>
+          <li class="nav-item">
             <Link class="nav-link" to="/map">
               Care Finder
             </Link>
