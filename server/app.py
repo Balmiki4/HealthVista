@@ -8,7 +8,7 @@ from login_python.login_routes import login_bp
 from forgot_python.forgot_routes import forgot_bp
 from profile_python.profile_routes import profile_bp
 from chatbot_python.chatbot_routes import chatbot_bp
-
+from nutrition_python.nutrition_routes import nutrition_bp
 app = Flask(__name__)
 
 configure_mail(app)  # Configure mail
@@ -22,6 +22,7 @@ app.register_blueprint(forgot_bp)
 app.register_blueprint(profile_bp)
 
 app.register_blueprint(chatbot_bp)
+app.register_blueprint(nutrition_bp)
 
 CORS(app)
 
