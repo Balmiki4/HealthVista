@@ -251,6 +251,11 @@ const homePage = () => {
                 </button>
               </Link>
             </div>
+            <div className="terms-link">
+        <Link to="/termsandcondition" style={{ color: "blue" }}>
+          Terms and Conditions
+        </Link>
+      </div>
           </div>
         </div>
       </div>
