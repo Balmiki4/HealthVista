@@ -36,8 +36,8 @@ const NavBar = () => {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
-                  Tracker 2
+                <a class="dropdown-item" href="/Nutrition">
+                Nutrition
                 </a>
               </li>
               <li>
