@@ -13,12 +13,13 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchRadius, setSearchRadius] = useState(5000); // Default search radius in meters
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
   const apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
 
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places,geometry&crossorigin=anonymous`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places,geometry,directions&crossorigin=anonymous`;
       script.defer = true;
       script.async = true;
       script.onload = () => {
@@ -206,6 +207,28 @@ const Map = () => {
     }
   };
 
+  //get directions from the provided zip code to the hospital location
+  const getDirections = (hospital) => {
+    if (userLocation && map) {
+      const directionsService = new window.google.maps.DirectionsService();
+      const directionsRenderer = new window.google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
+
+      const request = {
+        origin: userLocation,
+        destination: hospital.geometry.location,
+        travelMode: window.google.maps.TravelMode.DRIVING,
+      };
+
+      directionsService.route(request, (result, status) => {
+        if (status === window.google.maps.DirectionsStatus.OK) {
+          directionsRenderer.setDirections(result);
+        } else {
+          console.error("Error getting directions:", status);
+        }
+      });
+    }
+  };
   const fetchZipCodeCoordinates = async (zipCode) => {
     setIsLoading(true);
     try {
@@ -233,9 +256,6 @@ const Map = () => {
     }
   };
 
-  const handleRadiusChange = (event) => {
-    setSearchRadius(parseInt(event.target.value));
-  };
   //render stars for rating
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -311,7 +331,18 @@ const Map = () => {
                     </a>
                     <img src={hospital_icon} alt="hospital icon" />
                   </strong>
-
+                  {hospital.photos && (
+                    <div className="hospital-photos">
+                      {hospital.photos.map((photo, photoIndex) => (
+                        <img
+                          key={photoIndex}
+                          src={photo.getUrl()}
+                          alt={`Hospital Photo ${photoIndex + 1}`}
+                          className="hospital-photo"
+                        />
+                      ))}
+                    </div>
+                  )}
                   <p>
                     Distance:{" "}
                     {hospital.geometry && userLocation
@@ -344,6 +375,12 @@ const Map = () => {
                       </a>
                     </p>
                   )}
+                  <Button
+                    variant="primary"
+                    onClick={() => getDirections(hospital)}
+                  >
+                    Get Directions
+                  </Button>
                 </li>
               ))}
             </ul>
