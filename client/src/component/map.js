@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, InputGroup } from "react-bootstrap";
+import { Form, Button, InputGroup, Spinner } from "react-bootstrap";
 import "./map.css";
 import reading_icon from "./img/reading_book.png";
 import hospital_icon from "./img/hv_icon.png";
@@ -11,6 +11,8 @@ const Map = () => {
   const [mapCenter, setMapCenter] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchRadius, setSearchRadius] = useState(5000); // Default search radius in meters
   const apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
 
   useEffect(() => {
@@ -88,6 +90,7 @@ const Map = () => {
   };
 
   const fetchNearbyHospitals = async (searchLocation) => {
+    setIsLoading(true);
     try {
       // Perform search for hospitals based on latitude and longitude coordinates
       const service = new window.google.maps.places.PlacesService(
@@ -95,7 +98,7 @@ const Map = () => {
       );
       const request = {
         location: searchLocation,
-        radius: 5000, // Search radius in meters
+        radius: searchRadius, // Use the searchRadius state
         type: "hospital", // Search type
         fields: [
           "name",
@@ -123,13 +126,20 @@ const Map = () => {
             map.setCenter(searchLocation); // Center the map on the search location
             addMarkers(sortedHospitals, map); // Add markers to the map
           }
+        } else {
+          console.error("Error searching for hospitals:", status);
+          alert(
+            "An error occurred while searching for hospitals. Please try again later."
+          );
         }
+        setIsLoading(false);
       });
     } catch (error) {
       console.error("Error searching for hospitals:", error);
       alert(
         "An error occurred while searching for hospitals. Please try again later."
       );
+      setIsLoading(false);
     }
   };
 
@@ -180,6 +190,13 @@ const Map = () => {
     setZipCode(event.target.value);
   };
 
+  //triggers search button when "Enter" is clicked
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSearch();
+    }
+  };
   const handleSearch = () => {
     if (zipCode) {
       // Fetch latitude and longitude coordinates for the provided zip code
@@ -190,6 +207,7 @@ const Map = () => {
   };
 
   const fetchZipCodeCoordinates = async (zipCode) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`
@@ -198,6 +216,7 @@ const Map = () => {
 
       if (data.results.length === 0) {
         alert("No results found for the provided ZIP code.");
+        setIsLoading(false);
         return;
       }
 
@@ -210,9 +229,13 @@ const Map = () => {
       alert(
         "An error occurred while fetching coordinates. Please try again later."
       );
+      setIsLoading(false);
     }
   };
 
+  const handleRadiusChange = (event) => {
+    setSearchRadius(parseInt(event.target.value));
+  };
   //render stars for rating
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -249,11 +272,18 @@ const Map = () => {
                 placeholder="Enter ZIP code"
                 value={zipCode}
                 onChange={handleZipCodeChange}
+                onKeyPress={handleKeyPress}
               />
             </InputGroup>
           </Form.Group>
-          <Button variant="success" onClick={handleSearch}>
-            Search
+          <Button variant="success" onClick={handleSearch} disabled={isLoading}>
+            {isLoading ? (
+              <Spinner animation="border" size="sm" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>
+            ) : (
+              "Search"
+            )}
           </Button>
         </Form>
       </div>
@@ -261,17 +291,19 @@ const Map = () => {
         <div className="hospital-list">
           <h3>Nearby Hospitals</h3>
 
-          <ul>
-            {hospitals.map((hospital, index) => {
-              console.log("Hospital Name:", hospital.name);
-              console.log("Website:", hospital.website);
-              console.log("Phone number:", hospital.formatted_phone_number);
-
-              return (
+          {isLoading ? (
+            <div className="loading-spinner">
+              <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>
+            </div>
+          ) : (
+            <ul>
+              {hospitals.map((hospital, index) => (
                 <li key={index}>
                   <strong>
                     <a
-                      href={hospital.websiteURI}
+                      href={hospital.website}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -313,9 +345,9 @@ const Map = () => {
                     </p>
                   )}
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+          )}
         </div>
         <div id="map" className="map"></div>
       </div>
