@@ -14,6 +14,7 @@ import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
 import Vista from "./component/vista/Vista";
 import Map from "./component/map";
+import medic from "./component/medication"
 import Nutrition from "./component/Nutrition/Nutrition"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
           <Route path="/map" exact component={Map}></Route>
+          <Route path="/medication" exact component = {medic}></Route>
         </Switch>
         <Footer />
       </div>
