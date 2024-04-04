@@ -13,7 +13,8 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchRadius, setSearchRadius] = useState(5000); // Default search radius in meters
-  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  // const [directionsService, setDirectionsService] = useState(null);
+  // const [directionsRenderer, setDirectionsRenderer] = useState(null);
   const apiKey = "AIzaSyDmzZS6T8pgdF5jod7uARNGsVq1WP70fDA";
 
   useEffect(() => {
@@ -67,7 +68,15 @@ const Map = () => {
         zoom: 10, // Default zoom level
       }
     );
+
+    // Create DirectionsService and DirectionsRenderer instances
+    // const directionsService = new window.google.maps.DirectionsService();
+    // const directionsRenderer = new window.google.maps.DirectionsRenderer();
+    // directionsRenderer.setMap(mapInstance);
+
     setMap(mapInstance);
+    // setDirectionsService(directionsService);
+    // setDirectionsRenderer(directionsRenderer);
 
     if (userLocation) {
       fetchNearbyHospitals(userLocation);
@@ -207,28 +216,29 @@ const Map = () => {
     }
   };
 
+  /* Commented get direction component as we have to pay for this feature */
+
   //get directions from the provided zip code to the hospital location
-  const getDirections = (hospital) => {
-    if (userLocation && map) {
-      const directionsService = new window.google.maps.DirectionsService();
-      const directionsRenderer = new window.google.maps.DirectionsRenderer();
-      directionsRenderer.setMap(map);
 
-      const request = {
-        origin: userLocation,
-        destination: hospital.geometry.location,
-        travelMode: window.google.maps.TravelMode.DRIVING,
-      };
+  // const getDirections = (hospital) => {
+  //   if (userLocation && map && directionsService && directionsRenderer) {
+  //     const request = {
+  //       origin: userLocation,
+  //       destination: hospital.geometry.location,
+  //       travelMode: window.google.maps.TravelMode.DRIVING,
+  //     };
 
-      directionsService.route(request, (result, status) => {
-        if (status === window.google.maps.DirectionsStatus.OK) {
-          directionsRenderer.setDirections(result);
-        } else {
-          console.error("Error getting directions:", status);
-        }
-      });
-    }
-  };
+  //     directionsService.route(request, (result, status) => {
+  //       if (status === "OK") {
+  //         directionsRenderer.setDirections(result);
+  //       } else {
+  //         console.error("Error getting directions:", status);
+  //         alert("Error getting directions. Please try again later.");
+  //       }
+  //     });
+  //   }
+  // };
+
   const fetchZipCodeCoordinates = async (zipCode) => {
     setIsLoading(true);
     try {
@@ -375,12 +385,12 @@ const Map = () => {
                       </a>
                     </p>
                   )}
-                  <Button
+                  {/* <Button
                     variant="primary"
                     onClick={() => getDirections(hospital)}
                   >
                     Get Directions
-                  </Button>
+                  </Button> */}
                 </li>
               ))}
             </ul>
