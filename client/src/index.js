@@ -16,7 +16,10 @@ import Vista from "./component/vista/Vista";
 import insurancepage from "./component/insurancepage";
 import Map from "./component/map";
 import article from "./component/article"
+import TermsAndConditions from "./component/termsandcondition";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PopupForm from "./component/PopupFrom";
+
 
 const App = () => {
   return (
@@ -37,6 +40,8 @@ const App = () => {
           <Route path="/createProfile" exact component={ProfilePage}></Route>
           <Route path="/map" exact component={Map}></Route>
           <Route path="/article" exact component={article}></Route>
+          <Route path="/termsandcondition" exact component={TermsAndConditions}></Route>
+          <Route path="/PopupFrom" exact component={PopupForm}></Route>
         </Switch>
         <Footer />
       </div>

@@ -1,10 +1,10 @@
 import React from "react";
-
+import "./termsandcondition.css"
 
 class TermsAndConditions extends React.Component {
     render() {
         return (
-            <div className="container">
+          <div id="terms-container" className="container">
             <h1>Terms and Conditions</h1>
             <p>Welcome to Health Vista, your ultimate health management app. By accessing or using Health Vista, you agree to comply with and be bound by the following terms and conditions of use. Please review these terms carefully before using our app. If you do not agree with any part of these terms, you may not access or use Health Vista.</p>
             <ol>
@@ -20,7 +20,8 @@ class TermsAndConditions extends React.Component {
          <li><strong>Changes to Terms</strong>: We reserve the right to modify or revise these terms and conditions at any time, without prior notice. Your continued use of Health Vista following the posting of changes will constitute your acceptance of such changes.</li>
          <li><strong>Governing Law</strong>: These terms and conditions shall be governed by and construed in accordance with the laws of the United States, without regard to its conflict of laws principles.</li>
        </ol>
-       <p>If you have any questions or concerns about these terms and conditions, pleasecontact us. Thank you for using Health Vista!</p>
+       <p>If you have any questions or concerns about these terms and conditions, please <a href="/PopupFrom">contact us</a>. Thank you for using Health Vista!</p>
+
      </div>
    );
  }
