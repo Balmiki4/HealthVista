@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, InputGroup } from "react-bootstrap";
 
 import axios from 'axios';
 import { gapi } from 'gapi-script';
@@ -13,32 +12,32 @@ const MedicationTracker = () => {
   const calendarId = '';
   const scope = 'https://www.googleapis.com/auth/calendar';
 
-  const initClient = async () => {
-    await gapi.client.init({ apiKey, clientId, scope });
-    const isSignedIn = await gapi.auth2.getAuthInstance().isSignedIn.get();
-    if (isSignedIn) {
-      loadEvents();
-    }
-  };
+//   const initClient = async () => {
+//     await gapi.client.init({ apiKey, clientId, scope });
+//     const isSignedIn = await gapi.auth2.getAuthInstance().isSignedIn.get();
+//     if (isSignedIn) {
+//       loadEvents();
+//     }
+//   };
 
-  const loadEvents = async () => {
-    const response = await gapi.client.calendar.events.list({ calendarId });
-    setEvents(response.result.items);
-  };
+//   const loadEvents = async () => {
+//     const response = await gapi.client.calendar.events.list({ calendarId });
+//     setEvents(response.result.items);
+//   };
 
   const handleAddEvent = async () => {
-    const event = {
-      summary: newEvent.summary,
-      start: { dateTime: newEvent.start },
-      end: { dateTime: newEvent.end },
-    };
-    await gapi.client.calendar.events.insert({ calendarId, resource: event });
-    setNewEvent({ summary: '', start: '', end: '' });
-    loadEvents();
+    // const event = {
+    //   summary: newEvent.summary,
+    //   start: { dateTime: newEvent.start },
+    //   end: { dateTime: newEvent.end },
+    // };
+    // await gapi.client.calendar.events.insert({ calendarId, resource: event });
+    // setNewEvent({ summary: '', start: '', end: '' });
+    // loadEvents();
   };
 
   useEffect(() => {
-    gapi.load('client:auth2', initClient);
+    // gapi.load('client:auth2', initClient);
   }, []);
 
   return (
@@ -64,9 +63,9 @@ const MedicationTracker = () => {
           value={newEvent.end}
           onChange={(e) => setNewEvent({...newEvent, end: e.target.value })}
         />
-        <Button class="btn btn-outline-light" onClick={handleAddEvent}>
+        <button onClick={handleAddEvent}>
           Add Medication
-        </Button>
+        </button>
       </div>
       <div className="events">
         {events.map((event, index) => (
