@@ -31,8 +31,8 @@ const NavBar = () => {
               aria-labelledby="trackersDropdown"
             >
               <li>
-                <a class="dropdown-item" href="#">
-                  Tracker 1
+                <a class="dropdown-item" href="/medication">
+                  Medication Tracker 
                 </a>
               </li>
               <li>
