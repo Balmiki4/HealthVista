@@ -64,6 +64,7 @@ const MedicationTracker = () => {
       const responseData = await response.json();
       console.log('Medicine successfully added!');
       setMedicine({ name: '', dosage: '', frequency: '', instructions: '' });
+      const customerId = responseData.customerId;
       setErrors({});
     }else{
       console.log("Error adding medicine");
@@ -80,11 +81,12 @@ const MedicationTracker = () => {
         <label >Enter Medicine Name</label>
         <input
           type="text"
-          id="medicationName"
+          id="name"
           placeholder="Medication Name"
           // value={newEvent.summary}
-          value={medicine.medicationName}
-          onChange={(e) => setNewEvent({...newEvent, summary: e.target.value })}
+          value={medicine.name}
+          onChange={handleChange}
+          //onChange={(e) => setNewEvent({...newEvent, summary: e.target.value })}
         />
 
         <label >Enter Dosage</label>
