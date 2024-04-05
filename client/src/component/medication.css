@@ -1,0 +1,84 @@
+.medication-tracker {
+    font-family: Arial, sans-serif;
+    max-width: 1500px;
+    margin: auto;
+    background-color: #198754;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  
+  .medication-tracker {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+  }
+
+
+  .medication-tracker .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    margin-right: 40px;
+    margin-top: 20px;
+  }
+
+  h2{
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  
+  .medication-tracker .form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .medication-tracker .form button {
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: #198754;
+    color: white;
+    border: solid 1px white;
+    border-radius: 5px;
+    cursor: pointer;
+  } 
+
+  .medication-tracker .form button:hover {
+    background-color:#212529;
+  }
+
+  
+  .calendar-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 35%;
+    height: 0;
+    flex: 1;
+    border: solid 4px;
+    border-radius: 4px;
+  }
+  
+  .calendar-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .medication-tracker .events .event {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #F8F9FA;
+    border-radius: 5px;
+  }
+  
+  
+  
+  

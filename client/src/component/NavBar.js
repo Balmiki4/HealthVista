@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
       <div class="container-fluid d-flex justify-content-between m-0 w-100">
         <Link class="navbar-brand m-0" to="/">
           <h1>
             <strong>Health</strong>
-            <strong class="vista">Vista</strong>
+            <strong className="vista">Vista</strong>
           </h1>
         </Link>
         <ul class="navbar-nav m-0">
           <li class="nav-item">
-            <a class="nav-link">Medical Dashboard</a>
+            <a class="nav-link" href="/Vista">
+              Vista
+            </a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -31,41 +33,53 @@ const NavBar = () => {
               aria-labelledby="trackersDropdown"
             >
               <li>
-                <a class="dropdown-item" href="#">
-                  Tracker 1
+                <a class="dropdown-item" href="/medication">
+                  Medication Tracker
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
-                  Tracker 2
+                <a class="dropdown-item" href="/Nutrition">
+                  Nutrition Tracker
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
-                  Tracker 3
+                <a class="dropdown-item" href="/map">
+                  Hospital Tracker
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle bg-dark"
+              href="#"
+              id="trackersDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Wellness Hub
+            </a>
+            <ul
+              class="dropdown-menu bg-dark"
+              aria-labelledby="trackersDropdown"
+            >
+              <li>
+                <a class="dropdown-item" href="/Article">
+                  Health Articles
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/wellnesspage">
+                  Exercise Videos
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" to="/wellnesspage">
-              Wellness Hub
-            </Link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Vista">
-              Vista
+            <a class="nav-link" href="/insurancepage">
+              Insurance Recommender
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/article">
-              Blog
-            </a>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/map">
-              Care Finder
-            </Link>
           </li>
         </ul>
         <div className="logins">

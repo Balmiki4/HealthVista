@@ -54,3 +54,4 @@ client/src/component/.prettierrc
 venv/
 
 .env
+*.json

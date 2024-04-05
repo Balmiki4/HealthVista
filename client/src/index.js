@@ -13,9 +13,15 @@ import SuccessPage from "./component/SuccessPage";
 import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
 import Vista from "./component/vista/Vista";
+import insurancepage from "./component/insurancepage";
 import Map from "./component/map";
 import article from "./component/article"
+import medic from "./component/medication"
+import Nutrition from "./component/Nutrition/Nutrition"
+import TermsAndConditions from "./component/termsandcondition";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PopupForm from "./component/PopupFrom";
+
 
 const App = () => {
   return (
@@ -23,6 +29,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/Nutrition" exact component={Nutrition}></Route>
           <Route path="/Vista" exact component={Vista}></Route>
           <Route path="/SuccessPage" exact component={SuccessPage}></Route>
           <Route path="/PaymentPlan" exact component={PaymentPlan}></Route>
@@ -30,10 +37,15 @@ const App = () => {
           <Route path="/login" exact component={login}></Route>
           <Route path="/forgot" exact component={forgot}></Route>
           <Route path="/" exact component={homePage}></Route>
+          <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
+          <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
           <Route path="/map" exact component={Map}></Route>
+          <Route path="/medication" exact component = {medic}></Route>
           <Route path="/article" exact component={article}></Route>
+          <Route path="/termsandcondition" exact component={TermsAndConditions}></Route>
+          <Route path="/PopupFrom" exact component={PopupForm}></Route>
         </Switch>
         <Footer />
       </div>
