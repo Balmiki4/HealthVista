@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './insurancepage.css';
 
-
 const InsurancePage = () => {
-  const [Gender, setGender] = useState('');
-  const [Age, setAge] = useState('');
+  const [gender, setGender] = useState('');
+  const [age, setAge] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
@@ -21,14 +20,14 @@ const InsurancePage = () => {
     e.preventDefault();
     try {
       // Validation checks
-      if (!income || !Age || !zipCode || !year|| !city || !state) {
+      if (!income || !age || !zipCode || !year|| !city || !state) {
         throw new Error('Please fill in all required fields');
       }
       if (isNaN(parseInt(income))) {
         setIncomeError('Income must be valid ');
         return;
       }
-      if (isNaN(parseInt(Age))) {
+      if (isNaN(parseInt(age))) {
         setAgeError('Age must be valid');
         return;
       }
@@ -40,19 +39,19 @@ const InsurancePage = () => {
         setYearError('Year must be valid');
         return;
       } 
-      const response = await fetch('/get_recommendations', {
+      const response = await fetch('http://localhost:5000/get_recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          income: parseFloat(income), 
-          age: parseInt(Age), 
-          gender: Gender,
-          city: city,
-          state: state,
-          zipCode: zipCode,
-          year: year
+          income: parseFloat(income),
+          age: parseInt(age),
+          gender,
+          city,
+          state,
+          zipCode,
+          year: parseInt(year),
         }),
       });
 
@@ -61,14 +60,17 @@ const InsurancePage = () => {
       }
 
       const data = await response.json();
-      setRecommendations(data.recommendations);
-      setError(null); // Clear any previous errors
+      if (response.ok) {
+        setRecommendations(data.recommendations);
+        setError(null);
+      } else {
+        setError(data.error || 'An error occurred while fetching insurance recommendations');
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
-      setError(error.message); // Set error state to display validation error
+      setError(error.message);
     }
   };
-
   return (
     <div className="center-container">
       <div className="form-container">
@@ -93,10 +95,10 @@ const InsurancePage = () => {
             <br />
             <input
               type="text"
-              value={Age}
+              value={age}
               onChange={(e) => {
                 setAge(e.target.value);
-                setAgeError(null); // Clear error when input changes
+                setAgeError(null); 
               }}
             />
             {ageError && <span className="error">{ageError}</span>} 
@@ -108,8 +110,8 @@ const InsurancePage = () => {
             <input
               type="radio"
               name="gender"
-              value="male"
-              checked={Gender === 'male'}
+              value="Male"
+              checked={gender === 'Male'}
               onChange={(e) => setGender(e.target.value)}
             />{' '}
             Male
@@ -117,8 +119,8 @@ const InsurancePage = () => {
             <input
               type="radio"
               name="gender"
-              value="female"
-              checked={Gender === 'female'}
+              value="Female"
+              checked={gender === 'Female'}
               onChange={(e) => setGender(e.target.value)}
             />{' '}
             Female
@@ -152,7 +154,7 @@ const InsurancePage = () => {
               value={zipCode}
               onChange={(e) => {
                 setZipCode(e.target.value);
-                setZipCodeError(null); // Clear error when input changes
+                setZipCodeError(null); 
               }}
             />
             {zipCodeError && <span className="error">{zipCodeError}</span>} 
@@ -166,15 +168,17 @@ const InsurancePage = () => {
               value={year}
               onChange={(e) => {
                 setYear(e.target.value);
-                setYearError(null); // Clear error when input changes
+                setYearError(null); 
               }}
             />
             {yearError && <span className="error">{yearError}</span>} 
           </label>
           <br />
+          <br />
           <button type="submit">Get Recommendations</button>
         </form>
         {error && <p className="error">{error}</p>} 
+        
       </div>
     </div>
   );
