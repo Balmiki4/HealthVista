@@ -10,6 +10,7 @@ from profile_python.profile_routes import profile_bp
 from chatbot_python.chatbot_routes import chatbot_bp
 from insurance_python.insurance_routes import insurance_bp
 from nutrition_python.nutrition_routes import nutrition_bp
+from medication_python.medication_routes import  medication_bp
 app = Flask(__name__)
 
 configure_mail(app)  # Configure mail
@@ -25,6 +26,7 @@ app.register_blueprint(profile_bp)
 app.register_blueprint(chatbot_bp)
 app.register_blueprint(nutrition_bp)
 app.register_blueprint(insurance_bp)
+app.register_blueprint(medication_bp)
 
 CORS(app)
 
