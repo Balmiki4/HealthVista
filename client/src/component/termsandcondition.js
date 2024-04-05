@@ -1,4 +1,5 @@
 import React from "react";
+import PopupForm from "./PopupFrom";
 import "./termsandcondition.css"
 
 class TermsAndConditions extends React.Component {
@@ -20,7 +21,11 @@ class TermsAndConditions extends React.Component {
          <li><strong>Changes to Terms</strong>: We reserve the right to modify or revise these terms and conditions at any time, without prior notice. Your continued use of Health Vista following the posting of changes will constitute your acceptance of such changes.</li>
          <li><strong>Governing Law</strong>: These terms and conditions shall be governed by and construed in accordance with the laws of the United States, without regard to its conflict of laws principles.</li>
        </ol>
-       <p>If you have any questions or concerns about these terms and conditions, please <a href="/PopupFrom">contact us</a>. Thank you for using Health Vista!</p>
+       <p>If you have any questions or concerns about these terms and conditions, please <span><PopupForm 
+                buttonText="Contact Us"
+                buttonClassName="Popup-term-link"
+                buttonType="link"
+        /></span>. Thank you for using Health Vista!</p>
 
      </div>
    );
