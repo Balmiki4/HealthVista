@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
-import './insurancepage.css';
-
+import React, { useState } from "react";
+import "./insurancepage.css";
+import age_icon from "./img/icons/age.png";
+import gender_icon from "./img/icons/gender.png";
+import zipCode_icon from "./img/icons/mail.png";
+import income_icon from "./img/icons/dollar.png";
+import city_icon from "./img/icons/city.png";
+import state_icon from "./img/icons/state.png";
+import year_icon from "./img/icons/calendar.png";
 
 const InsurancePage = () => {
-  const [Gender, setGender] = useState('');
-  const [Age, setAge] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zipCode, setZipCode] = useState('');
-  const [income, setIncome] = useState('');
-  const [year, setYear] = useState('');
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [income, setIncome] = useState("");
+  const [year, setYear] = useState("");
   const [recommendations, setRecommendations] = useState([]);
   const [incomeError, setIncomeError] = useState(null);
   const [ageError, setAgeError] = useState(null);
@@ -21,161 +27,183 @@ const InsurancePage = () => {
     e.preventDefault();
     try {
       // Validation checks
-      if (!income || !Age || !zipCode || !year|| !city || !state) {
-        throw new Error('Please fill in all required fields');
+      if (!income || !age || !zipCode || !year || !city || !state) {
+        throw new Error("Please fill in all required fields");
       }
       if (isNaN(parseInt(income))) {
-        setIncomeError('Income must be valid ');
+        setIncomeError("Income must be valid");
         return;
       }
-      if (isNaN(parseInt(Age))) {
-        setAgeError('Age must be valid');
+      if (isNaN(parseInt(age))) {
+        setAgeError("Age must be valid");
         return;
       }
       if (isNaN(parseInt(zipCode))) {
-        setZipCodeError('Zip code must be valid');
+        setZipCodeError("Zip code must be valid");
         return;
       }
       if (isNaN(parseInt(year))) {
-        setYearError('Year must be valid');
+        setYearError("Year must be valid");
         return;
-      } 
-      const response = await fetch('/get_recommendations', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          income: parseFloat(income), 
-          age: parseInt(Age), 
-          gender: Gender,
-          city: city,
-          state: state,
-          zipCode: zipCode,
-          year: year
-        }),
-      });
+      }
+      const response = await fetch(
+        "http://localhost:5000/get_recommendations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            income: parseFloat(income),
+            age: parseInt(age),
+            gender,
+            city,
+            state,
+            zipCode,
+            year: parseInt(year),
+          }),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
       const data = await response.json();
-      setRecommendations(data.recommendations);
-      setError(null); // Clear any previous errors
+      if (response.ok) {
+        setRecommendations(data.recommendations);
+        setError(null);
+      } else {
+        setError(
+          data.error ||
+            "An error occurred while fetching insurance recommendations"
+        );
+      }
     } catch (error) {
-      console.error('Error fetching data:', error);
-      setError(error.message); // Set error state to display validation error
+      console.error("Error fetching data:", error);
+      setError(error.message);
     }
   };
 
   return (
-    <div className="center-container">
-      <div className="form-container">
-        <h1>Insurance Recommendation</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Income:
-            <br />
-            <input
-              type="text"
-              value={income}
-              onChange={(e) => {
-                setIncome(e.target.value);
-                setIncomeError(null); // Clear error when input changes
-              }}
-            />
-            {incomeError && <span className="error">{incomeError}</span>} 
-          </label>
-          <br />
-          <label>
-            Age:
-            <br />
-            <input
-              type="text"
-              value={Age}
-              onChange={(e) => {
-                setAge(e.target.value);
-                setAgeError(null); // Clear error when input changes
-              }}
-            />
-            {ageError && <span className="error">{ageError}</span>} 
-          </label>
-          <br />
-          <label>
-            Gender:
-            <br />
-            <input
-              type="radio"
-              name="gender"
-              value="male"
-              checked={Gender === 'male'}
-              onChange={(e) => setGender(e.target.value)}
-            />{' '}
-            Male
-            <br />
-            <input
-              type="radio"
-              name="gender"
-              value="female"
-              checked={Gender === 'female'}
-              onChange={(e) => setGender(e.target.value)}
-            />{' '}
-            Female
-          </label>
-          <br />
-          <label>
-            City:
-            <br />
-            <input
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            State:
-            <br />
-            <input
-              type="text"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            ZipCode:
-            <br />
-            <input
-              type="text"
-              value={zipCode}
-              onChange={(e) => {
-                setZipCode(e.target.value);
-                setZipCodeError(null); // Clear error when input changes
-              }}
-            />
-            {zipCodeError && <span className="error">{zipCodeError}</span>} 
-          </label>
-          <br />
-          <label>
-            Year:
-            <br />
-            <input
-              type="text"
-              value={year}
-              onChange={(e) => {
-                setYear(e.target.value);
-                setYearError(null); // Clear error when input changes
-              }}
-            />
-            {yearError && <span className="error">{yearError}</span>} 
-          </label>
-          <br />
-          <button type="submit">Get Recommendations</button>
-        </form>
-        {error && <p className="error">{error}</p>} 
+    <div className="container">
+      <div className="header">
+        <div className="text">
+          <h1 className="font-only-heading">Insurance Recommender</h1>
+        </div>
+        <div className="underline mb-0"></div>
       </div>
+      <div className="inputs">
+        <div className="input">
+          <label htmlFor="income">
+            <img src={income_icon} alt="income" />
+          </label>
+          <input
+            type="text"
+            id="income"
+            placeholder="Enter your income"
+            value={income}
+            onChange={(e) => {
+              setIncome(e.target.value);
+              setIncomeError(null);
+            }}
+          />
+          {incomeError && <div className="error">{incomeError}</div>}
+        </div>
+        <div className="input">
+          <label htmlFor="age">
+            <img src={age_icon} alt="age" />
+          </label>
+          <input
+            type="text"
+            id="age"
+            placeholder="Enter your age"
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+              setAgeError(null);
+            }}
+          />
+          {ageError && <div className="error">{ageError}</div>}
+        </div>
+        <div className="input">
+          <label htmlFor="gender">
+            <img src={gender_icon} alt="gender" />
+          </label>
+          <select class="form-select form-select-sm w-75" aria-label="Default select example"
+            style={{ backgroundColor:"#eaeaea", border:"none"}}
+            id="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value="">Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div className="input">
+          <label htmlFor="city">
+            <img src={city_icon} alt="city" />
+          </label>
+          <input
+            type="text"
+            id="city"
+            placeholder="Enter your city"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </div>
+        <div className="input">
+          <label htmlFor="state">
+            <img src={state_icon} alt="state" />
+          </label>
+          <input
+            type="text"
+            id="state"
+            placeholder="Enter your state"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+          />
+        </div>
+        <div className="input">
+          <label htmlFor="zipCode">
+            <img src={zipCode_icon} alt="zip code" />
+          </label>
+          <input
+            type="text"
+            id="zipCode"
+            placeholder="Enter your zip code"
+            value={zipCode}
+            onChange={(e) => {
+              setZipCode(e.target.value);
+              setZipCodeError(null);
+            }}
+          />
+          {zipCodeError && <div className="error">{zipCodeError}</div>}
+        </div>
+        <div className="input">
+          <label htmlFor="year">
+            <img src={year_icon} alt="year" />
+          </label>
+          <input
+            type="text"
+            id="year"
+            placeholder="Enter the year"
+            value={year}
+            onChange={(e) => {
+              setYear(e.target.value);
+              setYearError(null);
+            }}
+          />
+          {yearError && <div className="error">{yearError}</div>}
+        </div>
+      </div>
+      <div className="submitContainer">
+        <button className="btn btn-outline-light" onClick={handleSubmit}>
+          GET RECOMMENDATIONS
+        </button>
+      </div>
+      {error && <p className="error text-center mt-0">{error}</p>}
     </div>
   );
 };
