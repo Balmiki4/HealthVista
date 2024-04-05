@@ -18,10 +18,7 @@ import Map from "./component/map";
 import article from "./component/article"
 import medic from "./component/medication"
 import Nutrition from "./component/Nutrition/Nutrition"
-import TermsAndConditions from "./component/termsandcondition";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PopupForm from "./component/PopupFrom";
-
 
 const App = () => {
   return (
@@ -44,8 +41,6 @@ const App = () => {
           <Route path="/map" exact component={Map}></Route>
           <Route path="/medication" exact component = {medic}></Route>
           <Route path="/article" exact component={article}></Route>
-          <Route path="/termsandcondition" exact component={TermsAndConditions}></Route>
-          <Route path="/PopupFrom" exact component={PopupForm}></Route>
         </Switch>
         <Footer />
       </div>
