@@ -252,7 +252,7 @@ const homePage = () => {
               </Link>
             </div>
             <div className="terms-link">
-        <Link to="/termsandcondition" style={{ color: "blue" }}>
+        <Link to="/termsandcondition" className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>
           Terms and Conditions
         </Link>
       </div>
