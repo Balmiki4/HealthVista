@@ -197,7 +197,7 @@ const homePage = () => {
             <div class="col-md-3">
               <div class="mb-3">
                 <span class="text-muted text-uppercase">FAQ</span>
-                <h2 class=" font-only-heading">Common questions</h2>
+                <h2 class=" secondary-heading">Common questions</h2>
                 <p>Here are some of the most common questions that we get.</p>
               </div>
             </div>
