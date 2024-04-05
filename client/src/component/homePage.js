@@ -258,8 +258,13 @@ const homePage = () => {
       
 
       <div>
-        <PopupForm />
-      </div>
+        <PopupForm 
+                buttonText="Contact Us"
+                buttonClassName="Popup-btn"
+                buttonStyle={{ fontSize: "1.2rem", fontWeight: "bold" }}
+                buttonType="button"
+        />
+        </div>
     </div>
   );
 };
