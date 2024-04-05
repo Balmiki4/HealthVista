@@ -51,6 +51,12 @@ const MedicationTracker = () => {
   const [errors,setErrors] = useState({})
   const handleAddMedicine = async (e) => {
     const customerId = localStorage.getItem('customerId');
+    const medicationData = {
+      name: medicine.name,
+      dosage: medicine.dosage,
+      frequency: medicine.frequency,
+      instructions: medicine.instructions
+    };
     e.preventDefault();
     if(Object.keys(errors).length === 0){
       const response = await fetch('http://localhost:5000/medication', {
@@ -58,7 +64,7 @@ const MedicationTracker = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({...medicine, customerId }),
+                body: JSON.stringify({medications: medicationData, customerId }),
             });
     if(response.ok){
       const responseData = await response.json();
