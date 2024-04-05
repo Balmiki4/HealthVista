@@ -1,0 +1,19 @@
+.Nutritioncontainer{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    background: var(--color-secondary);
+    padding-bottom: 0px;
+    border-radius: 20px; /* Add border radius for rounded corners */
+    max-width: 1500px; /* Limit maximum width of the container */
+    margin-top: 6.1vh;
+    padding: 2rem;
+    margin-bottom: 6.1vh;
+    height: 70vh;
+}
+
+.text .font-only-heading{
+    font-size: 2.5rem;
+    font-weight:600;
+    color: white;
+}
