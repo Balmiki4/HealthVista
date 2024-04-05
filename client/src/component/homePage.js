@@ -251,6 +251,11 @@ const homePage = () => {
                 </button>
               </Link>
             </div>
+            <div className="terms-link">
+        <Link to="/termsandcondition" className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>
+          Terms and Conditions
+        </Link>
+      </div>
           </div>
         </div>
       </div>
@@ -258,8 +263,13 @@ const homePage = () => {
       
 
       <div>
-        <PopupForm />
-      </div>
+        <PopupForm 
+                buttonText="Contact Us"
+                buttonClassName="Popup-btn"
+                buttonStyle={{ fontSize: "1.2rem", fontWeight: "bold" }}
+                buttonType="button"
+        />
+        </div>
     </div>
   );
 };

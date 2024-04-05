@@ -1,0 +1,38 @@
+#terms-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #59b08f12;
+}
+
+#terms-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#terms-container p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+#terms-container ol {
+  margin-bottom: 20px;
+}
+
+#terms-container li {
+  margin-bottom: 10px;
+}
+
+#terms-container li strong {
+  font-weight: bold;
+}
+
+#terms-container p a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#terms-container p a:hover {
+  text-decoration: underline;
+}
