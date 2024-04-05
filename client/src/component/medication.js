@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
+import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import { gapi } from 'gapi-script';
 import "./medication.css";
 
 const MedicationTracker = () => {
+  const location = useLocation();
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({ summary: '', start: '', end: '' });
   const apiKey = '';
@@ -40,17 +41,62 @@ const MedicationTracker = () => {
     // gapi.load('client:auth2', initClient);
   }, []);
 
+
+  const [medicine, setMedicine] = useState({ name: '', dosage: '', frequency: '', instructions: '' });
+  const handleChange = (e) => {
+    const {id, value} = e.target;
+    setMedicine({...medicine, [id]: value});
+  };
+
+  const [errors,setErrors] = useState({})
+  const handleAddMedicine = async (e) => {
+    
+  };
+
   return (
     <div className="medication-tracker">
       <div className="form">
-      <h2>Medication Tracker</h2>
+      <h2>💊Medication Tracker💊</h2>
         <label >Enter Medicine Name</label>
         <input
           type="text"
+          id="medicationName"
           placeholder="Medication Name"
-          value={newEvent.summary}
+          // value={newEvent.summary}
+          value={medicine.medicationName}
           onChange={(e) => setNewEvent({...newEvent, summary: e.target.value })}
         />
+
+        <label >Enter Dosage</label>
+        <input
+          id = "dosage"
+          type="number"
+          min={0}
+          placeholder="Dosage"
+          value={medicine.dosage}
+          onChange={handleChange}
+        />
+
+        <label >Enter Frequency</label>
+        <input
+          id = "frequency"
+          type="number"
+          min={0}
+          placeholder="Frequency"
+          value={medicine.frequency}
+          onChange={handleChange}
+        />
+
+        <textarea
+          id="instructions"
+          placeholder="Any instructions you want to add"
+          value={medicine.instructions}
+          onChange={handleChange}
+        />
+        <button onClick={handleAddMedicine}>
+          Save Medicine Details To Database
+        </button>
+
         <label >Enter Start Date & Time</label>
         <input
           type="datetime-local"
@@ -64,7 +110,7 @@ const MedicationTracker = () => {
           onChange={(e) => setNewEvent({...newEvent, end: e.target.value })}
         />
         <button onClick={handleAddEvent}>
-          Add Medication
+          Add Medication Reminder
         </button>
       </div>
       <div className="events">
