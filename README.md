@@ -136,7 +136,9 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - Implement nutrition tracker
 
 ## Features (Sprint 2)
-**Keshav**: "Completed a research on which Health Insurance API would be best to integrate and returns health insurance information and pricing estimates for the plans for which users can sign up "
+**Keshav**: "Completed a research on which Health Insurance API would be best to integrate and returns health insurance information and pricing 
+estimates for the plans for which users can sign up. Implemented the UI for Insurance Recommender and used Marketplace Health Insurance API to integreate the plans.
+Also created a terms and condition for health-vista users."
 
 - `Jira Task:Research and Select Insurance API for Backend Integration`
     - [Scrum-72](https://cs3398s24europa.atlassian.net/browse/SCRUM-72),
@@ -161,8 +163,7 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 
 **Keshav**:
 
-- 
-
+- Plans Details Page for Insurance Recommendation
 
 ## Future Features
 
