@@ -135,6 +135,35 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - Implement chatbot functionality 
 - Implement nutrition tracker
 
+## Features (Sprint 2)
+**Keshav**: "Completed a research on which Health Insurance API would be best to integrate and returns health insurance information and pricing estimates for the plans for which users can sign up "
+
+- `Jira Task:Research and Select Insurance API for Backend Integration`
+    - [Scrum-72](https://cs3398s24europa.atlassian.net/browse/SCRUM-72),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/SCRUM-72-research-and-select-insurance-APIS)
+- `Jira Task:Design and Implement Insurance Section UI Component`
+    - [Scrum-63](https://cs3398s24europa.atlassian.net/browse/SCRUM-63),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-63-design-and-implement-insurance-Section-UI-Component)
+- `Jira Task:Backend Implementation for Insurance Provider Integration`
+    - [Scrum-36](https://cs3398s24europa.atlassian.net/browse/SCRUM-36),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-36-backend-implementation-for-insurance)
+
+- `Jira Task:Implement Terms and Conditions Page`
+    - [Scrum-36](https://cs3398s24europa.atlassian.net/browse/SCRUM-39),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-39-implement-terms-and-conditions)
+      
+    <br/>
+    
+## Reports
+
+
+## Next Steps
+
+**Keshav**:
+
+- 
+
+
 ## Future Features
 
 In future sprints, we plan to implement the following features:
