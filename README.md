@@ -136,6 +136,10 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - Implement nutrition tracker
 
 ## Features (Sprint 2)
+
+## Contributions
+
+
 **Keshav**: "Completed a research on which Health Insurance API would be best to integrate and returns health insurance information and pricing 
 estimates for the plans for which users can sign up. Implemented the UI for Insurance Recommender and used Marketplace Health Insurance API to integreate the plans.
 Also created a terms and condition for health-vista users."
@@ -156,22 +160,47 @@ Also created a terms and condition for health-vista users."
       
     <br/>
     
+    
+**Balmiki**: "Developed the map feature to locate nearby hospitals, integrating geolocation services for efficient navigation and access to emergency medical services."
+
+- `Jira Task: Design basic layout and Integrate map for finding nearby hospital`
+    - [Scrum-25](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-25),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-25-design-basic-layout-and-integrate-map-feature-for-locating-hospital)
+- `Jira Task: Researching map APIs and required tools for map feature`
+    - [Scrum-28](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-28),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-28-researching-map-APIs-and-their-required-tools)
+- `Jira Task: Backend Implementation of Map features (nearby hospital's details)`
+    - [Scrum-27](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-27),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-27-backend-implementation-of-map-feature)
+- `Jira Task: Frontend Implementation of Map(Hospital finder)`
+    - [Scrum-26](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-26),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-26-frontend-implementation-of-mapnearby-hospital)
+      
+    <br/>
+    
 ## Reports
 
 
 ## Next Steps
 
+
+
 **Keshav**:
 
 - Plans Details Page for Insurance Recommendation
+
+**Balmiki**:
+
+- Implement appointment scheduling feature
+- Integrate calendar for managing appointments
+- Implement reminders for upcoming appointments
 
 ## Future Features
 
 In future sprints, we plan to implement the following features:
 
-- Wellness/fitness
-- Medication Management
-- Chatbot
-- Content library
-- Hospital/doctor finder
-- Insurance recommender
+- Appointment scheduler
+- Article/blog page
+- Customer service
+- Connecting with insurance provider
+
