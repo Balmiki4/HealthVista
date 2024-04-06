@@ -106,11 +106,11 @@ We are developing HealthVista to make a positive impact on individuals' lives by
     <br/>
 
 
-## Reports
+## Burnup Report of Sprint 1
 
 ![Burnup report of sprint 1](static/report_sprint1.png)
 
-## Next Steps
+## Next Steps for Sprint 1
 
 **Balmiki**:
 
@@ -178,10 +178,12 @@ Also created a terms and condition for health-vista users."
       
     <br/>
     
-## Reports
+## Burnup Report of Sprint 2
+
+![Burnup report of sprint 2](static/report_sprint2.png)
 
 
-## Next Steps
+## Next Steps for Sprint 2
 
 
 
