@@ -183,7 +183,7 @@ const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {
                 <Button
                   // variant="primary"
                   className="reset-button"
-                  onClick={handleRequestToken}
+                  onClick={handleResetPassword}
                 >
                   Reset Password
                 </Button>

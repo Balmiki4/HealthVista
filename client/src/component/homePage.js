@@ -197,7 +197,7 @@ const homePage = () => {
             <div class="col-md-3">
               <div class="mb-3">
                 <span class="text-muted text-uppercase">FAQ</span>
-                <h2 class=" font-only-heading">Common questions</h2>
+                <h2 class=" secondary-heading">Common questions</h2>
                 <p>Here are some of the most common questions that we get.</p>
               </div>
             </div>
@@ -251,6 +251,11 @@ const homePage = () => {
                 </button>
               </Link>
             </div>
+            <div className="terms-link">
+        <Link to="/termsandcondition" className='link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>
+          Terms and Conditions
+        </Link>
+      </div>
           </div>
         </div>
       </div>
@@ -258,8 +263,13 @@ const homePage = () => {
       
 
       <div>
-        <PopupForm />
-      </div>
+        <PopupForm 
+                buttonText="Contact Us"
+                buttonClassName="Popup-btn"
+                buttonStyle={{ fontSize: "1.2rem", fontWeight: "bold" }}
+                buttonType="button"
+        />
+        </div>
     </div>
   );
 };

@@ -13,24 +13,41 @@ body {
 
 /* Search Container */
 .search-container {
-  background-color: #f0f0f0;
+  background-color: #f8f9fa; /* Light gray background */
   padding: 20px;
   text-align: center;
 }
 
 .search-container h2 {
   margin-top: 0;
-}
-
-.search-container .form-group {
-  display: flex;
-  justify-content: center;
   margin-bottom: 20px;
+  color: #343a40;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.search-container .form-control {
-  width: 300px;
-  margin-right: 10px;
+.search-container img {
+  width: 24px;
+  height: auto;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  filter: brightness(0) saturate(100%) invert(28%) sepia(14%) saturate(3018%)
+    hue-rotate(86deg) brightness(91%) contrast(84%);
+}
+
+.search-container Form.Control {
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.search-container Button {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 5px;
 }
 
 /* Map Results */
@@ -41,14 +58,20 @@ body {
 }
 
 .hospital-list {
-  background-color: #f8f8f8;
+  background-color: #ffffff; /* White background */
   padding: 20px;
-  width: 300px;
+  width: 400px;
   overflow-y: auto;
+  border-right: 1px solid #dee2e6; /* Add a border to separate from the map */
 }
 
 .hospital-list h3 {
   margin-top: 0;
+  margin-bottom: 20px;
+  color: #343a40;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .hospital-list ul {
@@ -57,32 +80,112 @@ body {
 }
 
 .hospital-list li {
-  background-color: #ffffff;
+  background-color: #f8f9fa; /* Light gray background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.hospital-list li:hover {
+  transform: translateY(-5px);
 }
 
 .hospital-list li strong {
   display: block;
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 10px; /* Add space below the hospital name */
+  color: #343a40;
 }
 
 .hospital-list li p {
   margin: 5px 0;
+  color: #6c757d;
 }
 
-.hospital-list li a {
-  color: #007bff;
+.hospital-list li strong {
+  color: #168c3d;
   text-decoration: none;
 }
 
-.hospital-list li a:hover {
+.hospital-list li strong img {
+  width: 20px;
+  height: auto;
+  margin-left: 5px;
+}
+.hospital-list li strong:hover {
   text-decoration: underline;
 }
 
 .map {
   flex-grow: 1;
   height: 100%;
+}
+.search-container img {
+  width: 50px;
+  height: auto;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.search-container Button {
+  font-size: 16px;
+}
+
+/* star ratings  */
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.rating-container p {
+  margin-right: 0.5rem;
+}
+
+.rating {
+  display: flex;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: #b55a14;
+  margin-right: 0.2rem;
+}
+
+.star.filled:before {
+  content: "\2605";
+}
+
+.star.half:before {
+  content: "\2605\00fe0e";
+}
+
+.star.empty:before {
+  content: "\2606";
+}
+@media (max-width: 768px) {
+  .map-results {
+    flex-direction: column;
+  }
+
+  .hospital-list {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+}
+.hospital-photos {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.hospital-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }

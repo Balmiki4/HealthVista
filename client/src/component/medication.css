@@ -23,7 +23,6 @@
     gap: 10px;
     flex: 1;
     margin-right: 40px;
-    margin-top: 20px;
   }
 
   h2{
@@ -62,6 +61,7 @@
     flex: 1;
     border: solid 4px;
     border-radius: 4px;
+    margin-top: 80px;
   }
   
   .calendar-container iframe {
