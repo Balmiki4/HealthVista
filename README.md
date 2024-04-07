@@ -179,7 +179,7 @@ Also created a terms and condition for health-vista users."
       
     <br/>
 
-**Vishal**: "Implemented the backend of the profile page to connect it to the database to save the user's profile information. Designed the UI of the article/blog page and used API to fetch articles and links. Implemented the medicine tracker feature"
+**Vishal**: "Implemented the backend of the profile page to connect it to the database to save the user's profile information. Designed the UI of the article/blog page and used API to fetch articles and links. Implemented the medicine tracker feature to take user's medicine information and save it to our database"
 
 - `Jira Task: Implement Backend of Profile Page And Update Database`
     - [Scrum-21](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-21),
