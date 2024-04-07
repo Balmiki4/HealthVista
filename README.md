@@ -190,7 +190,7 @@ Also created a terms and condition for health-vista users."
 - `Jira Task: Frontend Implementation for Medication Management`
     - [Scrum-22](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-22),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-22-frontend-implementation-for-medication-tracker)
-- `Jira Task: Implement Backend of Profile Page And Update Database`
+- `Jira Task: Backend Implementation for Medication Management`
     - [Scrum-19](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-19),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-19-backend-implementation-for-medication)
       
