@@ -30,6 +30,7 @@ We are developing HealthVista to make a positive impact on individuals' lives by
 - React
 - Flask
 - MongoDB
+- REST API
 - CSS
 - HTML
 
@@ -177,6 +178,23 @@ Also created a terms and condition for health-vista users."
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-26-frontend-implementation-of-mapnearby-hospital)
       
     <br/>
+
+**Vishal**: "Implemented the backend of the profile page to connect it to the database to save the user's profile information. Designed the UI of the article/blog page and used API to fetch articles and links. Implemented the medicine tracker feature"
+
+- `Jira Task: Implement Backend of Profile Page And Update Database`
+    - [Scrum-21](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-21),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-21-implement-backend-of-profile-page)
+- `Jira Task: Design Article/Blog Page UI Component And Use API To Fetch Articles`
+    - [Scrum-71](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-71),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-71-task-1-design-article-blog-page)
+- `Jira Task: Frontend Implementation for Medication Management`
+    - [Scrum-22](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-22),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-22-frontend-implementation-for-medication-tracker)
+- `Jira Task: Implement Backend of Profile Page And Update Database`
+    - [Scrum-19](https://cs3398s24europa.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-19),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-19-backend-implementation-for-medication)
+      
+    <br/>
     
 ## Burnup Report of Sprint 2
 
@@ -196,6 +214,12 @@ Also created a terms and condition for health-vista users."
 - Implement appointment scheduling feature
 - Integrate calendar for managing appointments
 - Implement reminders for upcoming appointments
+
+**Vishal**:
+
+- Implement google calendar API to set reminders
+- Create session id for login
+- Manage features according to user's subscription
 
 ## Future Features
 
