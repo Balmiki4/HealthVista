@@ -155,7 +155,7 @@ Also created a terms and condition for health-vista users."
       [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-36-backend-implementation-for-insurance)
 
 - `Jira Task:Implement Terms and Conditions Page`
-    - [Scrum-36](https://cs3398s24europa.atlassian.net/browse/SCRUM-39),
+    - [Scrum-39](https://cs3398s24europa.atlassian.net/browse/SCRUM-39),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-39-implement-terms-and-conditions)
       
     <br/>
