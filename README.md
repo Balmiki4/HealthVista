@@ -208,6 +208,8 @@ Also created a terms and condition for health-vista users."
 **Keshav**:
 
 - Plans Details Page for Insurance Recommendation
+- Design the final UI of the website
+- Test the overall functionality of the program 
 
 **Balmiki**:
 
