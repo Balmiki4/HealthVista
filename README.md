@@ -94,7 +94,7 @@ We are developing HealthVista to make a positive impact on individuals' lives by
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/Muhammad-Ned44)
 - `Jira Task: Add FAQ Section, Implement Footer, and Update Color Scheme in Landing page`
     - [Scrum-38](https://cs3398s24europa.atlassian.net/browse/SCRUM-38),
-      [Bitbucket]https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-38-add-faq-section-implement-foote)
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-38-add-faq-section-implement-foote)
 - `Jira Task: Popup Contact form on the Landing page`
     - [Scrum-35](https://cs3398s24europa.atlassian.net/browse/SCRUM-35),
       [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-35-popup-contact-form-on-the-landi)
@@ -196,6 +196,26 @@ Also created a terms and condition for health-vista users."
       
     <br/>
     
+**Muhammad**: "Implemented the backend of the nutrition tracker page. Designed the UI of the nutrition tracker component and integrated the API from API Ninjas to fetch nutritional data. Implemented the chatbot feature, designed the UI, and integrated the OpenAI API to provide conversational functionality. Updated the MongoDB database to store the chat history from the chatbot."
+
+- `Jira Task: Design Nutrition Tracker UI Component`
+    - [Scrum-73](https://cs3398s24europa.atlassian.net/browse/SCRUM-73),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/%7B9c8918aa-41ac-400d-827f-ee8d29096d85%7D/branch/feature/SCRUM-73-design-nutrition-tracker-ui-com)
+- `Jira Task: Nutrition Tracker with API Ninjas Integration`
+    - [Scrum-79](https://cs3398s24europa.atlassian.net/browse/SCRUM-79),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-73-design-nutrition-tracker-ui-com)
+- `Jira Task: Design Chatbot UI Component`
+    - [Scrum-65](https://cs3398s24europa.atlassian.net/browse/SCRUM-65),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-65-task-1-design-chatbot-ui-compon)
+- `Jira Task: Integrate OpenAI API for Chatbot Functionality`
+    - [Scrum-66](https://cs3398s24europa.atlassian.net/browse/SCRUM-66),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/SCRUM-66-integrate-openai-api-for-chatbo)
+- `Jira Task: Update MongoDB with Chat History from chatbot`
+    - [Scrum-77](https://cs3398s24europa.atlassian.net/browse/SCRUM-77),
+      [Bitbucket](https://bitbucket.org/cs3398s24europa/health-vista/branch/feature/SCRUM-77-update-mongodb-with-chat-histor)
+
+    <br/>
+    
 ## Burnup Report of Sprint 2
 
 ![Burnup report of sprint 2](static/report_sprint2.png)
@@ -223,12 +243,19 @@ Also created a terms and condition for health-vista users."
 - Create session id for login
 - Manage features according to user's subscription
 
+**Muhammad**:
+
+- Implement front-end logic for insurance plan
+- Create logout feature
+- Implement database for nutrition tracker and change API to USDA foodData central
+
+
 ## Future Features
 
 In future sprints, we plan to implement the following features:
 
-- Appointment scheduler
-- Article/blog page
-- Customer service
-- Connecting with insurance provider
+- logout
+- google calander api 
+- insurance plan details page
+- remainder for upcoming appointments
 
