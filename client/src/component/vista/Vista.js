@@ -28,7 +28,14 @@ function Vista() {
       // Fetch chat history from the backend
       axios.get(`http://localhost:5000/get_chat_history/${customerId}`)
         .then(response => {
-          setMessages(response.data.messages);
+          const messages = response.data.messages;
+          if (messages.length === 0) {
+            setMessages([
+              { role: "psychologist", content: "Hello, I'm Vista, your personal therapist. How can I assist you today?" }
+            ]);
+          } else {
+            setMessages(messages);
+          }
         })
         .catch(error => {
           console.error('Error fetching chat history:', error);
