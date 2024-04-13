@@ -15,6 +15,9 @@ app = Flask(__name__)
 
 configure_mail(app)  # Configure mail
 
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
 app.register_blueprint(signup_bp)
 app.register_blueprint(payment_bp)
 
