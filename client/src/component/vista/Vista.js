@@ -48,10 +48,15 @@ function Vista() {
 
     if (!inputValue.trim()) return;
 
-    setMessages((prevMessages) => [
-      ...prevMessages,
+    // Remove the input value immediately
+    setInputValue("");
+
+    const updatedMessages = [
+      ...messages,
       { role: "user", content: inputValue },
-    ]);
+      { role: "chatbot", content: "..." }, // Add a "..." message to indicate the chatbot is typing
+    ]
+    setMessages(updatedMessages);
 
     try {
       const response = await axios.post("http://localhost:5000/chatbot", {
@@ -67,8 +72,8 @@ function Vista() {
       });
 
       if (response.data && response.data.response) {
-        const newMessages= [
-          ...messages,
+        const newMessages = [
+          ...updatedMessages.slice(0, -1), // Remove the "..." message
           {role: "user", content: inputValue },
           { role: "psychologist", content: response.data.response },
         ];
