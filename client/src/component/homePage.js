@@ -4,6 +4,9 @@ import vista from "./img/chatbot.svg";
 import wellness from "./img/wellness.jpg";
 import "./homePage.css";
 import PopupForm from "./PopupFrom";
+import facebook from "./img/icons/facebook.svg";
+import twitter from "./img/icons/twitterx.svg";
+import instagram from "./img/icons/instagram.svg";
 
 const homePage = () => {
   return (
@@ -19,9 +22,10 @@ const homePage = () => {
               Health Companion.
             </p>
             <div className="logins">
-              
               <Link to="/">
-                <button class="btn btn-outline-light hero-learn-btn">Learn More</button>
+                <button class="btn btn-outline-light hero-learn-btn">
+                  Learn More
+                </button>
               </Link>
             </div>
           </header>
@@ -132,7 +136,6 @@ const homePage = () => {
                       </li>
                       <li class="list__item">Basic chatbot support</li>
                     </ul>
-
                   </div>
                 </div>
               </div>
@@ -204,9 +207,7 @@ const homePage = () => {
             <div class="col-md-9">
               <div class="card mb-4">
                 <div class="card-body">
-                  <h4 class="secondary-heading">
-                    What is HealthVISTA?
-                  </h4>
+                  <h4 class="secondary-heading">What is HealthVISTA?</h4>
                   <p>
                     HealthVISTA is a website that provides various health
                     tracking tools and resources to help individuals monitor and
@@ -255,11 +256,41 @@ const homePage = () => {
         </div>
       </div>
 
-      
-
       <div>
         <PopupForm />
       </div>
+
+      <footer>
+        <div className="footer-container">
+          <div className="social-icons">
+            <a
+              href="https://www.facebook.com/profile.php?id=61557977626802"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={facebook} alt="Facebook" />
+            </a>
+            <a
+              href="https://twitter.com/HealthVistas"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={twitter} alt="Twitter" />
+            </a>
+            <a
+              href="https://www.instagram.com/health_vista/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={instagram} alt="Instagram" />
+            </a>
+          </div>
+          <div className="legal-info">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
