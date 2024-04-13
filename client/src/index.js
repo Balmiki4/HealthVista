@@ -18,7 +18,9 @@ import Map from "./component/map";
 import article from "./component/article"
 import medic from "./component/medication"
 import Nutrition from "./component/Nutrition/Nutrition"
+import PlanDetails from "./component/PlanDetails";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 const App = () => {
   return (
@@ -34,13 +36,13 @@ const App = () => {
           <Route path="/login" exact component={login}></Route>
           <Route path="/forgot" exact component={forgot}></Route>
           <Route path="/" exact component={homePage}></Route>
-          <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/wellnesspage" exact component={wellnesspage}></Route>
           <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
           <Route path="/map" exact component={Map}></Route>
           <Route path="/medication" exact component = {medic}></Route>
           <Route path="/article" exact component={article}></Route>
+          <Route path="/PlanDetails" exact component={PlanDetails}></Route>
         </Switch>
         <Footer />
       </div>

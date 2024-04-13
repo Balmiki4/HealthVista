@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./insurancepage.css";
 import age_icon from "./img/icons/age.png";
 import gender_icon from "./img/icons/gender.png";
@@ -7,6 +8,7 @@ import income_icon from "./img/icons/dollar.png";
 import city_icon from "./img/icons/city.png";
 import state_icon from "./img/icons/state.png";
 import year_icon from "./img/icons/calendar.png";
+import PlanDetails from './PlanDetails';
 
 const InsurancePage = () => {
   const [gender, setGender] = useState("");
@@ -22,14 +24,19 @@ const InsurancePage = () => {
   const [zipCodeError, setZipCodeError] = useState(null);
   const [yearError, setYearError] = useState(null);
   const [error, setError] = useState(null);
+  const [planData, setPlanData] = useState(null);
+
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Validation checks
+      // Check if all required fields are filled
       if (!income || !age || !zipCode || !year || !city || !state) {
         throw new Error("Please fill in all required fields");
       }
+  
+      // Validate input data
       if (isNaN(parseInt(income))) {
         setIncomeError("Income must be valid");
         return;
@@ -46,6 +53,8 @@ const InsurancePage = () => {
         setYearError("Year must be valid");
         return;
       }
+  
+      // Send form data to server
       const response = await fetch(
         "http://localhost:5000/get_recommendations",
         {
@@ -64,15 +73,20 @@ const InsurancePage = () => {
           }),
         }
       );
-
+  
+      // Handle server response
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
+  
       const data = await response.json();
       if (response.ok) {
-        setRecommendations(data.recommendations);
+        // Set planData state with fetched data
+        setPlanData(data);
         setError(null);
+        
+        // Redirect to PlanDetails page
+        history.push("/PlanDetails");
       } else {
         setError(
           data.error ||
@@ -84,6 +98,8 @@ const InsurancePage = () => {
       setError(error.message);
     }
   };
+  
+
   return (
     <div className="container">
       <div className="header">
@@ -129,8 +145,10 @@ const InsurancePage = () => {
           <label htmlFor="gender">
             <img src={gender_icon} alt="gender" />
           </label>
-          <select class="form-select form-select-sm w-75" aria-label="Default select example"
-            style={{ backgroundColor:"#eaeaea", border:"none"}}
+          <select
+            className="form-select form-select-sm w-75"
+            aria-label="Default select example"
+            style={{ backgroundColor: "#eaeaea", border: "none" }}
             id="gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
@@ -203,6 +221,7 @@ const InsurancePage = () => {
         </button>
       </div>
       {error && <p className="error text-center mt-0">{error}</p>}
+        <PlanDetails recommendations={recommendations} />
     </div>
   );
 };
