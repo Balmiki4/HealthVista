@@ -1,7 +1,7 @@
 /* forgot.css */
 
-.mgf{
-  margin: 20vh auto !important;   /* Temporary fix footer */ 
+.mgf {
+  margin: 20vh auto !important; /* Temporary fix footer */
 }
 
 .header {
@@ -70,4 +70,42 @@
   background-color: #212529;
   border: 0;
   margin-top: 2px;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  margin-right: 15px;
+}
+
+.social-icons img {
+  height: 24px;
+}
+
+.legal-info {
+  display: flex;
+}
+
+.legal-info a {
+  color: #999;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.legal-info a:hover {
+  color: #fff;
 }

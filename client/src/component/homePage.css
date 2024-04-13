@@ -2,14 +2,14 @@
 
 :root {
   --color-secondary: #198754;
-  --color-accent: #A9D2C0;
+  --color-accent: #a9d2c0;
 }
-body{
-  background-color: #FAF9F7;
+body {
+  background-color: #faf9f7;
   min-height: 100vh;
   margin: 0;
 }
-.btn-outline-light:hover{
+.btn-outline-light:hover {
   background-color: var(--color-secondary);
   border-color: var(--color-secondary);
   color: white;
@@ -35,7 +35,6 @@ h5.font-only-heading,
 h6.font-only-heading {
   font-family: "Simplifica", serif;
 }
-
 
 /* General Styles */
 
@@ -98,13 +97,11 @@ html {
   --bs-btn-font-size: 1rem;
 }
 
-
 /* Features Section */
 
 .feature {
   width: 100%;
   padding: 50px 0 50px;
-
 }
 .feature .heading {
   text-align: center;
@@ -329,7 +326,6 @@ html {
   color: #777;
 }
 
-
 .card-body {
   background-color: #f3f3f3;
   box-shadow: none;
@@ -376,7 +372,7 @@ html {
   border-top: none;
   align-self: center;
 }
-.callout-btn .btn-outline-light:hover{
+.callout-btn .btn-outline-light:hover {
   background-color: #212529;
   color: white;
 }
@@ -391,7 +387,7 @@ html {
 .footer {
   background-color: var(--color-accent);
   position: absolute;
-  margin-top:1.6rem ;
+  margin-top: 1.6rem;
   width: 100%;
 }
 
@@ -400,9 +396,9 @@ html {
   color: white;
   font-family: "Simplifica";
   font-size: 1.2rem;
-  padding: 2rem ;
+  padding: 2rem;
   text-align: left;
 }
-.ct1{
-  margin: 20vh auto ;
+.ct1 {
+  margin: 20vh auto;
 }
