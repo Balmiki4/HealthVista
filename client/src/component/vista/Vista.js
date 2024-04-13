@@ -54,7 +54,13 @@ function Vista() {
     const updatedMessages = [
       ...messages,
       { role: "user", content: inputValue },
-      { role: "chatbot", content: "..." }, // Add a "..." message to indicate the chatbot is typing
+      { role: "chatbot", content: (
+        <div className="typingIndicator">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+      ) },
     ]
     setMessages(updatedMessages);
 
@@ -74,7 +80,6 @@ function Vista() {
       if (response.data && response.data.response) {
         const newMessages = [
           ...updatedMessages.slice(0, -1), // Remove the "..." message
-          {role: "user", content: inputValue },
           { role: "psychologist", content: response.data.response },
         ];
         setMessages(newMessages);
