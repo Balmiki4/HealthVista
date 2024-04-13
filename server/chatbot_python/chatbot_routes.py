@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 import openai
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 import os
 
 from pymongo import MongoClient
@@ -24,23 +24,40 @@ def chatbot():
     if not openai.api_key:
         return jsonify({'error': 'OpenAI API Key not found'}), 500
 
-    client = OpenAI()
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": role},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=150,
-    )
 
+    try:
+        client = OpenAI()
+        moderation_response = client.moderations.create(input=prompt)
 
-    response_text = response.choices[0].message.content
+        # Check the moderation response
+        if moderation_response.results[0].flagged:
+            response_message = {
+                'response': """I am concerned to hear that you are struggling with self-harm. 
+                      It's important to remember that there are people who care about you and want to help. 
+                      If you are in immediate danger or need someone to talk to, please reach out to a trusted friend, family member, 
+                      or a helpline like the National Suicide Prevention Lifeline at 1-800-273-TALK (1-800-273-8255). 
+                      You are not alone, and there is hope."""
+            }
+            return jsonify(response_message), 200
 
-    response = jsonify({'response': response_text})
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": role},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=150,
+        )
 
-    return response
+        response_text = response.choices[0].message.content
+
+        response = jsonify({'response': response_text})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+
+        return response
+    except OpenAIError as e:
+        return jsonify({'error': str(e)}), 500
+    
 
 uri = os.getenv('MONGO_URI')
 client = MongoClient(uri)
