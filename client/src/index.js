@@ -15,10 +15,11 @@ import Footer from "./component/Footer";
 import Vista from "./component/vista/Vista";
 import insurancepage from "./component/insurancepage";
 import Map from "./component/map";
-import article from "./component/article"
-import Privacy from "./component/Privacy"
-import medic from "./component/medication"
-import Nutrition from "./component/Nutrition/Nutrition"
+import article from "./component/article";
+import Privacy from "./component/Privacy";
+import TermsOfService from "./component/TermsOfService";
+import medic from "./component/medication";
+import Nutrition from "./component/Nutrition/Nutrition";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -40,9 +41,14 @@ const App = () => {
           <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
           <Route path="/map" exact component={Map}></Route>
-          <Route path="/medication" exact component = {medic}></Route>
+          <Route path="/medication" exact component={medic}></Route>
           <Route path="/article" exact component={article}></Route>
           <Route path="/Privacy" exact component={Privacy}></Route>
+          <Route
+            path="/TermsOfService"
+            exact
+            component={TermsOfService}
+          ></Route>
         </Switch>
         <Footer />
       </div>

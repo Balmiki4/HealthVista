@@ -8,7 +8,7 @@ const Privacy = () => {
         <div className="row">
           <div className="col-md-8 offset-md-2">
             <h1 className="text-center mb-4">Privacy Policy</h1>
-            <p>Last Updated: [Date]</p>
+            <p>Last Updated: April, 2024</p>
             <p>
               Thank you for choosing HealthVista! This Privacy Policy explains
               how we collect, use, and disclose information about you when you

@@ -48,9 +48,9 @@ const Footer = () => {
               Privacy Policy
             </Link>
             <div className="footer-separator"></div>
-            <a href="terms-of-service.html" className="text-white ml-3">
+            <Link to="/TermsOfService" className="text-white ml-3">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
