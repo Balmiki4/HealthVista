@@ -1,32 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./Vista.css";
 
 function Vista() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef(null);
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const [customerId, setCustomerId] = useState(null);
+  const history = useHistory();
+  const user_id = sessionStorage.getItem('user_id');
+  const access_token = sessionStorage.getItem('access_token');  
 
   useEffect(() => {
-    const urlCustomerId = searchParams.get("customerId");
-    const localStorageCustomerId = localStorage.getItem('customerId');
 
-    if (urlCustomerId) {
-      setCustomerId(urlCustomerId);
-      localStorage.setItem('customerId', urlCustomerId);
-    } else if (localStorageCustomerId) {
-      setCustomerId(localStorageCustomerId);
-    }
-  }, []);
+    if (!sessionStorage.getItem('user_id') ) {
+      history.push("/login");
+    } else {
+      axios.get('http://localhost:5000/get_chat_history', {
+        headers: {
+          'Authorization': `Bearer ${access_token}`,
+          'User-Id': user_id
+        }
 
-  useEffect(() => {
-    if (customerId) {
-      // Fetch chat history from the backend
-      axios.get(`http://localhost:5000/get_chat_history/${customerId}`)
+    })
         .then(response => {
           const messages = response.data.messages;
           if (messages.length === 0) {
@@ -41,7 +37,7 @@ function Vista() {
           console.error('Error fetching chat history:', error);
         });
     }
-  }, [customerId]);
+  }, [history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,9 +81,14 @@ function Vista() {
         setMessages(newMessages);
 
         axios.post("http://localhost:5000/save_chat", {
-          customer_id: customerId,
           messages: newMessages,
-        });
+        }, {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+            'User-Id': user_id
+          }
+        }
+      );
 
       } else {
         console.error("Invalid response from API:", response.data);
