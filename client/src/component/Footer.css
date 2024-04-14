@@ -36,7 +36,8 @@
 }
 
 .legal-info a:hover {
-  color: #fff;
+  transform: scale(1.2);
+  color: #5b2c2c;
 }
 
 .footer-separator {
