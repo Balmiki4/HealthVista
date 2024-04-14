@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import facebook from "./img/icons/facebook.svg";
 import twitter from "./img/icons/twitterx.svg";
 import instagram from "./img/icons/instagram.svg";
@@ -43,9 +44,9 @@ const Footer = () => {
         </div>
         <div className="row mt-3">
           <div className="col-12 d-flex justify-content-center legal-info">
-            <a href="privacy-policy.html" className="text-white mr-3">
+            <Link to="/Privacy" className="text-white mr-3">
               Privacy Policy
-            </a>
+            </Link>
             <div className="footer-separator"></div>
             <a href="terms-of-service.html" className="text-white ml-3">
               Terms of Service

@@ -1,7 +1,7 @@
 import React from "react";
 import "./LegalPages.css";
 
-const PrivacyPolicy = () => {
+const Privacy = () => {
   return (
     <div className="legal-page">
       <div className="container">
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
             <p>
               If you have any questions or concerns about our Privacy Policy or
               practices, please contact us at{" "}
-              <a href="mailto:contact@email.com">contact@email.com</a>.
+              <a href="mailto:bfv12@txstate.edu">bfv12@txstate.edu</a>.
             </p>
           </div>
         </div>
@@ -79,4 +79,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default Privacy;
