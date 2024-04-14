@@ -1,9 +1,9 @@
+import logging
 from login_python.login_models import User
 from flask import jsonify, request, session,current_app
 from flask import Blueprint
 import datetime
-import jwt
-
+from jose import jwt
 
 login_bp = Blueprint('login', __name__)
 @login_bp.route('/login', methods=['OPTIONS', 'POST'])
@@ -41,6 +41,9 @@ def login():
             expiration_time = datetime.datetime.utcnow() + datetime.timedelta(days=1)
             access_token = jwt.encode({"user_id": session['user_id'], "username": session['username'], "exp": expiration_time}, "SECRET_KEY", algorithm="HS256")
 
-            return jsonify({'message': 'Login successful', 'access_token': access_token}), 200
+            # Store the access token in the session
+            session['access_token'] = access_token
+
+            return jsonify({'message': 'Login successful', 'access_token': access_token , 'user_id' : session['user_id']}), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
