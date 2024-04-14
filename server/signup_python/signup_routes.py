@@ -2,8 +2,9 @@ import os
 import bcrypt
 from flask import Blueprint
 from signup_python.signup_models import User
-from flask import request, jsonify
+from flask import request, jsonify,session,current_app
 from pymongo import MongoClient
+import datetime
 import stripe
 
 signup_bp = Blueprint('signup', __name__)
@@ -54,6 +55,11 @@ def signup():
 
 
         # Insert new user into MongoDB
-        users_collection.insert_one(new_user.__dict__)
+        inserted_user = users_collection.insert_one(new_user.__dict__)
+
+        session['user_id'] = str(inserted_user.inserted_id)
+        session['username'] = username
+        session.permanent = True
+        current_app.permanent_session_lifetime = datetime.timedelta(days=30)
 
         return jsonify({'message': 'User registered successfully', 'customerId' : customer_id}), 200
