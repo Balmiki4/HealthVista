@@ -12,7 +12,7 @@ const TermsOfService = () => {
           <p className="legal-page-updated">Last Updated: April, 2024</p>
         </div>
         <p className="legal-page-intro">
-          Welcome to HealthVista! By using our mobile application and related
+          Welcome to HealthVista! By using our web application and related
           services (collectively, the "Services"), you agree to be bound by
           these Terms of Service. Please read these terms carefully before using
           our Services.
