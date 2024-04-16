@@ -1,10 +1,24 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const NavBar = () => {
   const user_id = sessionStorage.getItem('user_id');  
   const username = sessionStorage.getItem('username');
   const isLoggedIn = !!user_id;
+  const history = useHistory();
+
+  const handleLogout = () => {
+    // Clear session storage
+    sessionStorage.removeItem("user_id");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("username");
+
+
+    // Redirect to the homepage page
+    history.push("/");
+    // Reload the page
+    window.location.reload();
+  }
 
 
   return (
@@ -115,7 +129,7 @@ const NavBar = () => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" >
+                  <a className="dropdown-item" onClick={handleLogout} >
                     logout
                   </a>
                 </li>
