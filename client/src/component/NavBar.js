@@ -3,18 +3,29 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const user_id = sessionStorage.getItem('user_id');  
+  const username = sessionStorage.getItem('username');
   const isLoggedIn = !!user_id;
 
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid d-flex justify-content-between m-0 w-100">
+        {!isLoggedIn ? (
         <Link className="navbar-brand m-0" to="/">
           <h1>
             <strong>Health</strong>
             <strong className="vista">Vista</strong>
           </h1>
         </Link>
+        ) : (
+          <Link className="navbar-brand m-0" to="/vista">
+          <h1>
+            <strong>Health</strong>
+            <strong className="vista">Vista</strong>
+          </h1>
+        </Link>
+        )}
+
 
         {isLoggedIn && (
           <ul className="navbar-nav m-0">
@@ -95,7 +106,7 @@ const NavBar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                username
+                {username}
               </a>
               <ul className="dropdown-menu bg-dark" aria-labelledby="trackersDropdown" style={{marginLeft: -37 , paddingRight:0}}>
                 <li>
