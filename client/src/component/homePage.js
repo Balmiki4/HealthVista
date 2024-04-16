@@ -19,9 +19,10 @@ const homePage = () => {
               Health Companion.
             </p>
             <div className="logins">
-              
               <Link to="/">
-                <button class="btn btn-outline-light hero-learn-btn">Learn More</button>
+                <button class="btn btn-outline-light hero-learn-btn">
+                  Learn More
+                </button>
               </Link>
             </div>
           </header>
@@ -132,7 +133,6 @@ const homePage = () => {
                       </li>
                       <li class="list__item">Basic chatbot support</li>
                     </ul>
-
                   </div>
                 </div>
               </div>
@@ -204,9 +204,7 @@ const homePage = () => {
             <div class="col-md-9">
               <div class="card mb-4">
                 <div class="card-body">
-                  <h4 class="secondary-heading">
-                    What is HealthVISTA?
-                  </h4>
+                  <h4 class="secondary-heading">What is HealthVISTA?</h4>
                   <p>
                     HealthVISTA is a website that provides various health
                     tracking tools and resources to help individuals monitor and
@@ -254,8 +252,6 @@ const homePage = () => {
           </div>
         </div>
       </div>
-
-      
 
       <div>
         <PopupForm />
