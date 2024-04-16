@@ -221,7 +221,6 @@ const InsurancePage = () => {
         </button>
       </div>
       {error && <p className="error text-center mt-0">{error}</p>}
-        <PlanDetails recommendations={recommendations} />
     </div>
   );
 };

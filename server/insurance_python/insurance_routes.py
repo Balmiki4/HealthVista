@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, request, jsonify
 import requests
 import os
+import random
 
 
 app = Flask(__name__)
@@ -63,5 +64,8 @@ def get_recommendations():
 
         if response.status_code != 200:
             return jsonify({"error": "Error fetching insurance recommendations"}), response.status_code
+        plan_ids = [plan['id'] for plan in data['plans']]
+        selected_plan_ids = random.sample(plan_ids, 3)
+        selected_plans = [plan for plan in data['plans'] if plan['id'] in selected_plan_ids]
 
-        return jsonify({"recommendations": data})
+        return jsonify({"recommendations": selected_plans})
