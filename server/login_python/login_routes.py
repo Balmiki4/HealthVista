@@ -44,6 +44,6 @@ def login():
             # Store the access token in the session
             session['access_token'] = access_token
 
-            return jsonify({'message': 'Login successful', 'access_token': access_token , 'user_id' : session['user_id']}), 200
+            return jsonify({'message': 'Login successful', 'access_token': access_token , 'user_id' : session['user_id'] , 'username' : session['username']}), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
