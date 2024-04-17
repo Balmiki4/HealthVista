@@ -40,15 +40,20 @@ const MedicationDetails = () => {
     }
   };
 
-  // const handleDelete = async (id) => {
-  //   try {
-  //     await axios.delete(`/medications/${id}`);
-  //     setMedications((prevMedications) => prevMedications.filter((medication) => medication.id !== id));
-  //     console.log('Medication deleted successfully!');
-  //   } catch (error) {
-  //     console.error('Error deleting medication:', error);
-  //   }
-  // };
+  const handleDelete = async (medicineIndex) => {
+    try {
+      const user_id = sessionStorage.getItem('user_id');
+      await axios.delete(`http://localhost:5000/medicine_details/${medicineIndex}`, {
+        headers: {
+          'UserId': user_id,
+        },
+      });
+      setMedications((prevMedications) => prevMedications.filter((_, index) => index !== medicineIndex));
+      console.log('Medication deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting medication:', error);
+    }
+  };
 
   return (
     <div className="medication-details">
@@ -69,14 +74,14 @@ const MedicationDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {medications.map((medication) => (
-              <tr key={medication.id}>
+            {medications.map((medication, index) => (
+              <tr key={index}>
                 <td>{medication.name}</td>
                 <td>{medication.dosage}</td>
                 <td>{medication.frequency}</td>
                 <td>{medication.instructions}</td>
                 <td>
-                  <button>Delete</button>
+                  <button onClick={()=> handleDelete(index)}>Delete</button>
                 </td>
               </tr>
             ))}
