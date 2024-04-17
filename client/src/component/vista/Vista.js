@@ -8,33 +8,42 @@ function Vista() {
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef(null);
   const history = useHistory();
-  const user_id = sessionStorage.getItem('user_id');
-  const access_token = sessionStorage.getItem('access_token');  
+  const user_id = sessionStorage.getItem("user_id");
+  const access_token = sessionStorage.getItem("access_token");
+  const userPlan = sessionStorage.getItem("plan");
+
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
   useEffect(() => {
-
-    if (!sessionStorage.getItem('user_id') ) {
+    if (!sessionStorage.getItem("user_id")) {
       history.push("/login");
+    } else if (userPlan !== "pro") {
+      // Redirect to the upgrade plan page if the user doesn't have a pro plan
+      setShowUpgradeModal(true);
     } else {
-      axios.get('http://localhost:5000/get_chat_history', {
-        headers: {
-          'Authorization': `Bearer ${access_token}`,
-          'User-Id': user_id
-        }
-
-    })
-        .then(response => {
+      axios
+        .get("http://localhost:5000/get_chat_history", {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+            "User-Id": user_id,
+          },
+        })
+        .then((response) => {
           const messages = response.data.messages;
           if (messages.length === 0) {
             setMessages([
-              { role: "psychologist", content: "Hello, I'm Vista, your personal therapist. How can I assist you today?" }
+              {
+                role: "psychologist",
+                content:
+                  "Hello, I'm Vista, your personal therapist. How can I assist you today?",
+              },
             ]);
           } else {
             setMessages(messages);
           }
         })
-        .catch(error => {
-          console.error('Error fetching chat history:', error);
+        .catch((error) => {
+          console.error("Error fetching chat history:", error);
         });
     }
   }, [history]);
@@ -50,27 +59,54 @@ function Vista() {
     const updatedMessages = [
       ...messages,
       { role: "user", content: inputValue },
-      { role: "chatbot", content: (
-        <div className="typingIndicator">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-        </div>
-      ) },
-    ]
+      {
+        role: "chatbot",
+        content: (
+          <div className="typingIndicator">
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+          </div>
+        ),
+      },
+    ];
     setMessages(updatedMessages);
 
     try {
       const response = await axios.post("http://localhost:5000/chatbot", {
         prompt: inputValue,
-        role: JSON.stringify({ 
-            "role": "psychologist", 
-            "name": "Vista", 
-            "approach": ["logotherapy", "cognitive behavioural therapy"], 
-            "guidelines": [ "ask clarifying questions", "keep conversation natural", "never break character", "display curiosity and unconditional positive regard", "pose thought-provoking questions", "provide gentle advice and observations", "connect past and present", "seek user validation for observations", "avoid lists", "end with probing questions" ], 
-            "topics": [ "thoughts", "feelings", "behaviors", "free association", "childhood", "family dynamics", "work", "hobbies", "life" ], 
-            "note": [ "Vary topic questions in each response", "Vista should never end the session; continue asking questions until user decides to end the session" ]
-          }),
+        role: JSON.stringify({
+          role: "psychologist",
+          name: "Vista",
+          approach: ["logotherapy", "cognitive behavioural therapy"],
+          guidelines: [
+            "ask clarifying questions",
+            "keep conversation natural",
+            "never break character",
+            "display curiosity and unconditional positive regard",
+            "pose thought-provoking questions",
+            "provide gentle advice and observations",
+            "connect past and present",
+            "seek user validation for observations",
+            "avoid lists",
+            "end with probing questions",
+          ],
+          topics: [
+            "thoughts",
+            "feelings",
+            "behaviors",
+            "free association",
+            "childhood",
+            "family dynamics",
+            "work",
+            "hobbies",
+            "life",
+          ],
+          note: [
+            "Vary topic questions in each response",
+            "Vista should never end the session; continue asking questions until user decides to end the session",
+          ],
+        }),
       });
 
       if (response.data && response.data.response) {
@@ -80,16 +116,18 @@ function Vista() {
         ];
         setMessages(newMessages);
 
-        axios.post("http://localhost:5000/save_chat", {
-          messages: newMessages,
-        }, {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-            'User-Id': user_id
+        axios.post(
+          "http://localhost:5000/save_chat",
+          {
+            messages: newMessages,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+              "User-Id": user_id,
+            },
           }
-        }
-      );
-
+        );
       } else {
         console.error("Invalid response from API:", response.data);
       }
@@ -104,7 +142,29 @@ function Vista() {
     //UI INSPIRED FROM https://codepen.io/MuzammalAhmed/pen/qBvdwVq
 
     <div className="body">
-      <div></div>
+      {showUpgradeModal && (
+        <div className="upgrade-modal">
+          <div className="upgrade-modal-content">
+            <h2>Upgrade to the Pro Plan</h2>
+            <p>
+              To access the chatbot feature, you need to upgrade to the Pro
+              plan.
+            </p>
+            <button
+              className="btn btn-success"
+              onClick={() => history.push("/upgrade-plan")}
+            >
+              Upgrade Now
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => setShowUpgradeModal(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
       <section class=" section Chat">
         <div class="ChatHead">
           <li class="group">
@@ -136,7 +196,9 @@ function Vista() {
             autocomplete="off"
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button type="submit" class="btn btn-success">Send</button>
+          <button type="submit" class="btn btn-success">
+            Send
+          </button>
         </form>
       </section>
     </div>
