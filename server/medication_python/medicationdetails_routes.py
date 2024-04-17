@@ -33,3 +33,27 @@ def medicine_details():
                 return jsonify({'error': 'User not found'}), 404
     else:
         return jsonify({'error': 'User_id not provided in request headers'}), 400
+
+@medicine_details_bp.route('/medicine_details/<medicine_index>', methods=['DELETE'])
+@cross_origin(origins=['http://localhost:3000'], supports_credentials=True)
+def delete_medicine(medicine_index):
+    user_id = ObjectId(request.headers.get('UserId'))
+    if user_id:
+        # Query database to find the user and update the medicine record
+        user = users_collection.find_one({'_id': user_id})
+        if user:
+            medicine_record = user.get('medicine record', [])
+            if 0 <= int(medicine_index) < len(medicine_record):
+                # Remove the medication from the array
+                del medicine_record[int(medicine_index)]
+                users_collection.update_one(
+                    {'_id': user_id},
+                    {'$set': {'medicine record': medicine_record}}
+                )
+                return jsonify({'message': 'Medication deleted successfully'}), 200
+            else:
+                return jsonify({'error': 'Invalid medication index'}), 400
+        else:
+            return jsonify({'error': 'User not found'}), 404
+    else:
+        return jsonify({'error': 'User_id not provided in request headers'}), 400
