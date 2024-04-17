@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import { gapi } from 'gapi-script';
@@ -7,7 +8,7 @@ import "./medication.css";
 const MedicationTracker = () => {
   const location = useLocation();
   const [events, setEvents] = useState([]);
-  const [newEvent, setNewEvent] = useState({ summary: '', start: '', end: '' });
+  const [newEvent, setNewEvent] = useState({ summary: '', date: '', time: '' });
   const apiKey = '';
   const clientId = '';
   const calendarId = '';
@@ -47,10 +48,11 @@ const MedicationTracker = () => {
     const {id, value} = e.target;
     setMedicine({...medicine, [id]: value});
   };
-
+  const access_token = sessionStorage.getItem('access_token');
+  const user_id = sessionStorage.getItem('user_id')
   const [errors,setErrors] = useState({})
   const handleAddMedicine = async (e) => {
-    const customerId = localStorage.getItem('customerId');
+    console.log(user_id)
     const medicationData = {
       name: medicine.name,
       dosage: medicine.dosage,
@@ -63,8 +65,10 @@ const MedicationTracker = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${access_token}`,
+                    'Userid': user_id,
                 },
-                body: JSON.stringify({medications: medicationData, customerId }),
+                body: JSON.stringify({medications: medicationData }),
             });
     if(response.ok){
       const responseData = await response.json();
@@ -122,20 +126,24 @@ const MedicationTracker = () => {
           onChange={handleChange}
         />
         <button onClick={handleAddMedicine}>
-          Save Medicine Details To Database
+          Save My Medicine
         </button>
 
-        <label >Enter Start Date & Time</label>
+        <Link to="/medicationDetails">View My Medications</Link>
+
+        <h2>Set Medication Reminder</h2>
+
+        <label >Enter Date</label>
         <input
-          type="datetime-local"
-          value={newEvent.start}
-          onChange={(e) => setNewEvent({...newEvent, start: e.target.value })}
+          type="date"
+          value={newEvent.date}
+          onChange={(e) => setNewEvent({...newEvent, date: e.target.value })}
         />
-        <label >Enter End Date & Time</label>
+        <label >Enter Time</label>
         <input
-          type="datetime-local"
-          value={newEvent.end}
-          onChange={(e) => setNewEvent({...newEvent, end: e.target.value })}
+          type="time"
+          value={newEvent.time}
+          onChange={(e) => setNewEvent({...newEvent, time: e.target.value })}
         />
         <button onClick={handleAddEvent}>
           Add Medication Reminder
