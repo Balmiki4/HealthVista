@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './medicationDetails.css';
+import { Link } from 'react-router-dom'; 
 
 const MedicationDetails = () => {
   const [medications, setMedications] = useState([]);
@@ -29,7 +30,7 @@ const MedicationDetails = () => {
 
       if (response.status === 200) {
         setMedications(response.data);
-        setUserName(response.data[0]?.user_name || '');
+        setUserName(response.data.length > 0 ? response.data[0].user_name : 'User');
       } else {
         throw new Error('Failed to fetch medications');
       }
@@ -62,7 +63,14 @@ const MedicationDetails = () => {
         <div>Loading...</div>
       ) : error ? (
         <div>Error: {error}</div>
-      ) : (
+      ): medications.length === 0 ? (
+        <div>
+          <p>You don't have any medications to display.</p>
+          <p>
+            Click <Link to="/medication">here</Link> to add a new medication.
+          </p>
+        </div> 
+      ): (
         <table className="medication-table">
           <thead>
             <tr>
