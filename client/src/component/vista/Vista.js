@@ -21,6 +21,7 @@ function Vista() {
       // Redirect to the upgrade plan page if the user doesn't have a pro plan
       setShowUpgradeModal(true);
     } else {
+      setShowUpgradeModal(false);
       axios
         .get("http://localhost:5000/get_chat_history", {
           headers: {
@@ -46,7 +47,7 @@ function Vista() {
           console.error("Error fetching chat history:", error);
         });
     }
-  }, [history]);
+  }, [history, user_id, access_token, userPlan]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -142,6 +143,7 @@ function Vista() {
     //UI INSPIRED FROM https://codepen.io/MuzammalAhmed/pen/qBvdwVq
 
     <div className="body">
+      {/* if the user does not have a pro plan, then pop up a uprgade button */}
       {showUpgradeModal && (
         <div className="upgrade-modal">
           <div className="upgrade-modal-content">

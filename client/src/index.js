@@ -20,8 +20,27 @@ import Privacy from "./component/Privacy";
 import TermsOfService from "./component/TermsOfService";
 import medic from "./component/medication";
 import Nutrition from "./component/Nutrition/Nutrition";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
+// Route guard component to restrict access to Vista based on user's plan
+function VistaGuardedRoute({ component: Component, ...rest }) {
+  const userPlan = sessionStorage.getItem("plan");
+  const isAuthenticated = sessionStorage.getItem("user_id");
+
+  // If user is authenticated and has a pro plan, render the component
+  if (isAuthenticated && userPlan === "pro") {
+    return <Route {...rest} render={(props) => <Component {...props} />} />;
+  } else {
+    // Redirect to login or upgrade page if not authenticated or doesn't have a pro plan
+    return <Redirect to={isAuthenticated ? "/upgrade-plan" : "/login"} />;
+  }
+}
 const App = () => {
   return (
     <Router>
@@ -29,7 +48,12 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/Nutrition" exact component={Nutrition}></Route>
-          <Route path="/Vista" exact component={Vista}></Route>
+          {/* <Route path="/Vista" exact component={Vista}></Route> */}
+          <VistaGuardedRoute
+            path="/Vista"
+            exact
+            component={Vista}
+          ></VistaGuardedRoute>
           <Route path="/SuccessPage" exact component={SuccessPage}></Route>
           <Route path="/PaymentPlan" exact component={PaymentPlan}></Route>
           <Route path="/signup" exact component={signup}></Route>
