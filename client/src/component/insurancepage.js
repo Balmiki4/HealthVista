@@ -82,11 +82,14 @@ const InsurancePage = () => {
       const data = await response.json();
       if (response.ok) {
         // Set planData state with fetched data
-        setPlanData(data);
+        setPlanData(data.recommendations);
         setError(null);
         
-        // Redirect to PlanDetails page
-        history.push("/PlanDetails");
+        // Redirect to PlanDetails page and pass the planData
+        history.push({
+          pathname: "/PlanDetails",
+          state: { planData: data.recommendations }
+        });
       } else {
         setError(
           data.error ||
