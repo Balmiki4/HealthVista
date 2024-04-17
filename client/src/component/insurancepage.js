@@ -10,6 +10,13 @@ import state_icon from "./img/icons/state.png";
 import year_icon from "./img/icons/calendar.png";
 import PlanDetails from './PlanDetails';
 
+const statesList = [
+  "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN",
+  "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV",
+  "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN",
+  "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
+];
+
 const InsurancePage = () => {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
@@ -177,13 +184,16 @@ const InsurancePage = () => {
           <label htmlFor="state">
             <img src={state_icon} alt="state" />
           </label>
-          <input
-            type="text"
+          <select
             id="state"
-            placeholder="Enter your state"
             value={state}
             onChange={(e) => setState(e.target.value)}
-          />
+          >
+            <option value="">Select your state</option>
+            {statesList.map((stateAbbr) => (
+              <option key={stateAbbr} value={stateAbbr}>{stateAbbr}</option>
+            ))}
+          </select>
         </div>
         <div className="input">
           <label htmlFor="zipCode">
