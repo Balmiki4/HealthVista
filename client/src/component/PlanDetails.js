@@ -12,7 +12,7 @@ const PlanDetails = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container-plan-details">
       {planData.map((plan, index) => (
         <div key={index} className="plan-details-card">
           <h3 className="secondary-heading">{plan.name}</h3>

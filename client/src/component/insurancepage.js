@@ -11,10 +11,10 @@ import year_icon from "./img/icons/calendar.png";
 import PlanDetails from './PlanDetails';
 
 const statesList = [
-  "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN",
-  "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV",
-  "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN",
-  "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
+  "AL", "AK", "AZ", "AR", "DE", "FL", "GA", "HI", "IL", "IN",
+  "IA", "KS", "LA", "MI", "MS", "MO", "MT", "NE",
+  "NH", "NC", "ND", "OH", "OK", "OR", "RI", "SC", "SD", "TN",
+  "TX", "UT", "WV", "WI", "WY"
 ];
 
 const InsurancePage = () => {
@@ -42,7 +42,7 @@ const InsurancePage = () => {
       if (!income || !age || !zipCode || !year || !city || !state) {
         throw new Error("Please fill in all required fields");
       }
-  
+
       // Validate input data
       if (isNaN(parseInt(income))) {
         setIncomeError("Income must be valid");
@@ -60,7 +60,7 @@ const InsurancePage = () => {
         setYearError("Year must be valid");
         return;
       }
-  
+
       // Send form data to server
       const response = await fetch(
         "http://localhost:5000/get_recommendations",
@@ -80,22 +80,22 @@ const InsurancePage = () => {
           }),
         }
       );
-  
+
       // Handle server response
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       const data = await response.json();
       if (response.ok) {
         // Set planData state with fetched data
         setPlanData(data.recommendations);
         setError(null);
-        
+
         // Redirect to PlanDetails page and pass the planData
         history.push({
           pathname: "/PlanDetails",
-          state: { planData: data.recommendations }
+          state: { planData: data.recommendations },
         });
       } else {
         setError(
@@ -108,7 +108,6 @@ const InsurancePage = () => {
       setError(error.message);
     }
   };
-  
 
   return (
     <div className="container">
@@ -188,6 +187,9 @@ const InsurancePage = () => {
             id="state"
             value={state}
             onChange={(e) => setState(e.target.value)}
+            className="form-select form-select-sm w-75"
+            aria-label="Default select example"
+            style={{ backgroundColor: "#eaeaea", border: "none" }}
           >
             <option value="">Select your state</option>
             {statesList.map((stateAbbr) => (
