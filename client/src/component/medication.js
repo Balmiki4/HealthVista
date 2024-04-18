@@ -60,6 +60,10 @@ const MedicationTracker = () => {
       instructions: medicine.instructions
     };
     e.preventDefault();
+    const errors = {};
+    if (!medicine.name) {
+      errors.name = 'Medicine name is required';
+    }
     if(Object.keys(errors).length === 0){
       const response = await fetch('http://localhost:5000/medication', {
                 method: 'POST',
@@ -98,6 +102,7 @@ const MedicationTracker = () => {
           onChange={handleChange}
           //onChange={(e) => setNewEvent({...newEvent, summary: e.target.value })}
         />
+        {errors.name && <div className="error-medic">{errors.name}</div>}
 
         <label >Enter Dosage</label>
         <input

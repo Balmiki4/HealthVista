@@ -102,22 +102,22 @@ const Signup=()=>{
                     <div className='input'>
                         <label htmlFor="username"><img src={user_icon} alt="user name" /></label>
                         <input type = "text" id="username" placeholder='Enter your username here' value={formData.username} onChange={handleChange}/>
-                        {errors.username && <div className='error'>{errors.username}</div>}
+                        {errors.username && <div className='error-signup'>{errors.username}</div>}
                     </div>
                     <div className='input'>
                         <label htmlFor="email"><img src={email_icon} alt="email id" /></label>
                         <input type = "email" id="email" placeholder='Enter a valid email' value={formData.email} onChange={handleChange}/>
-                        {errors.email && <div className='error'>{errors.email}</div>}
+                        {errors.email && <div className='error-signup'>{errors.email}</div>}
                     </div>
                     <div className='input'>
                         <label htmlFor="password"><img src={password_icon} alt="password" /></label>
                         <input type = "password" id="password" placeholder='Enter your password' value={formData.password} onChange={handleChange}/>
-                        {errors.password && <div className='error'>{errors.password}</div>}
+                        {errors.password && <div className='error-signup'>{errors.password}</div>}
                     </div>
                     <div className='input'>
                         <label htmlFor="confirmpassword"><img src={password_icon} alt="password" /></label>
                         <input type = "password" id="confirmpassword" placeholder='Confirm your password' value={formData.confirmpassword} onChange={handleChange}/>
-                        {errors.confirmpassword && <div className='error'>{errors.confirmpassword}</div>}
+                        {errors.confirmpassword && <div className='error-signup'>{errors.confirmpassword}</div>}
                     </div>
             </div>
             <div className="submitContainer">
