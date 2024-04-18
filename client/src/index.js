@@ -20,7 +20,6 @@ import Privacy from "./component/Privacy";
 import TermsOfService from "./component/TermsOfService";
 import medic from "./component/medication";
 import Nutrition from "./component/Nutrition/Nutrition";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,6 +40,7 @@ function VistaGuardedRoute({ component: Component, ...rest }) {
     return <Redirect to={isAuthenticated ? "/upgrade-plan" : "/login"} />;
   }
 }
+
 const App = () => {
   return (
     <Router>
@@ -48,7 +48,6 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/Nutrition" exact component={Nutrition}></Route>
-          {/* <Route path="/Vista" exact component={Vista}></Route> */}
           <VistaGuardedRoute
             path="/Vista"
             exact

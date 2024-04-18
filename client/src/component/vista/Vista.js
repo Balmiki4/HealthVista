@@ -12,16 +12,13 @@ function Vista() {
   const access_token = sessionStorage.getItem("access_token");
   const userPlan = sessionStorage.getItem("plan");
 
-  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
-
   useEffect(() => {
     if (!sessionStorage.getItem("user_id")) {
       history.push("/login");
     } else if (userPlan !== "pro") {
       // Redirect to the upgrade plan page if the user doesn't have a pro plan
-      setShowUpgradeModal(true);
+      history.push("/upgrade-plan");
     } else {
-      setShowUpgradeModal(false);
       axios
         .get("http://localhost:5000/get_chat_history", {
           headers: {
@@ -140,11 +137,46 @@ function Vista() {
   };
 
   return (
-    //UI INSPIRED FROM https://codepen.io/MuzammalAhmed/pen/qBvdwVq
-
     <div className="body">
-      {/* if the user does not have a pro plan, then pop up a uprgade button */}
-      {showUpgradeModal && (
+      {userPlan === "pro" ? (
+        <section className="section Chat">
+          {/* Render the Vista component */}
+          <div className="ChatHead">
+            <li className="group">
+              <div className="avatar"></div>
+              <h1 className="font-only-heading GroupName mb-0">
+                Vista - Your Personal Therapist
+              </h1>
+            </li>
+          </div>
+          <div className="MessageContainer">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`message ${message.role === "user" ? "me" : "you"}`}
+              >
+                <p className="messageContent">
+                  {message.content || "No response from the assistant"}
+                </p>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
+          <form id="MessageForm" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="MessageInput"
+              value={inputValue}
+              autoComplete="off"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <button type="submit" className="btn btn-success">
+              Send
+            </button>
+          </form>
+        </section>
+      ) : (
+        // Render the upgrade modal
         <div className="upgrade-modal">
           <div className="upgrade-modal-content">
             <h2>Upgrade to the Pro Plan</h2>
@@ -158,51 +190,9 @@ function Vista() {
             >
               Upgrade Now
             </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => setShowUpgradeModal(false)}
-            >
-              Cancel
-            </button>
           </div>
         </div>
       )}
-      <section class=" section Chat">
-        <div class="ChatHead">
-          <li class="group">
-            <div class="avatar"></div>
-            <h1 class="font-only-heading GroupName mb-0">
-              Vista - Your Personal Therapist
-            </h1>
-          </li>
-        </div>
-        <div className="MessageContainer">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`message ${message.role === "user" ? "me" : "you"}`}
-            >
-              <p className="messageContent">
-                {message.content || "No response from the assistant"}
-              </p>
-            </div>
-          ))}
-          <div ref={messagesEndRef} />
-        </div>
-
-        <form id="MessageForm" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="MessageInput"
-            value={inputValue}
-            autocomplete="off"
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button type="submit" class="btn btn-success">
-            Send
-          </button>
-        </form>
-      </section>
     </div>
   );
 }
