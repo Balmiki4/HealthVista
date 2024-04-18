@@ -6,6 +6,8 @@ from jose import jwt
 from pymongo import MongoClient
 from bson import ObjectId
 from functools import wraps
+from datetime import datetime, timedelta
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 
@@ -61,6 +63,7 @@ def get_foods():
 def add_food():
     food_data = request.json
     user_id = ObjectId(request.headers.get('User-Id'))
+    food_data['timestamp'] = datetime.utcnow()
     result = users_collection.update_one(
         {'_id': user_id},
         {'$push': {'food_data': food_data}}
@@ -90,3 +93,30 @@ def get_nutrition_data():
         return jsonify(response.json())
     else:
         return jsonify({'error': f'Error: {response.status_code} - {response.text}'}), response.status_code
+
+@nutrition_bp.route('/past_foods', methods=['GET'])
+@cross_origin(origins=['http://localhost:3000'], supports_credentials=True)
+@requires_auth
+def get_past_foods():
+    user_id = ObjectId(request.headers.get('User-Id'))
+
+    past_foods = users_collection.aggregate([
+        {'$match': {'_id': user_id}},
+        {'$unwind': '$past_food_data'},
+        {'$group': {'_id': {'$dateToString': {'format': '%Y-%m-%d', 'date': '$past_food_data.timestamp'}}, 'foods': {'$push': '$past_food_data'}}},
+        {'$sort': {'_id': -1}} 
+    ])
+
+    past_food_logs = [{'date': doc['_id'], 'foods': doc['foods']} for doc in past_foods]
+
+    return jsonify(past_food_logs)
+
+@nutrition_bp.route('/move_to_past_log', methods=['POST'])
+@requires_auth
+def move_to_past_log():
+    user_id = ObjectId(request.headers.get('User-Id'))
+    current_log = users_collection.find_one({'_id': user_id}, {'food_data': 1})
+    foods_to_move = current_log.get('food_data', [])
+    users_collection.update_one({'_id': user_id}, {'$set': {'food_data': []}})
+    users_collection.update_one({'_id': user_id}, {'$push': {'past_food_data': {'$each': foods_to_move}}})
+    return jsonify({'message': 'Food items moved to past log successfully'}), 200
