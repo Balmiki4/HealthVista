@@ -7,6 +7,8 @@ const Nutrition = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showLogs, setShowLogs] = useState(false);
+  const user_id = sessionStorage.getItem('user_id');
+  const access_token = sessionStorage.getItem('access_token');
 
   useEffect(() => {
     fetchFoods();
@@ -14,47 +16,69 @@ const Nutrition = () => {
   
   const fetchFoods = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/foods');
+      const response = await axios.get('http://localhost:5000/api/foods', {
+        headers: {
+          'Authorization': `Bearer ${access_token}`,
+          'User-Id': user_id
+        }
+      });
       setFoods(response.data);
+      console.log("Foods:", response.data); // Add this line to log fetched foods
     } catch (error) {
       console.error('Error fetching foods:', error);
+      if (error.response && error.response.data.error) {
+        if (error.response.data.error === 'Missing user_id or access_token' || error.response.data.error === 'Invalid access token') {
+          // Redirect to login page if there's an authentication issue
+          window.location.href = '/login';
+        }
+      }
     }
   };
   
   const addFood = async (newFood) => {
     try {
-      await axios.post('http://localhost:5000/api/foods', newFood);
+      await axios.post('http://localhost:5000/api/foods', newFood, {
+        headers: {
+          'Authorization': `Bearer ${access_token}`,
+          'User-Id': user_id
+        }
+      });
       fetchFoods();
     } catch (error) {
       console.error('Error adding food:', error);
     }
   };
-  
-  const removeFood = async (index) => {
+  const removeFood = async (foodName) => {
     try {
-      const foodToRemove = foods[index];
-      await axios.delete(`http://localhost:5000/api/foods/${foodToRemove.name}`);
+      await axios.delete(`http://localhost:5000/api/foods/${foodName}`, {
+        headers: {
+          'Authorization': `Bearer ${access_token}`,
+          'User-Id': user_id
+        }
+      });
       fetchFoods();
     } catch (error) {
       console.error('Error removing food:', error);
     }
   };
-  
   const handleSearch = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/nutrition', { query: searchTerm });
+      const response = await axios.post('http://localhost:5000/api/nutrition', { query: searchTerm }, {
+        headers: {
+          'Authorization': `Bearer ${access_token}`,
+          'User-Id': user_id
+        }
+      });
       setSearchResults(response.data);
     } catch (error) {
       console.error('Error searching for foods:', error);
     }
   };
-  
   const addNewFood = (food) => {
     addFood(food);
     setSearchTerm('');
     setSearchResults([]);
   };
-  
   const toggleLogs = () => {
     setShowLogs(!showLogs);
   };
@@ -65,7 +89,6 @@ const Nutrition = () => {
   const totalFat = foods.reduce((acc, food) => acc + (food.fat_total_g || 0), 0);
   const totalSugar = foods.reduce((acc, food) => acc + (food.sugar_g || 0), 0);
 
-  
   return (
     <div className="Nutritioncontainer ">
       <div className="header">
@@ -82,7 +105,7 @@ const Nutrition = () => {
               {foods.map((food, index) => (
                 <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
                   {food.name}
-                  <button className="btn btn-danger btn-sm" onClick={() => removeFood(index)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => removeFood(food.name)}>
                     Remove
                   </button>
                 </li>
