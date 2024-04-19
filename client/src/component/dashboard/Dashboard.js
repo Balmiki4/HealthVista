@@ -1,8 +1,15 @@
 import { Link ,useHistory } from "react-router-dom";
-import dashboard from "../img/dashboard.jpg";
-import vista from "../img/chatbot.svg";
-import wellness from "../img/wellness.jpg";
 import React, { useEffect } from "react";
+
+import article from "../img/dashboard_img/article.jpg"
+import Hospital from "../img/dashboard_img/hospital.jpg";
+import vista from "../img/chatbot.svg";
+import insurance from "../img/dashboard_img/insurance.jpg";
+import medication from "../img/dashboard_img/medication.jpg";
+import wellness from "../img/dashboard_img/wellness.jpg";
+import nut from "../img/dashboard_img/nut.jpg";
+import setting from "../img/dashboard_img/Settings.jpeg";
+
 
 const Dashboard = () => {
   const user_id = sessionStorage.getItem('user_id');
@@ -25,7 +32,7 @@ const Dashboard = () => {
       <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4 mb-4">
         <div class="feature-main">
           <div class="feature-box">
-            <img src={dashboard} class="img-responsive mb-3" alt=""></img>
+            <img src={medication} class="img-responsive mb-3" alt=""></img>
             <div class="cover"></div>
           </div>
           <div class="feature-head">
@@ -63,7 +70,7 @@ const Dashboard = () => {
       <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
         <div class="feature-main">
           <div class="feature-box">
-            <img src={wellness} class="img-responsive mb-3" alt=""></img>
+            <img src={nut} class="img-responsive mb-3" alt=""></img>
             <div class="cover"></div>
           </div>
           <div class="feature-head">
@@ -79,10 +86,10 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
+      <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4 mb-4">
         <div class="feature-main">
           <div class="feature-box">
-            <img src={wellness} class="img-responsive mb-3" alt=""></img>
+            <img src={Hospital} class="img-responsive mb-3" alt=""></img>
             <div class="cover"></div>
           </div>
           <div class="feature-head">
@@ -101,7 +108,7 @@ const Dashboard = () => {
       <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
         <div class="feature-main">
           <div class="feature-box">
-            <img src={wellness} class="img-responsive mb-3" alt=""></img>
+            <img src={article} class="img-responsive mb-3" alt=""></img>
             <div class="cover"></div>
           </div>
           <div class="feature-head">
@@ -139,7 +146,7 @@ const Dashboard = () => {
       <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
         <div class="feature-main">
           <div class="feature-box">
-            <img src={wellness} class="img-responsive mb-3" alt=""></img>
+            <img src={insurance} class="img-responsive mb-3" alt=""></img>
             <div class="cover"></div>
           </div>
           <div class="feature-head">
@@ -158,7 +165,7 @@ const Dashboard = () => {
       <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
         <div class="feature-main">
           <div class="feature-box">
-            <img src={wellness} class="img-responsive mb-3" alt=""></img>
+            <img src={setting} class="img-responsive mb-3" alt=""></img>
             <div class="cover"></div>
           </div>
           <div class="feature-head">
