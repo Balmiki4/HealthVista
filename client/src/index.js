@@ -26,13 +26,11 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import axios from "axios"; // Import axios for making HTTP requests
 
 // Importing dotenv
 import dotenv from "dotenv";
 dotenv.config();
-
-// Import MongoDB driver or Mongoose
-import { MongoClient } from "mongodb";
 
 // Route guard component to restrict access to Vista based on user's plan
 function VistaGuardedRoute({ component: Component, ...rest }) {
@@ -42,17 +40,10 @@ function VistaGuardedRoute({ component: Component, ...rest }) {
   useEffect(() => {
     async function fetchUserPlan() {
       try {
-        // Connect to MongoDB using environment variable
-        const client = new MongoClient(process.env.MONGO_URI);
-        await client.connect();
-        const db = client.db("");
-
-        // Fetch user's plan from MongoDB
-        const userPlanData = await db.collection("users").findOne({
-          _id: "user_id_here", // Replace "user_id_here" with the actual user ID
-        });
-        setUserPlan(userPlanData.plan);
-        client.close();
+        // Fetch user's plan from the backend
+        const response = await axios.get("/get-plan");
+        const userPlanData = response.data.plan;
+        setUserPlan(userPlanData);
       } catch (error) {
         console.error("Error fetching user plan:", error);
       }
