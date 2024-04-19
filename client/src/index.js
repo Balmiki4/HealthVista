@@ -29,8 +29,8 @@ import {
 import axios from "axios"; // Import axios for making HTTP requests
 
 // Importing dotenv
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
 // Route guard component to restrict access to Vista based on user's plan
 function VistaGuardedRoute({ component: Component, ...rest }) {
