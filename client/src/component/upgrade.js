@@ -1,5 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import {
+  FaBrain,
+  FaUtensils,
+  FaMoneyCheckAlt,
+  FaHeadset,
+} from "react-icons/fa"; // Import icons from Font Awesome
 import "./upgrade.css";
 
 function Upgrade() {
@@ -24,20 +30,27 @@ function Upgrade() {
           </button>
           <div className="feature-list">
             <div className="feature">
-              <span class="featureIcon">$</span>
+              <span className="featureIcon">
+                <FaBrain />
+              </span>
               <p>Vista (AI Therapist)</p>
             </div>
             <div className="feature">
-              <span class="featureIcon">$</span>
+              <span className="featureIcon">
+                <FaUtensils />
+              </span>
               <p>Nutrition Tracker</p>
             </div>
             <div className="feature">
-              <span class="featureIcon">$</span>
+              <span className="featureIcon">
+                <FaMoneyCheckAlt />
+              </span>
               <p>Insurance Recommender</p>
             </div>
             <div className="feature">
-              {/* <img src="customer-service-icon.png" alt="Customer Service Icon" /> */}
-              <span class="featureIcon">$</span>
+              <span className="featureIcon">
+                <FaHeadset />
+              </span>
               <p>24/7 Customer Service</p>
             </div>
           </div>

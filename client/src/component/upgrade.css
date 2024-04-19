@@ -31,15 +31,20 @@
   max-width: 500px;
 }
 
+.upgrade-modal-content h2 {
+  color: rgb(23, 22, 22);
+  size: 24px;
+}
 .feature-list {
   display: flex;
-  justify-content: center; /* Align items in the center horizontally */
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 .feature {
   margin: 0 10px;
   padding-bottom: 10px;
+  position: relative;
 }
 
 .featureIcon {
@@ -49,11 +54,11 @@
 .feature:not(:last-child)::after {
   content: "";
   position: absolute;
-  height: calc(100% - 10px); /* Height of the line */
+  height: calc(100% - 10px);
   width: 1px;
-  background-color: #ddd; /* Color of the line */
-  right: -5px; /* Adjust position */
-  top: 5px; /* Adjust position */
+  background-color: rgba(0, 0, 0, 0.1);
+  right: -5px;
+  top: 5px;
 }
 
 .upgrade-btn {
@@ -89,7 +94,7 @@ button {
 
 .cancel-btn {
   background-color: lightgray;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
