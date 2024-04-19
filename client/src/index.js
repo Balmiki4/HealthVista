@@ -40,9 +40,9 @@ function VistaGuardedRoute({ component: Component, ...rest }) {
   useEffect(() => {
     async function fetchUserPlan() {
       try {
-        // Fetch user's plan from the backend
-        const response = await axios.get("/get-plan");
+        const response = await axios.get("http://localhost:5000/get-plan");
         const userPlanData = response.data.plan;
+        console.log("User Plan:", userPlanData); // Log the user's plan
         setUserPlan(userPlanData);
       } catch (error) {
         console.error("Error fetching user plan:", error);
@@ -53,7 +53,7 @@ function VistaGuardedRoute({ component: Component, ...rest }) {
   }, []);
 
   // If user is authenticated and has a pro plan, render the component
-  if (isAuthenticated && userPlan === "pro") {
+  if (isAuthenticated && userPlan === "Pro tier") {
     return <Route {...rest} render={(props) => <Component {...props} />} />;
   } else {
     // Redirect to login or upgrade page if not authenticated or doesn't have a pro plan
