@@ -63,7 +63,7 @@ const LoginPage = () => {
       const user_id = data.user_id || null;
       console.log("User Plan:", user_id);
       const access_token = data.access_token || null;
-      const user_plan = data.plan || null;
+      const user_plan = data.user_plan || null;
       console.log("User Plan:", user_plan);
 
       // Store session data in sessionStorage or localStorage
