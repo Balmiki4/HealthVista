@@ -10,15 +10,17 @@ function Vista() {
   const history = useHistory();
   const user_id = sessionStorage.getItem("user_id");
   const access_token = sessionStorage.getItem("access_token");
-  const userPlan = sessionStorage.getItem("plan");
+  const userPlan = sessionStorage.getItem("user_plan");
 
   useEffect(() => {
     if (!sessionStorage.getItem("user_id")) {
       history.push("/login");
-    } else if (userPlan !== "pro") {
-      // Redirect to the upgrade plan page if the user doesn't have a pro plan
-      history.push("/upgrade-plan");
-    } else {
+    }
+    // else if (userPlan !== "pro") {
+    //   // Redirect to the upgrade plan page if the user doesn't have a pro plan
+    //   history.push("/upgradePlan");
+    // }
+    else {
       axios
         .get("http://localhost:5000/get_chat_history", {
           headers: {
@@ -138,7 +140,7 @@ function Vista() {
 
   return (
     <div className="body">
-      {userPlan === "pro" ? (
+      {userPlan === "free" ? (
         <section className="section Chat">
           {/* Render the Vista component */}
           <div className="ChatHead">
@@ -186,7 +188,7 @@ function Vista() {
             </p>
             <button
               className="btn btn-success"
-              onClick={() => history.push("/upgrade-plan")}
+              onClick={() => history.push("/PaymentPlan")}
             >
               Upgrade Now
             </button>

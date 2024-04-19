@@ -47,17 +47,3 @@ def login():
             return jsonify({'message': 'Login successful', 'access_token': access_token , 'user_id' : session['user_id'] , 'username' : session['username']}), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
-
-@login_bp.route('/get-plan', methods=['GET'])
-def get_plan():
-    # Retrieve username from session
-    username = session.get('username')
-
-    if username:
-        # Create an instance of the User class
-        user = User()
-        # Get the user's plan based on username
-        user_plan = user.get_plan_by_username(username)
-        return jsonify({'plan': user_plan})
-    else:
-        return jsonify({'error': 'User not logged in'}), 401

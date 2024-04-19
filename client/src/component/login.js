@@ -10,12 +10,12 @@ import { Alert } from "react-bootstrap";
 
 const LoginPage = () => {
   const [formData, setData] = useState({ username: "", password: "" });
-  const history = useHistory();
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState({});
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertVariant, setAlertVariant] = useState("success"); // Default to success
+  const history = useHistory();
 
   const handleAlertClose = () => {
     setShowAlert(false);
@@ -62,15 +62,15 @@ const LoginPage = () => {
 
       const user_id = data.user_id || null;
       const access_token = data.access_token || null;
-      const username = data.username || null;
-        // Store session data in sessionStorage or localStorage
-        sessionStorage.setItem("user_id", user_id);
-        sessionStorage.setItem("access_token", access_token);
-        sessionStorage.setItem("username", username);
-        
+      const user_plan = data.plan || null;
+      // Store session data in sessionStorage or localStorage
+      sessionStorage.setItem("user_id", user_id);
+      sessionStorage.setItem("access_token", access_token);
+      sessionStorage.setItem("user_plan", user_plan);
+
       // Clear the form fields upon successful login
       setData({ username: "", password: "" });
-
+      history.push("/vista");
       // Show success alert
       displayAlert("success", "Login successful");
     } else if (response.status === 401) {
@@ -84,11 +84,6 @@ const LoginPage = () => {
       setData({ username: "", password: "" });
       displayAlert("danger", "Login failed. Invalid username or password");
     }
-        if (response.ok) {
-        // Reload the page
-          history.push("/vista");  // temporary redirect to /vista
-          window.location.reload();
-        }
   };
   return (
     <div className="container ct">

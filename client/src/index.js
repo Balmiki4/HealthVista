@@ -26,40 +26,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import axios from "axios"; // Import axios for making HTTP requests
-
-// Importing dotenv
-// import dotenv from "dotenv";
-// dotenv.config();
-
-// Route guard component to restrict access to Vista based on user's plan
-function VistaGuardedRoute({ component: Component, ...rest }) {
-  const [userPlan, setUserPlan] = useState("");
-  const isAuthenticated = sessionStorage.getItem("user_id");
-
-  useEffect(() => {
-    async function fetchUserPlan() {
-      try {
-        const response = await axios.get("http://localhost:5000/get-plan");
-        const userPlanData = response.data.plan;
-        console.log("User Plan:", userPlanData); // Log the user's plan
-        setUserPlan(userPlanData);
-      } catch (error) {
-        console.error("Error fetching user plan:", error);
-      }
-    }
-
-    fetchUserPlan();
-  }, []);
-
-  // If user is authenticated and has a pro plan, render the component
-  if (isAuthenticated && userPlan === "Pro tier") {
-    return <Route {...rest} render={(props) => <Component {...props} />} />;
-  } else {
-    // Redirect to login or upgrade page if not authenticated or doesn't have a pro plan
-    return <Redirect to={isAuthenticated ? "/upgrade-plan" : "/login"} />;
-  }
-}
 
 const App = () => {
   return (
@@ -68,11 +34,7 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/Nutrition" exact component={Nutrition}></Route>
-          <VistaGuardedRoute
-            path="/Vista"
-            exact
-            component={Vista}
-          ></VistaGuardedRoute>
+          <Route path="/Vista" exact component={Vista}></Route>
           <Route path="/SuccessPage" exact component={SuccessPage}></Route>
           <Route path="/PaymentPlan" exact component={PaymentPlan}></Route>
           <Route path="/signup" exact component={signup}></Route>
