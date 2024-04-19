@@ -11,6 +11,7 @@ function Vista() {
   const user_id = sessionStorage.getItem("user_id");
   const access_token = sessionStorage.getItem("access_token");
   const userPlan = sessionStorage.getItem("user_plan");
+  console.log("User Plan:", userPlan);
 
   useEffect(() => {
     if (!sessionStorage.getItem("user_id")) {
@@ -140,7 +141,7 @@ function Vista() {
 
   return (
     <div className="body">
-      {userPlan === "free" ? (
+      {userPlan === "Pro tier" ? (
         <section className="section Chat">
           {/* Render the Vista component */}
           <div className="ChatHead">
@@ -182,6 +183,7 @@ function Vista() {
         <div className="upgrade-modal">
           <div className="upgrade-modal-content">
             <h2>Upgrade to the Pro Plan</h2>
+
             <p>
               To access the chatbot feature, you need to upgrade to the Pro
               plan.

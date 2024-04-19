@@ -30,6 +30,7 @@ def login():
             # Store user-related data in the session
             session['user_id'] = str(user['_id'])
             session['username'] = user['username']
+            session['plan'] = user['plan']
 
             # Set session expiration time
             if remember_me:
