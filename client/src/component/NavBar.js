@@ -17,7 +17,6 @@ const NavBar = () => {
     // Redirect to the homepage page
     history.push("/");
     // Reload the page
-    window.location.reload();
   }
 
 
@@ -32,7 +31,7 @@ const NavBar = () => {
           </h1>
         </Link>
         ) : (
-          <Link className="navbar-brand m-0" to="/vista">
+          <Link className="navbar-brand m-0" to="/Dashboard">
           <h1>
             <strong>Health</strong>
             <strong className="vista">Vista</strong>
