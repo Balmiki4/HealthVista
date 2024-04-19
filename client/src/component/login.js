@@ -88,6 +88,11 @@ const LoginPage = () => {
       setData({ username: "", password: "" });
       displayAlert("danger", "Login failed. Invalid username or password");
     }
+        if (response.ok) {
+        // Reload the page
+          history.push("/Dashboard"); 
+          window.location.reload();
+        }
   };
   return (
     <div className="container ct">
