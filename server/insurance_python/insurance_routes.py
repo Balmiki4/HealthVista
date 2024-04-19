@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, request, jsonify
 import requests
 import os
+import random
 
 
 app = Flask(__name__)
@@ -59,9 +60,12 @@ def get_recommendations():
         # Make the API call to get the recommendations
         response = requests.post(f"https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey={API_KEY}", json=request_data)
         data = response.json()
-        print("API response:", data)
+        # print("API response:", data)
 
         if response.status_code != 200:
             return jsonify({"error": "Error fetching insurance recommendations"}), response.status_code
+        plan_ids = [plan['id'] for plan in data['plans']]
+        selected_plan_ids = random.sample(plan_ids, 8)
+        selected_plans = [plan for plan in data['plans'] if plan['id'] in selected_plan_ids]
 
-        return jsonify({"recommendations": data})
+        return jsonify({"recommendations": selected_plans})
