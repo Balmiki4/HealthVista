@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import dashboard from "./img/dashboard.jpg";
-import vista from "./img/chatbot.svg";
-import wellness from "./img/wellness.jpg";
 import "./homePage.css";
-import PopupForm from "./PopupFrom";
+import PopupForm from "../PopupFrom";
+import insurance from "../img/dashboard_img/insurance.jpg";
+import wellness from "../img/dashboard_img/wellness.jpg";
+import dashboard from "../img/dashboard.jpg";
+import vista from "../img/chatbot.svg";
+
 
 const homePage = () => {
   return (
@@ -43,21 +45,14 @@ const homePage = () => {
             <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
               <div class="feature-main">
                 <div class="feature-box">
-                  <img src={dashboard} class="img-responsive mb-3" alt=""></img>
+                  <img src={insurance} class="img-responsive mb-3" alt=""></img>
                   <div class="cover"></div>
                 </div>
                 <div class="feature-head">
-                  <h3 className="secondary-heading">Medical Dashboard</h3>
+                  <h3 className="secondary-heading">Insurance Recommender</h3>
                   <p>
-                    Manage Your Health: Effortlessly track your medical records
-                    in one secure location. Stay organized and proactive about
-                    your health.
+                  Discover Tailored Coverage: Our Insurance Recommender helps you Finds the Perfect Plan.
                   </p>
-                  <Link to="/">
-                    <button class="btn btn-outline-success feature-learn-now-btn ">
-                      Learn More
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -70,15 +65,8 @@ const homePage = () => {
                 <div class="feature-head">
                   <h3 className="secondary-heading">Vista</h3>
                   <p>
-                    Personalized AI Therapist: Get instant answers to your
-                    health queries and receive guidance whenever you need it
-                    with our interactive AI-powered therapist.
+                    Vista: Your Personalized Therapist Chatbot for Support and guidance whenever you need it.
                   </p>
-                  <Link to="/">
-                    <button class="btn btn-outline-success feature-learn-now-btn ">
-                      Learn More
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -89,17 +77,10 @@ const homePage = () => {
                   <div class="cover"></div>
                 </div>
                 <div class="feature-head">
-                  <h3 className="secondary-heading">Wellness Hub</h3>
+                  <h3 className="secondary-heading">Exercise Videos</h3>
                   <p>
-                    Your Path to Balance: Achieve wellness goals with guided
-                    meditation and exercise/yoga clips. Join us for a healthier,
-                    happier you!
+                    Your Path to Balance: Elevate Your Fitness: Access a Variety of Engaging Exercise Videos for Every Goal.
                   </p>
-                  <Link to="/wellnesspage">
-                    <button class="btn btn-outline-success feature-learn-now-btn ">
-                      Learn More
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
