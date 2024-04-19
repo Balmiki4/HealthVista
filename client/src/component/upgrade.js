@@ -10,7 +10,7 @@ function Upgrade() {
   };
 
   const handleCancel = () => {
-    // Handle cancel action, e.g., close the upgrade modal
+    history.goBack();
   };
 
   return (

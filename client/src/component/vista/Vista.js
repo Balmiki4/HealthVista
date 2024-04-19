@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "./Vista.css";
+import Upgrade from "../upgrade.js"; // Import the Upgrade component
 
 function Vista() {
   const [messages, setMessages] = useState([]);
@@ -11,41 +12,40 @@ function Vista() {
   const user_id = sessionStorage.getItem("user_id");
   const access_token = sessionStorage.getItem("access_token");
   const userPlan = sessionStorage.getItem("user_plan");
-  console.log("User Plan:", userPlan);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false); // State to control the visibility of the upgrade modal
 
   useEffect(() => {
     if (!sessionStorage.getItem("user_id")) {
       history.push("/login");
-    }
-    // else if (userPlan !== "pro") {
-    //   // Redirect to the upgrade plan page if the user doesn't have a pro plan
-    //   history.push("/upgradePlan");
-    // }
-    else {
-      axios
-        .get("http://localhost:5000/get_chat_history", {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-            "User-Id": user_id,
-          },
-        })
-        .then((response) => {
-          const messages = response.data.messages;
-          if (messages.length === 0) {
-            setMessages([
-              {
-                role: "psychologist",
-                content:
-                  "Hello, I'm Vista, your personal therapist. How can I assist you today?",
-              },
-            ]);
-          } else {
-            setMessages(messages);
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching chat history:", error);
-        });
+    } else {
+      if (userPlan !== "free") {
+        setShowUpgradeModal(true);
+      } else {
+        axios
+          .get("http://localhost:5000/get_chat_history", {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+              "User-Id": user_id,
+            },
+          })
+          .then((response) => {
+            const messages = response.data.messages;
+            if (messages.length === 0) {
+              setMessages([
+                {
+                  role: "psychologist",
+                  content:
+                    "Hello, I'm Vista, your personal therapist. How can I assist you today?",
+                },
+              ]);
+            } else {
+              setMessages(messages);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching chat history:", error);
+          });
+      }
     }
   }, [history, user_id, access_token, userPlan]);
 
@@ -54,7 +54,6 @@ function Vista() {
 
     if (!inputValue.trim()) return;
 
-    // Remove the input value immediately
     setInputValue("");
 
     const updatedMessages = [
@@ -112,7 +111,7 @@ function Vista() {
 
       if (response.data && response.data.response) {
         const newMessages = [
-          ...updatedMessages.slice(0, -1), // Remove the "..." message
+          ...updatedMessages.slice(0, -1),
           { role: "psychologist", content: response.data.response },
         ];
         setMessages(newMessages);
@@ -135,15 +134,18 @@ function Vista() {
     } catch (error) {
       console.error("Error:", error);
     }
+  };
 
-    setInputValue("");
+  const handleUpgradeCancel = () => {
+    setShowUpgradeModal(false);
   };
 
   return (
     <div className="body">
-      {userPlan === "Pro tier" ? (
+      {showUpgradeModal ? (
+        <Upgrade onCancel={handleUpgradeCancel} />
+      ) : (
         <section className="section Chat">
-          {/* Render the Vista component */}
           <div className="ChatHead">
             <li className="group">
               <div className="avatar"></div>
@@ -178,24 +180,6 @@ function Vista() {
             </button>
           </form>
         </section>
-      ) : (
-        // Render the upgrade modal
-        <div className="upgrade-modal">
-          <div className="upgrade-modal-content">
-            <h2>Upgrade to the Pro Plan</h2>
-
-            <p>
-              To access the chatbot feature, you need to upgrade to the Pro
-              plan.
-            </p>
-            <button
-              className="btn btn-success"
-              onClick={() => history.push("/PaymentPlan")}
-            >
-              Upgrade Now
-            </button>
-          </div>
-        </div>
       )}
     </div>
   );
