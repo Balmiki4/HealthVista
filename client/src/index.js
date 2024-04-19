@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
 import ReactDOM from "react-dom";
 import NavBar from "./component/NavBar";
-import homePage from "./component/homePage";
+import homePage from "./component/homepage/homePage";
 import login from "./component/login";
 import forgot from "./component/forgot";
 import signup from "./component/signup";
