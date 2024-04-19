@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link ,useHistory } from "react-router-dom";
 import dashboard from "../img/dashboard.jpg";
 import vista from "../img/chatbot.svg";
 import wellness from "../img/wellness.jpg";
+import React, { useEffect } from "react";
 
 const Dashboard = () => {
+  const user_id = sessionStorage.getItem('user_id');
+  const access_token = sessionStorage.getItem('access_token'); 
+  const history = useHistory(); 
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('user_id') ) {
+      history.push("/login");
+    } 
+  }, [history]);
+
   return (
     <div class="conainer feature">
     <div class="conainer">
