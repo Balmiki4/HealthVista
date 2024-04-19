@@ -15,7 +15,7 @@ const PlanDetails = () => {
       <div className="container-plan-details">
         {planData.map((plan, index) => (
           <div key={index} className="plan-details-card">
-            <h3 className="secondary-heading">{plan.name}</h3>
+            <h4 className="secondary-heading">{plan.name}</h4>
             <p className="plan-price">Premium: ${plan.premium.toFixed(2)}</p>
             <p>Medical Deductible: ${plan.deductibles[0].amount}</p>
             {plan.deductibles.length > 1 && (
