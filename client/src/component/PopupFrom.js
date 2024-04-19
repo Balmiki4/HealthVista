@@ -18,7 +18,7 @@ function PopupForm() {
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <h2 className="modal-title text-center">Contact Us</h2>
+            <h2 className="secondary-heading mt-3">Contact Us</h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body >
