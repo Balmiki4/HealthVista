@@ -86,7 +86,7 @@ const LoginPage = () => {
     }
         if (response.ok) {
         // Reload the page
-          history.push("/vista");  // temporary redirect to /vista
+          history.push("/Dashboard"); 
           window.location.reload();
         }
   };
