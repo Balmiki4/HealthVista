@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import dashboard from "./img/dashboard.jpg";
-import vista from "./img/chatbot.svg";
-import wellness from "./img/wellness.jpg";
 import "./homePage.css";
-import PopupForm from "./PopupFrom";
+import PopupForm from "../PopupFrom";
+import insurance from "../img/dashboard_img/insurance.jpg";
+import wellness from "../img/dashboard_img/wellness.jpg";
+import dashboard from "../img/dashboard.jpg";
+import vista from "../img/chatbot.svg";
+
 
 const homePage = () => {
   return (
@@ -43,21 +45,14 @@ const homePage = () => {
             <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
               <div class="feature-main">
                 <div class="feature-box">
-                  <img src={dashboard} class="img-responsive mb-3" alt=""></img>
+                  <img src={insurance} class="img-responsive mb-3" alt=""></img>
                   <div class="cover"></div>
                 </div>
                 <div class="feature-head">
-                  <h3 className="secondary-heading">Medical Dashboard</h3>
+                  <h3 className="secondary-heading">Insurance Recommender</h3>
                   <p>
-                    Manage Your Health: Effortlessly track your medical records
-                    in one secure location. Stay organized and proactive about
-                    your health.
+                  Discover Tailored Coverage: Our Insurance Recommender helps you Finds the Perfect Plan.
                   </p>
-                  <Link to="/">
-                    <button class="btn btn-outline-success feature-learn-now-btn ">
-                      Learn More
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -70,15 +65,8 @@ const homePage = () => {
                 <div class="feature-head">
                   <h3 className="secondary-heading">Vista</h3>
                   <p>
-                    Personalized AI Therapist: Get instant answers to your
-                    health queries and receive guidance whenever you need it
-                    with our interactive AI-powered therapist.
+                    Vista: Your Personalized Therapist Chatbot for Support and guidance whenever you need it.
                   </p>
-                  <Link to="/">
-                    <button class="btn btn-outline-success feature-learn-now-btn ">
-                      Learn More
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -89,17 +77,10 @@ const homePage = () => {
                   <div class="cover"></div>
                 </div>
                 <div class="feature-head">
-                  <h3 className="secondary-heading">Wellness Hub</h3>
+                  <h3 className="secondary-heading">Exercise Videos</h3>
                   <p>
-                    Your Path to Balance: Achieve wellness goals with guided
-                    meditation and exercise/yoga clips. Join us for a healthier,
-                    happier you!
+                    Your Path to Balance: Elevate Your Fitness: Access a Variety of Engaging Exercise Videos for Every Goal.
                   </p>
-                  <Link to="/wellnesspage">
-                    <button class="btn btn-outline-success feature-learn-now-btn ">
-                      Learn More
-                    </button>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -126,12 +107,12 @@ const homePage = () => {
                   </header>
                   <div class="card__body">
                     <ul class="list list--tick">
-                      <li class="list__item">Medical record tracking</li>
-                      <li class="list__item">Appointment reminders</li>
+                      <li class="list__item">Medication Tracker</li>
+                      <li class="list__item">Hospital Tracker</li>
                       <li class="list__item">
-                        Limited access to wellness videos
+                      Exercise Videos
                       </li>
-                      <li class="list__item">Basic chatbot support</li>
+                      <li class="list__item">Health Articles</li>
                     </ul>
                   </div>
                 </div>
@@ -141,55 +122,33 @@ const homePage = () => {
                   <div class="card card--primary">
                     <header class="card__header">
                       <h3 class="plan__name">Pro Tier</h3>
-                      <span class="plan__price">$15</span>
+                      <span class="plan__price">$2.99</span>
                       <span class="plan__billing-cycle">/month</span>
 
                       <span class="plan__description">Premium</span>
                     </header>
                     <div class="card__body">
                       <ul class="list list--tick">
-                        <li class="list__item">Unlimited medical records</li>
+                        <li class="list__item">Vista (AI Therapist)</li>
                         <li class="list__item">
-                          Healthcare provider integration
+                        Nutrition Tracker
                         </li>
                         <li class="list__item">
-                          Personalized wellness recommendations
+                          Insurance Recommender
                         </li>
-                        <li class="list__item">Virutal Therapist</li>
+                        <li class="list__item">24/7 Customer Service</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
-                <div class="plan">
-                  <div class="card card--secondary">
-                    <header class="card__header">
-                      <h3 class="plan__name">Basic Teir</h3>
-                      <span class="plan__price">$5</span>
-                      <span class="plan__billing-cycle">/month</span>
-
-                      <span class="plan__description">Essential</span>
-                    </header>
-                    <div class="card__body">
-                      <ul class="list list--tick">
-                        <li class="list__item">Unlimited medical records</li>
-                        <li class="list__item">
-                          Customizable medication reminders
-                        </li>
-                        <li class="list__item">
-                          Full access to wellness videos
-                        </li>
-                        <li class="list__item">Expanded tracker options</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
 
       <div className="faq">
         <div class="conainer">
