@@ -17,6 +17,7 @@ const NavBar = () => {
     // Redirect to the homepage page
     history.push("/");
     // Reload the page
+    window.location.reload();
   }
 
 
