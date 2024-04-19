@@ -113,7 +113,7 @@ const MedicationTracker = () => {
           Save My Medicine
         </button>
 
-        <Link to="/medicationDetails">View My Medications</Link>
+        <Link to="/medicationDetails" className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">View My Medications</Link>
 
         <h2>Set Medication Reminder</h2>
 

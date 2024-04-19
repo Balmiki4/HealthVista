@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './medicationDetails.css';
+import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'; 
 
 const MedicationDetails = () => {
   const [medications, setMedications] = useState([]);
   const [userName, setUserName] = useState('');
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -64,13 +66,14 @@ const MedicationDetails = () => {
       ) : error ? (
         <div>Error: {error}</div>
       ): medications.length === 0 ? (
-        <div>
+        <div className='no-medicine'>
           <p>You don't have any medications to display.</p>
           <p>
             Click <Link to="/medication">here</Link> to add a new medication.
           </p>
         </div> 
       ): (
+        <div>
         <table className="medication-table">
           <thead>
             <tr>
@@ -94,7 +97,16 @@ const MedicationDetails = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>  
+        <div className="button-back">
+        <Link to="/medication">
+              <button>Add More Medicine</button>
+        </Link>
+        <Link to="/dashboard">
+              <button>Go To Dashboard</button>
+        </Link>
+      </div>
+      </div>
       )}
     </div>
   );
