@@ -9,7 +9,7 @@ function WellnessPage() {
  useEffect(() => {
    const fetchVideos = async () => {
      try {
-      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=APIKEY&part=snippet&maxResults=10&cacheBust=${new Date().getTime()}`;
+      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=APIKEY&part=snippet&maxResults=15&cacheBust=${new Date().getTime()}`;
        switch (filter) {
          case 'Meditation':
            apiUrl += '&q=meditation';
@@ -55,8 +55,8 @@ function WellnessPage() {
 
  return (
    <div className="WellnessPage">
-     <h1>Wellness</h1>
-     <div className="filter-container">
+     <h1 className="page-title">🌿 WellnessVideos 🌿</h1>
+     <div className="filter-container mb-10">
        <label htmlFor="filter">Filter by:</label>
        <select id="filter" onChange={handleFilterChange} value={filter}>
          <option value="All">All</option>

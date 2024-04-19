@@ -1,0 +1,48 @@
+.container-plan-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  }
+  
+  .plan-body{
+    margin: 3em 5em 0;
+  }
+    
+    .plan-details-card {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      width: calc(50% - 20px);
+      max-width: 400px;
+      margin-bottom: 3em;
+    }
+  
+  .secondary-heading {
+    margin-bottom: 10px;
+  }
+  
+  .plan-price {
+    font-weight: bold;
+  }
+  
+  .quality-ratings-heading {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .quality-ratings-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .url-links a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .url-links a:hover {
+    text-decoration: underline;
+  }
+  

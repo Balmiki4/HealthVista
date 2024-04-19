@@ -8,8 +8,8 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer bg-dark text-white py-4">
-      <div className="container">
         <div className="row align-items-center">
+        <div className="row mt-2">
           <div className="col-md-6 mb-3 mb-md-0">
             <p className="mb-0 footer__copyright">HealthVISTA &copy; 2024</p>
           </div>
@@ -42,18 +42,17 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="row mt-3">
-          <div className="col-12 d-flex justify-content-center legal-info">
-            <Link to="/Privacy" className="text-white mr-3">
+
+          <div className="col-12 d-flex justify-content-center legal-info mb-100">
+            <Link to="/Privacy" className="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Privacy Policy
             </Link>
             <div className="footer-separator"></div>
-            <Link to="/TermsOfService" className="text-white ml-3">
+            <Link to="/TermsOfService" className="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Terms of Service
             </Link>
           </div>
         </div>
-      </div>
     </footer>
   );
 };
