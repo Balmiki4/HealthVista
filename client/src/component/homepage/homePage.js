@@ -107,12 +107,12 @@ const homePage = () => {
                   </header>
                   <div class="card__body">
                     <ul class="list list--tick">
-                      <li class="list__item">Medical record tracking</li>
-                      <li class="list__item">Appointment reminders</li>
+                      <li class="list__item">Medication Tracker</li>
+                      <li class="list__item">Hospital Tracker</li>
                       <li class="list__item">
-                        Limited access to wellness videos
+                      Exercise Videos
                       </li>
-                      <li class="list__item">Basic chatbot support</li>
+                      <li class="list__item">Health Articles</li>
                     </ul>
                   </div>
                 </div>
@@ -122,55 +122,33 @@ const homePage = () => {
                   <div class="card card--primary">
                     <header class="card__header">
                       <h3 class="plan__name">Pro Tier</h3>
-                      <span class="plan__price">$15</span>
+                      <span class="plan__price">$2.99</span>
                       <span class="plan__billing-cycle">/month</span>
 
                       <span class="plan__description">Premium</span>
                     </header>
                     <div class="card__body">
                       <ul class="list list--tick">
-                        <li class="list__item">Unlimited medical records</li>
+                        <li class="list__item">Vista (AI Therapist)</li>
                         <li class="list__item">
-                          Healthcare provider integration
+                        Nutrition Tracker
                         </li>
                         <li class="list__item">
-                          Personalized wellness recommendations
+                          Insurance Recommender
                         </li>
-                        <li class="list__item">Virutal Therapist</li>
+                        <li class="list__item">24/7 Customer Service</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
-                <div class="plan">
-                  <div class="card card--secondary">
-                    <header class="card__header">
-                      <h3 class="plan__name">Basic Teir</h3>
-                      <span class="plan__price">$5</span>
-                      <span class="plan__billing-cycle">/month</span>
-
-                      <span class="plan__description">Essential</span>
-                    </header>
-                    <div class="card__body">
-                      <ul class="list list--tick">
-                        <li class="list__item">Unlimited medical records</li>
-                        <li class="list__item">
-                          Customizable medication reminders
-                        </li>
-                        <li class="list__item">
-                          Full access to wellness videos
-                        </li>
-                        <li class="list__item">Expanded tracker options</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
 
       <div className="faq">
         <div class="conainer">
