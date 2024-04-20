@@ -89,6 +89,9 @@ const NavBar = () => {
           <Link to="/login">
             <button class="btn btn-dark">Sign In</button>
           </Link>
+          <Link to="/profileSettings">
+            <button class="btn btn-dark">Profile</button>
+          </Link>
         </div>
       </div>
     </nav>

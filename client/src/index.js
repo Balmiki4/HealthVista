@@ -20,7 +20,9 @@ import Privacy from "./component/Privacy";
 import TermsOfService from "./component/TermsOfService";
 import medic from "./component/medication";
 import Nutrition from "./component/Nutrition/Nutrition";
+import ProfileSettings from "./component/ProfileSettings";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 const App = () => {
   return (
@@ -44,6 +46,7 @@ const App = () => {
           <Route path="/medication" exact component={medic}></Route>
           <Route path="/article" exact component={article}></Route>
           <Route path="/Privacy" exact component={Privacy}></Route>
+          <Route path="/ProfileSettings" exact component={ProfileSettings}></Route>
           <Route
             path="/TermsOfService"
             exact
