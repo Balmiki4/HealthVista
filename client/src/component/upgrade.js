@@ -23,11 +23,12 @@ function Upgrade() {
     <div className="popup-overlay">
       <div className="upgrade-modal">
         <div className="upgrade-modal-content">
-          <h2>Advanced features</h2>
-          <button className="upgrade-btn" onClick={handleUpgrade}>
-            Upgrade to get these features
-            <span className="star-icon">⭐</span>
-          </button>
+          <h3>Advanced Features</h3>
+          <div className="underline"></div>
+          <div className="upgrade-btn">
+            <span className="star-icon">⭐ </span>
+            Upgrade To Get These Features
+          </div>
           <div className="feature-list">
             <div className="feature">
               <span className="featureIcon">
