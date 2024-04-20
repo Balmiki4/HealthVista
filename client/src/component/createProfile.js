@@ -93,7 +93,7 @@ const ProfilePage = () => {
                 value={formData.firstName}
                 onChange={handleChange}
             />
-            {errors.firstName && <div className='error'>{errors.firstName}</div>}
+            {errors.firstName && <div className='error-profile'>{errors.firstName}</div>}
             </div>
             <div className="form-group">
             <label htmlFor="lastName" className="form-label">Last Name:</label>
@@ -105,7 +105,7 @@ const ProfilePage = () => {
                 value={formData.lastName}
                 onChange={handleChange}
             />
-            {errors.lastName && <div className='error'>{errors.lastName}</div>}
+            {errors.lastName && <div className='error-profile'>{errors.lastName}</div>}
             </div>
             <div className="form-group">
             <label htmlFor="gender" className="form-label">Gender:</label>
@@ -115,7 +115,7 @@ const ProfilePage = () => {
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            {errors.gender && <div className='error'>{errors.gender}</div>}
+            {errors.gender && <div className='error-profile'>{errors.gender}</div>}
             </div>
             <div className="form-group">
             <label htmlFor="dob" className="form-label">Date of Birth:</label>
@@ -126,7 +126,7 @@ const ProfilePage = () => {
                 value={formData.dob}
                 onChange={handleChange}
             />
-            {errors.dob && <div className='error'>{errors.dob}</div>}
+            {errors.dob && <div className='error-profile'>{errors.dob}</div>}
             </div>
             <div className="form-group">
             <label htmlFor="phoneNumber" className="form-label">Phone Number:</label>
@@ -138,7 +138,7 @@ const ProfilePage = () => {
                 value={formData.phoneNumber}
                 onChange={handleChange}
             />
-            {errors.phoneNumber && <div className='error'>{errors.phoneNumber}</div>}
+            {errors.phoneNumber && <div className='error-profile'>{errors.phoneNumber}</div>}
             </div>
             <div className="form-group">
             <label htmlFor="zipCode" className="form-label">Zip Code:</label>
@@ -150,7 +150,7 @@ const ProfilePage = () => {
                 value={formData.zipCode}
                 onChange={handleChange}
             />
-            {errors.zipCode && <div className='error'>{errors.zipCode}</div>}
+            {errors.zipCode && <div className='error-profile'>{errors.zipCode}</div>}
             </div>
             <div className="profile-btn">
             <button type="submit" className="btn btn-outline-light" onClick={handleSubmit}>Save Changes</button>
