@@ -8,7 +8,7 @@ import login from "./component/login";
 import forgot from "./component/forgot";
 import signup from "./component/signup";
 import wellnesspage from "./component/wellnesspage";
-import PaymentPlan from "./component/PaymentPlan";
+import PaymentPlan from "./component/payment Plan/PaymentPlan";
 import SuccessPage from "./component/SuccessPage";
 import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
