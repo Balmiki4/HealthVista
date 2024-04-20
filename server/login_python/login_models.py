@@ -28,3 +28,10 @@ class User:
             {'username': username},
             {'$set': {'password': hashed_password}}
         )
+    # Fetch user's plan based on username
+    def get_plan_by_username(self, username):
+        user = users_collection.find_one({'username': username}, {'plan': 1})
+        if user:
+            return user.get('plan', 'basic')  # Default plan is 'basic' if not found
+        else:
+            return 'basic'  # Return default plan if user not found
