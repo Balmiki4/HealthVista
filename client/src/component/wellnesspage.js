@@ -9,7 +9,8 @@ function WellnessPage() {
  useEffect(() => {
    const fetchVideos = async () => {
      try {
-      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=APIKEY&part=snippet&maxResults=15&cacheBust=${new Date().getTime()}`;
+      const api = process.env.REACT_APP_YOUTUBE_API_KEY;
+      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${api}&part=snippet&maxResults=15&cacheBust=${new Date().getTime()}`;
        switch (filter) {
          case 'Meditation':
            apiUrl += '&q=meditation';
