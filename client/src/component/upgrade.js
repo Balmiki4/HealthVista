@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import UpgradePlan from "./payment Plan/UpgradePlan"; // Import UpgradePlan component
 import {
   FaBrain,
   FaUtensils,
@@ -10,10 +11,6 @@ import "./upgrade.css";
 
 function Upgrade() {
   const history = useHistory();
-
-  const handleUpgrade = () => {
-    history.push("/PaymentPlan");
-  };
 
   const handleCancel = () => {
     history.goBack();
@@ -27,7 +24,7 @@ function Upgrade() {
           <div className="underline"></div>
           <div className="upgrade-btn">
             <span className="star-icon">⭐ </span>
-            Upgrade To Get These Features
+            Upgrade To Premium To Get These Features
           </div>
           <div className="feature-list">
             <div className="feature">
@@ -57,12 +54,10 @@ function Upgrade() {
           </div>
 
           <div className="bottom-buttons">
-            <button className="cancel-btn" onClick={handleCancel}>
+            <button className="btn btn-secondary p-2" onClick={handleCancel}>
               Cancel
             </button>
-            <button className="upgrade-now-btn" onClick={handleUpgrade}>
-              Upgrade now
-            </button>
+            <UpgradePlan />
           </div>
         </div>
       </div>

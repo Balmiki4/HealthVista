@@ -18,7 +18,7 @@ function Vista() {
     if (!sessionStorage.getItem("user_id")) {
       history.push("/login");
     } else {
-      if (userPlan !== "Pro tier") {
+      if (userPlan !== "free") {
         setShowUpgradeModal(true);
       } else {
         axios

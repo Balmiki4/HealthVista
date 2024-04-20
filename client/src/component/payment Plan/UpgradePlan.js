@@ -14,7 +14,9 @@ function UpgradePlan() {
 
   return (
     <div>
-      <button className=' btn btn-success' onClick={handleUpgrade}>Upgrade to Pro</button>
+      <button className=" btn btn-success p-2" onClick={handleUpgrade}>
+        Upgrade to Pro
+      </button>
     </div>
   );
 }

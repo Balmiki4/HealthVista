@@ -64,7 +64,7 @@
 }
 
 .upgrade-btn {
-  background-color: #168c3d;
+  background-color: var(--color-secondary);
   color: white;
   margin-bottom: 20px;
   border-radius: 5px;
