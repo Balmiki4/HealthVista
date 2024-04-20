@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-
 const stripePromise = loadStripe(
   "pk_test_51OoPbHB45mq7hp813JIWoPpJikuO9iKzVOB9mpOGHdQqXneTDqBfQkoiXUvXfUUamBMLpPpbo5MgKeOGUfBwzFmE00ktXQjloo"
 );
@@ -17,7 +16,7 @@ function PaymentPlan() {
 
   useEffect(() => {
     if (customerId) {
-      localStorage.setItem('customerId', customerId);
+      localStorage.setItem("customerId", customerId);
     }
   }, [customerId]);
 
@@ -49,10 +48,9 @@ function PaymentPlan() {
       if (error) {
         console.error("Error:", error);
         // Display error message to the user here
+      } else {
+        history.push("/success");
       }
-      else{
-        history.push('/success');
-      } 
     } catch (error) {
       console.error("Error in payment process:", error);
       // Display error message to the user here

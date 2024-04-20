@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 from functools import wraps
 from datetime import datetime, timedelta
-from apscheduler.schedulers.background import BackgroundScheduler
+
 
 app = Flask(__name__)
 
