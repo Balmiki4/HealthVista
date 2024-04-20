@@ -23,6 +23,7 @@ import Privacy from "./component/Privacy";
 import TermsOfService from "./component/TermsOfService";
 import Dashboard from "./component/dashboard/Dashboard";
 import medication from "./component/medicationDetails"
+import UpgradePlan from "./component/payment Plan/UpgradePlan";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
@@ -32,6 +33,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/UpgradePlan" exact component={UpgradePlan}></Route>
           <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/Nutrition" exact component={Nutrition}></Route>
           <Route path="/Vista" exact component={Vista}></Route>
