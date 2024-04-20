@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 
 const stripePromise = loadStripe(
-  "pk_test_51OoPbHB45mq7hp813JIWoPpJikuO9iKzVOB9mpOGHdQqXneTDqBfQkoiXUvXfUUamBMLpPpbo5MgKeOGUfBwzFmE00ktXQjloo"
+  "pk_test_51P7RZFCUIRJhmuXG0JS7L77N6TEJcxZjzAkZeGnswlardQNfrbftOkI99lNy9mKNrC8HunsKLTKYcuxb2ppsak2D00AxDtz6PB"
 );
 
 function PaymentPlan() {
