@@ -30,6 +30,7 @@ def login():
             # Store user-related data in the session
             session['user_id'] = str(user['_id'])
             session['username'] = user['username']
+            session['user_plan'] = user['plan']
 
             # Set session expiration time
             if remember_me:
@@ -44,6 +45,6 @@ def login():
             # Store the access token in the session
             session['access_token'] = access_token
 
-            return jsonify({'message': 'Login successful', 'access_token': access_token , 'user_id' : session['user_id'] , 'username' : session['username']}), 200
+            return jsonify({'message': 'Login successful', 'access_token': access_token , 'user_id' : session['user_id'] , 'username' : session['username'], 'user_plan' : session['user_plan']}), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
