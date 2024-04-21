@@ -43,7 +43,7 @@
   margin-bottom: 20px;
 }
 
-.feature {
+.feature-list .feature {
   margin: 0 10px;
   padding-bottom: 10px;
   position: relative;
@@ -64,7 +64,7 @@
 }
 
 .upgrade-btn {
-  background-color: #168c3d;
+  background-color: var(--color-secondary);
   color: white;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -75,9 +75,6 @@
 .upgrade-btn.disabled {
   pointer-events: none;
 }
-/* .upgrade-btn:hover {
-  background-color: #13592d;
-} */
 
 .star-icon {
   margin-left: 5px;
@@ -95,7 +92,7 @@ button {
   cursor: pointer;
 }
 
-.cancel-btn {
+/* .cancel-btn {
   background-color: lightgray;
   color: rgb(0, 0, 0);
   border: none;
@@ -103,21 +100,21 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
-}
+} */
 
-.cancel-btn:hover {
+/* .cancel-btn:hover {
   background-color: #b3b3b3;
-}
+} */
 
-.upgrade-now-btn {
+/* .upgrade-now-btn {
   background-color: #168c3d;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
-.upgrade-now-btn:hover {
+/* .upgrade-now-btn:hover {
   background-color: #13592d;
-}
+} */

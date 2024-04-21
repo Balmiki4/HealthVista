@@ -321,16 +321,6 @@ module.exports = function (webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
       },
-
-      // fallback: {
-      //   path: require.resolve("path-browserify"),
-      //   os: require.resolve("os-browserify/browser"),
-      //   crypto: require.resolve("crypto-browserify"),
-      // },
-      fallback: {
-        path: require.resolve("path-browserify"),
-        os: require.resolve("os-browserify/browser"),
-      },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
         // This often causes confusion because we only process files within src/ with babel.
@@ -600,9 +590,6 @@ module.exports = function (webpackEnv) {
             : undefined
         )
       ),
-
-      // new Dotenv(), //dotenv-webpack plugin
-
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

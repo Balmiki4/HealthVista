@@ -8,7 +8,7 @@ function ArticlesPage() {
     const fetchArticles = async () => {
       try {
         const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=${process.env.REACT_APP_ARTICLEAPI_KEY}`
+          `https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=${process.env.REACT_APP_ARTICLE_API_KEY}`
         );
         const data = await response.json();
         // Filter out articles without valid titles or images
