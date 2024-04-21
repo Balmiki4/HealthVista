@@ -100,12 +100,6 @@ function Vista() {
     setInputValue("");
   };
 
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
   return (
     //UI INSPIRED FROM https://codepen.io/MuzammalAhmed/pen/qBvdwVq
 

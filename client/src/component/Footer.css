@@ -1,11 +1,15 @@
 .footer {
   background-color: #333;
   font-size: 0.9rem;
+  width: 100%;
+  overflow: hidden;
+  height: 90px;
 }
 
 .footer__copyright {
   margin-bottom: 0;
   margin-left: 30px;
+  font-size: 1rem;
 }
 
 .social-icons a {
@@ -27,18 +31,9 @@
 
 .legal-info {
   align-items: center;
+  margin-top: -10px;
 }
 
-.legal-info a {
-  color: #999;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.legal-info a:hover {
-  transform: scale(1.2);
-  color: #5b2c2c;
-}
 
 .footer-separator {
   width: 1px;

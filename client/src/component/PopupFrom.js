@@ -18,12 +18,12 @@ function PopupForm() {
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <h2 className="modal-title text-center">Contact Us</h2>
+            <h2 className="secondary-heading mt-3">Contact Us</h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body >
           {
-            <form action="https://formspree.io/f/(FORMSPREEHASH)" method="POST">
+            <form action={`https://formspree.io/f/${process.env.REACT_APP_FORMSPREE_HASH}`}method="POST">
               <div class="mb-3">
                 <label for="name">Name:</label>
                 <input
