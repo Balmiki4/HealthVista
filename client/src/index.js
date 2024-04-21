@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
 import ReactDOM from "react-dom";
 import NavBar from "./component/NavBar";
-import homePage from "./component/homePage";
+import homePage from "./component/homepage/homePage";
 import login from "./component/login";
 import forgot from "./component/forgot";
 import signup from "./component/signup";
@@ -19,6 +19,10 @@ import article from "./component/article"
 import medic from "./component/medication"
 import Nutrition from "./component/Nutrition/Nutrition"
 import PlanDetails from "./component/PlanDetails";
+import Privacy from "./component/Privacy";
+import TermsOfService from "./component/TermsOfService";
+import Dashboard from "./component/dashboard/Dashboard";
+import medication from "./component/medicationDetails"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
@@ -28,6 +32,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/Nutrition" exact component={Nutrition}></Route>
           <Route path="/Vista" exact component={Vista}></Route>
           <Route path="/SuccessPage" exact component={SuccessPage}></Route>
@@ -40,9 +45,16 @@ const App = () => {
           <Route path="/insurancepage" exact component={insurancepage}></Route>
           <Route path="/createProfile" exact component={ProfilePage}></Route>
           <Route path="/map" exact component={Map}></Route>
-          <Route path="/medication" exact component = {medic}></Route>
+          <Route path="/medication" exact component={medic}></Route>
+          <Route path="/medicationDetails" exact component = {medication}></Route>
           <Route path="/article" exact component={article}></Route>
           <Route path="/PlanDetails" exact component={PlanDetails}></Route>
+          <Route path="/Privacy" exact component={Privacy}></Route>
+          <Route
+            path="/TermsOfService"
+            exact
+            component={TermsOfService}
+          ></Route>
         </Switch>
         <Footer />
       </div>

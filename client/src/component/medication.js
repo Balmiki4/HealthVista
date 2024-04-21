@@ -1,56 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import { gapi } from 'gapi-script';
+import { useHistory } from "react-router-dom";
 import "./medication.css";
 
 const MedicationTracker = () => {
   const location = useLocation();
   const [events, setEvents] = useState([]);
-  const [newEvent, setNewEvent] = useState({ summary: '', start: '', end: '' });
+  const history = useHistory();
+  const [newEvent, setNewEvent] = useState({ summary: '', date: '', time: '' });
   const apiKey = '';
   const clientId = '';
   const calendarId = '';
   const scope = 'https://www.googleapis.com/auth/calendar';
-
-//   const initClient = async () => {
-//     await gapi.client.init({ apiKey, clientId, scope });
-//     const isSignedIn = await gapi.auth2.getAuthInstance().isSignedIn.get();
-//     if (isSignedIn) {
-//       loadEvents();
-//     }
-//   };
-
-//   const loadEvents = async () => {
-//     const response = await gapi.client.calendar.events.list({ calendarId });
-//     setEvents(response.result.items);
-//   };
-
-  const handleAddEvent = async () => {
-    // const event = {
-    //   summary: newEvent.summary,
-    //   start: { dateTime: newEvent.start },
-    //   end: { dateTime: newEvent.end },
-    // };
-    // await gapi.client.calendar.events.insert({ calendarId, resource: event });
-    // setNewEvent({ summary: '', start: '', end: '' });
-    // loadEvents();
-  };
+  const access_token = sessionStorage.getItem('access_token');
+  const user_id = sessionStorage.getItem('user_id')
 
   useEffect(() => {
-    // gapi.load('client:auth2', initClient);
-  }, []);
-
+    if (!sessionStorage.getItem('user_id') ) {
+      history.push("/login");
+    }
+  }, [history]);
 
   const [medicine, setMedicine] = useState({ name: '', dosage: '', frequency: '', instructions: '' });
   const handleChange = (e) => {
     const {id, value} = e.target;
     setMedicine({...medicine, [id]: value});
   };
-
   const [errors,setErrors] = useState({})
   const handleAddMedicine = async (e) => {
-    const customerId = localStorage.getItem('customerId');
+    console.log(user_id)
     const medicationData = {
       name: medicine.name,
       dosage: medicine.dosage,
@@ -58,13 +39,19 @@ const MedicationTracker = () => {
       instructions: medicine.instructions
     };
     e.preventDefault();
+    const errors = {};
+    if (!medicine.name) {
+      errors.name = 'Medicine name is required';
+    }
     if(Object.keys(errors).length === 0){
       const response = await fetch('http://localhost:5000/medication', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${access_token}`,
+                    'Userid': user_id,
                 },
-                body: JSON.stringify({medications: medicationData, customerId }),
+                body: JSON.stringify({medications: medicationData }),
             });
     if(response.ok){
       const responseData = await response.json();
@@ -94,6 +81,7 @@ const MedicationTracker = () => {
           onChange={handleChange}
           //onChange={(e) => setNewEvent({...newEvent, summary: e.target.value })}
         />
+        {errors.name && <div className="error-medic">{errors.name}</div>}
 
         <label >Enter Dosage</label>
         <input
@@ -122,22 +110,26 @@ const MedicationTracker = () => {
           onChange={handleChange}
         />
         <button onClick={handleAddMedicine}>
-          Save Medicine Details To Database
+          Save My Medicine
         </button>
 
-        <label >Enter Start Date & Time</label>
+        <Link to="/medicationDetails" className="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">View My Medications</Link>
+
+        <h2>Set Medication Reminder</h2>
+
+        <label >Enter Date</label>
         <input
-          type="datetime-local"
-          value={newEvent.start}
-          onChange={(e) => setNewEvent({...newEvent, start: e.target.value })}
+          type="date"
+          value={newEvent.date}
+          onChange={(e) => setNewEvent({...newEvent, date: e.target.value })}
         />
-        <label >Enter End Date & Time</label>
+        <label >Enter Time</label>
         <input
-          type="datetime-local"
-          value={newEvent.end}
-          onChange={(e) => setNewEvent({...newEvent, end: e.target.value })}
+          type="time"
+          value={newEvent.time}
+          onChange={(e) => setNewEvent({...newEvent, time: e.target.value })}
         />
-        <button onClick={handleAddEvent}>
+        <button>
           Add Medication Reminder
         </button>
       </div>
