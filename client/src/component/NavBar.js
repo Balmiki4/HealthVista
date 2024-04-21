@@ -124,7 +124,7 @@ const NavBar = () => {
               </a>
               <ul className="dropdown-menu bg-dark" aria-labelledby="trackersDropdown" style={{marginLeft: -37 , paddingRight:0}}>
                 <li>
-                  <a className="dropdown-item">
+                  <a className="dropdown-item" href="/ProfileSettings">
                     Profile
                   </a>
                 </li>
