@@ -164,7 +164,7 @@ const MedicationTracker = () => {
           id="frequency"
           type="number"
           min={0}
-          placeholder="Frequency"
+          placeholder="how many times a day"
           value={medicine.frequency}
           onChange={handleChange}
         />
@@ -285,46 +285,42 @@ const MedicationTracker = () => {
 
       <div className="calendar-container">
       <Calendar
-  onChange={onChange}
-  value={date}
-  tileContent={({ date, view }) => {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    const weekDay = date.toLocaleDateString('en-US', { weekday: 'long' });
+    onChange={onChange}
+    value={date}
+    tileContent={({ date, view }) => {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const day = date.getDate();
+      const weekDay = date.toLocaleDateString('en-US', { weekday: 'long' });
 
-    return view === 'month' && (
-      <div>
-        {events
-          .filter((event) => {
-            // Convert event date to local timezone
-            const eventDate = new Date(event.date);
-            const eventLocalDate = new Date(
-              eventDate.getUTCFullYear(),
-              eventDate.getUTCMonth(),
-              eventDate.getUTCDate()
-            );
+      return view === 'month' && (
+        <div>
+          {events
+            .filter((event) => {
+              // Convert event date to local timezone
+              const eventDate = new Date(event.date);
+              const eventLocalDate = new Date(
+                eventDate.getUTCFullYear(),
+                eventDate.getUTCMonth(),
+                eventDate.getUTCDate()
+              );
 
-            // Check if event occurs on the selected day or if it repeats weekly
-            const repeatsWeekly = event.repeat || (event.days && event.days.length > 0);
-            const occursOnSelectedDay = repeatsWeekly ? true : (eventLocalDate.getFullYear() === year && eventLocalDate.getMonth() === month && eventLocalDate.getDate() === day);
+              // Check if event occurs on the selected day or if it repeats weekly
+              const repeatsWeekly = event.repeat || (event.days && event.days.length > 0);
+              const occursOnSelectedDay = repeatsWeekly ? true : (eventLocalDate.getFullYear() === year && eventLocalDate.getMonth() === month && eventLocalDate.getDate() === day);
 
-            return occursOnSelectedDay;
-          })
-          .map((event, index) => (
-            <div key={index} className="reminder-info">
-              <div className="reminder-title">{event.time}: {event.summary}</div>
-            </div>
-          ))}
-      </div>
-    );
-  }}
-  className="custom-calendar"
-/>
-
-
-
-
+              return occursOnSelectedDay;
+            })
+            .map((event, index) => (
+              <div key={index} className="reminder-info">
+                <div className="reminder-title">{event.time}: {event.summary}</div>
+              </div>
+            ))}
+        </div>
+      );
+    }}
+    className="custom-calendar"
+  />
   </div>
 </div>
   );
