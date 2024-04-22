@@ -38,6 +38,19 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
+@medication_bp.route('/medicine', methods=['GET'])
+@cross_origin(origins=['http://localhost:3000'], supports_credentials=True)
+@requires_auth
+def get_medications():
+    userid = ObjectId(request.headers.get('Userid'))
+    user = users_collection.find_one({'_id': userid})
+    email = user.get('email',None)
+    if user is None:
+        return jsonify({'error': f'User not found for user_id: {userid}'}), 404
+    if 'medicine record' not in user or not isinstance(user['medicine record'], list):
+        return jsonify({'medicineData': [], 'email':email}), 200
+    return jsonify({'medicineData': user['medicine record'], 'email':email}), 200
+
 @medication_bp.route('/medication', methods=['OPTIONS', 'POST'])
 @cross_origin(origins=['http://localhost:3000'], supports_credentials=True)
 @requires_auth
@@ -51,21 +64,7 @@ def create_medication():
         user = users_collection.find_one({'_id': userid})
         if user is None:
             return jsonify({'error': f'User not found for user_id: {userid}'}), 404
-
-
-        # Create new profile data and store it in the user's record
-        # medication_data = {
-        #     'name': name,
-        #     'dosage': dosage,
-        #     'frequency': frequency,
-        #     'instructions': instructions,
-        # }
-        # users_collection.update_one(
-        #     {'customer_id': customer_id},
-        #     {'$set': {'medicine record': medication_data}}
-        # )
-
-        # If 'medicine record' field doesn't exist or isn't an array, initialize it as an array
+        
         if 'medicine record' not in user or not isinstance(user['medicine record'], list):
             users_collection.update_one(
                 {'_id': userid},
