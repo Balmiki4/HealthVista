@@ -192,7 +192,7 @@ const MedicationTracker = () => {
           onChange={handleChange}
         />
 
-        <label>Select Days</label>
+        <label>Select Days (if date not selected)</label>
         <div>
           <label>
             <input
@@ -202,7 +202,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Sunday')}
               onChange={handleChange}
             />
-            Sunday
+            Sun
           </label>
           <label>
             <input
@@ -212,7 +212,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Monday')}
               onChange={handleChange}
             />
-            Monday
+            Mon
           </label>
           <label>
             <input
@@ -222,7 +222,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Tuesday')}
               onChange={handleChange}
             />
-            Tuesday
+            Tue
           </label>
           <label>
             <input
@@ -232,7 +232,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Wednesday')}
               onChange={handleChange}
             />
-            Wednesday
+            Wed
           </label>
           <label>
             <input
@@ -242,7 +242,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Thursday')}
               onChange={handleChange}
             />
-            Thursday
+            Thu
           </label>
           <label>
             <input
@@ -252,7 +252,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Friday')}
               onChange={handleChange}
             />
-            Friday
+            Fri
           </label>
           <label>
             <input
@@ -262,7 +262,7 @@ const MedicationTracker = () => {
               checked={medicine.days.includes('Saturday')}
               onChange={handleChange}
             />
-            Saturday
+            Sat
           </label>
         </div>
 
@@ -273,7 +273,7 @@ const MedicationTracker = () => {
             checked={medicine.repeat}
             onChange={(e) => setMedicine({ ...medicine, repeat: e.target.checked })}
           />
-          Repeat Weekly
+          Take this medicine every day
         </label>
 
         <button onClick={handleAddMedicine}>
@@ -285,49 +285,46 @@ const MedicationTracker = () => {
 
       <div className="calendar-container">
       <Calendar
-      onChange={onChange}
-      value={date}
-      tileContent={({ date, view }) => {
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const day = date.getDate();
-        const weekDay = date.toLocaleDateString('en-US', { weekday: 'long' });
+  onChange={onChange}
+  value={date}
+  tileContent={({ date, view }) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+    const weekDay = date.toLocaleDateString('en-US', { weekday: 'long' });
 
-        return view === 'month' && (
-          <div>
-            {events
-              .filter((event) => {
-                // Convert event date to local timezone
-                const eventDate = new Date(event.date);
-                const eventLocalDate = new Date(
-                  eventDate.getUTCFullYear(),
-                  eventDate.getUTCMonth(),
-                  eventDate.getUTCDate()
-                );
+    return view === 'month' && (
+      <div>
+        {events
+          .filter((event) => {
+            // Convert event date to local timezone
+            const eventDate = new Date(event.date);
+            const eventLocalDate = new Date(
+              eventDate.getUTCFullYear(),
+              eventDate.getUTCMonth(),
+              eventDate.getUTCDate()
+            );
 
-                // Compare date components (year, month, day) only
-                return (
-                  eventLocalDate.getFullYear() === year &&
-                  eventLocalDate.getMonth() === month &&
-                  eventLocalDate.getDate() === day &&
-                  (event.repeat || (event.days.length > 0 && !event.date && event.days.includes(weekDay)) ||
-                    (!event.repeat &&
-                      !event.days.length &&
-                      !event.date))
-                );
-              })
-              .map((event, index) => (
-                <div key={index} className="reminder-info">
-                  <div className="reminder-title">{event.time}: {event.summary}</div>
-                  {/* <span className="reminder-time">{event.time}</span> */}
-                </div>
-              ))}
-          </div>
-        );
-      }}
-    className="custom-calendar"
-    formatShortWeekday={(locale, date) => date.toLocaleString('en-US', { weekday: 'short' })}
-    />
+            // Check if event occurs on the selected day or if it repeats weekly
+            const repeatsWeekly = event.repeat || (event.days && event.days.length > 0);
+            const occursOnSelectedDay = repeatsWeekly ? true : (eventLocalDate.getFullYear() === year && eventLocalDate.getMonth() === month && eventLocalDate.getDate() === day);
+
+            return occursOnSelectedDay;
+          })
+          .map((event, index) => (
+            <div key={index} className="reminder-info">
+              <div className="reminder-title">{event.time}: {event.summary}</div>
+            </div>
+          ))}
+      </div>
+    );
+  }}
+  className="custom-calendar"
+/>
+
+
+
+
   </div>
 </div>
   );
