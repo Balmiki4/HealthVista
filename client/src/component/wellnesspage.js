@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./wellnesspage.css";
 
 function WellnessPage() {
- const [videos, setVideos] = useState([]);
- const [filteredVideos, setFilteredVideos] = useState([]);
- const [filter, setFilter] = useState('All');
+  const [videos, setVideos] = useState([]);
+  const [filteredVideos, setFilteredVideos] = useState([]);
+  const [filter, setFilter] = useState("All");
 
  useEffect(() => {
    const fetchVideos = async () => {
      try {
-      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=APIKEY&part=snippet&maxResults=15&cacheBust=${new Date().getTime()}`;
+      const api = process.env.REACT_APP_YOUTUBE_API_KEY;
+      let apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${api}&part=snippet&maxResults=15&cacheBust=${new Date().getTime()}`;
        switch (filter) {
          case 'Meditation':
            apiUrl += '&q=meditation';
@@ -42,16 +43,18 @@ function WellnessPage() {
      }
    };
 
-   fetchVideos();
- }, [filter]);
+    fetchVideos();
+  }, [filter]);
 
- const truncateTitle = (title, maxLength = 40) => {
-   return title.length > maxLength ? title.substring(0, maxLength) + "..." : title;
- };
+  const truncateTitle = (title, maxLength = 40) => {
+    return title.length > maxLength
+      ? title.substring(0, maxLength) + "..."
+      : title;
+  };
 
- const handleFilterChange = (e) => {
-   setFilter(e.target.value);
- };
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
 
  return (
    <div className="WellnessPage">

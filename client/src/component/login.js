@@ -63,11 +63,11 @@ const LoginPage = () => {
       const user_id = data.user_id || null;
       const access_token = data.access_token || null;
       const username = data.username || null;
-        // Store session data in sessionStorage or localStorage
-        sessionStorage.setItem("user_id", user_id);
-        sessionStorage.setItem("access_token", access_token);
-        sessionStorage.setItem("username", username);
-        
+      // Store session data in sessionStorage or localStorage
+      sessionStorage.setItem("user_id", user_id);
+      sessionStorage.setItem("access_token", access_token);
+      sessionStorage.setItem("username", username);
+
       // Clear the form fields upon successful login
       setData({ username: "", password: "" });
 
@@ -84,11 +84,11 @@ const LoginPage = () => {
       setData({ username: "", password: "" });
       displayAlert("danger", "Login failed. Invalid username or password");
     }
-        if (response.ok) {
-        // Reload the page
-          history.push("/Dashboard"); 
-          window.location.reload();
-        }
+    if (response.ok) {
+      // Reload the page
+      history.push("/Dashboard");
+      window.location.reload();
+    }
   };
   return (
     <div className="container ct">
