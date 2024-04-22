@@ -1,0 +1,120 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.upgrade-modal {
+  display: flex;
+  top: 10;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upgrade-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 500px;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upgrade-modal-content h2 {
+  color: rgb(23, 22, 22);
+  size: 24px;
+}
+.feature-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.feature-list .feature {
+  margin: 0 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.featureIcon {
+  font-size: 24px;
+}
+
+.feature:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: calc(100% - 10px);
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  right: -5px;
+  top: 5px;
+}
+
+.upgrade-btn {
+  background-color: var(--color-secondary);
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 2px;
+  transition: background-color 0.3s ease;
+}
+.upgrade-btn.disabled {
+  pointer-events: none;
+}
+
+.star-icon {
+  margin-left: 5px;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* .cancel-btn {
+  background-color: lightgray;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+} */
+
+/* .cancel-btn:hover {
+  background-color: #b3b3b3;
+} */
+
+/* .upgrade-now-btn {
+  background-color: #168c3d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+/* .upgrade-now-btn:hover {
+  background-color: #13592d;
+} */

@@ -45,7 +45,7 @@ function SuccessPage() {
 
         {showLink && (
           <p>
-            Click <Link to="/createProfile">here</Link> if you are not
+            Click <Link to={`/createProfile?customerId=${customerId}`}>here</Link> if you are not
             redirected automatically.
           </p>
         )}

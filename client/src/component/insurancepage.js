@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./insurancepage.css";
 import age_icon from "./img/icons/age.png";
@@ -8,13 +8,43 @@ import income_icon from "./img/icons/dollar.png";
 import city_icon from "./img/icons/city.png";
 import state_icon from "./img/icons/state.png";
 import year_icon from "./img/icons/calendar.png";
-import PlanDetails from './PlanDetails';
+import PlanDetails from "./PlanDetails";
+import Upgrade from "./upgrade.js";
 
 const statesList = [
-  "AL", "AK", "AZ", "AR", "DE", "FL", "GA", "HI", "IL", "IN",
-  "IA", "KS", "LA", "MI", "MS", "MO", "MT", "NE",
-  "NH", "NC", "ND", "OH", "OK", "OR", "RI", "SC", "SD", "TN",
-  "TX", "UT", "WV", "WI", "WY"
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "DE",
+  "FL",
+  "GA",
+  "HI",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "LA",
+  "MI",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NH",
+  "NC",
+  "ND",
+  "OH",
+  "OK",
+  "OR",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "WV",
+  "WI",
+  "WY",
 ];
 
 const InsurancePage = () => {
@@ -32,8 +62,27 @@ const InsurancePage = () => {
   const [yearError, setYearError] = useState(null);
   const [error, setError] = useState(null);
   const [planData, setPlanData] = useState(null);
-
   const history = useHistory();
+  const user_id = sessionStorage.getItem("user_id");
+  const access_token = sessionStorage.getItem("access_token");
+  const userPlan = sessionStorage.getItem("user_plan");
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is not logged in
+    if (!sessionStorage.getItem("user_id")) {
+      history.push("/login");
+    } else {
+      if (userPlan !== "Pro tier") {
+        setShowUpgradeModal(true);
+      }
+    }
+  }, [history]);
+
+  // Handle cancellation of the upgrade modal
+  const handleUpgradeCancel = () => {
+    setShowUpgradeModal(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -193,7 +242,9 @@ const InsurancePage = () => {
           >
             <option value="">Select your state</option>
             {statesList.map((stateAbbr) => (
-              <option key={stateAbbr} value={stateAbbr}>{stateAbbr}</option>
+              <option key={stateAbbr} value={stateAbbr}>
+                {stateAbbr}
+              </option>
             ))}
           </select>
         </div>
@@ -236,6 +287,7 @@ const InsurancePage = () => {
         </button>
       </div>
       {error && <p className="error text-center mt-0">{error}</p>}
+      {showUpgradeModal && <Upgrade onCancel={handleUpgradeCancel} />}
     </div>
   );
 };

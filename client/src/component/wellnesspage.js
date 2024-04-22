@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./wellnesspage.css";
 
 function WellnessPage() {
- const [videos, setVideos] = useState([]);
- const [filteredVideos, setFilteredVideos] = useState([]);
- const [filter, setFilter] = useState('All');
+  const [videos, setVideos] = useState([]);
+  const [filteredVideos, setFilteredVideos] = useState([]);
+  const [filter, setFilter] = useState("All");
 
  useEffect(() => {
    const fetchVideos = async () => {
@@ -43,16 +43,18 @@ function WellnessPage() {
      }
    };
 
-   fetchVideos();
- }, [filter]);
+    fetchVideos();
+  }, [filter]);
 
- const truncateTitle = (title, maxLength = 40) => {
-   return title.length > maxLength ? title.substring(0, maxLength) + "..." : title;
- };
+  const truncateTitle = (title, maxLength = 40) => {
+    return title.length > maxLength
+      ? title.substring(0, maxLength) + "..."
+      : title;
+  };
 
- const handleFilterChange = (e) => {
-   setFilter(e.target.value);
- };
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
 
  return (
    <div className="WellnessPage">
