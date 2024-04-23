@@ -40,23 +40,23 @@ const ProfileSettings = () => {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="card  w-50 mx-auto shadow-none mb-5 ">
+            <div className="transparent-card card  w-50 mx-auto shadow-none mb-5 ">
 
-              <div className="list-group list-group-flush">
+              <div className="list-group">
                 <Link
                   to="/forgot"
-                  className="list-group-item pt-2 pb-2 list-group-item-action text-center"
+                  className="list-group-item pt-2 pb-1 list-group-item-action text-center" style={{backgroundColor: "var(--secondar--primary)", border: "none"}}
                 >
-                 <button className="btn btn-success">Password Reset</button>
+                 <button className="btn btn-success p-2">Password Reset</button>
                 </Link>
                 {currentPlan === "free" ? (
                   <div className="m-3 mx-auto">
                     <UpgradePlan />
                   </div>
                 ) : (
-                  <div className="list-group-item text-center">
-                    <p>You are currently on Premium Plan.</p>
-                    <p>To downgrade or cancel, contact Us</p>
+                  <div className="list-group-item text-center" style={{background: "#f3f3f3", border: "none"}}>
+                    <p style={{background: "#f3f3f3"}}>You are currently on Premium Plan.</p>
+                    <p style={{background: "#f3f3f3"}}>To downgrade or cancel, contact Us</p>
                   </div>
                 )}
               </div>
