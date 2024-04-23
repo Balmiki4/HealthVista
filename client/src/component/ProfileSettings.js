@@ -10,10 +10,10 @@ const ProfileSettings = () => {
   const history = useHistory();
 
   useEffect(() => {
-     if (!sessionStorage.getItem('user_id') ) {
-       history.push("/login");
-     }
-   }, [history]);
+    if (!sessionStorage.getItem('user_id') ) {
+      history.push("/login");
+    }
+  }, [history]);
 
   useEffect(() => {
     // Fetch the user's current plan from the server or local storage
@@ -47,7 +47,7 @@ const ProfileSettings = () => {
                   to="/forgot"
                   className="list-group-item pt-2 pb-2 list-group-item-action text-center"
                 >
-                  <button className="btn btn-outline-success">Password Reset</button>
+                 <button className="btn btn-success">Password Reset</button>
                 </Link>
                 {currentPlan === "free" ? (
                   <div className="m-3 mx-auto">
