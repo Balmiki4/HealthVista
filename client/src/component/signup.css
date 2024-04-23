@@ -111,3 +111,7 @@ span{
     margin-top: -15px;
     opacity: 1; 
 }
+
+.check-term{
+    margin-left: 6px !important;
+}
