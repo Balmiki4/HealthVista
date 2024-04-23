@@ -21,7 +21,7 @@ const homePage = () => {
               Health Companion.
             </p>
             <div className="logins">
-              <Link to="/">
+              <Link to="/signup">
                 <button class="btn btn-outline-light hero-learn-btn">
                   Learn More
                 </button>
@@ -202,7 +202,7 @@ const homePage = () => {
               <p>Your health matters. We're here for you.</p>
             </div>
             <div className="callout-btn">
-              <Link to="/">
+              <Link to="/signup">
                 <button class="btn btn-outline-light buy-now-btn">
                   Get Now
                 </button>

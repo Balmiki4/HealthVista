@@ -96,7 +96,7 @@ const NavBar = () => {
                 </li>
                 <li>
                   <a className="dropdown-item" href="/wellnesspage">
-                    Exercise Videos
+                    Wellness Videos
                   </a>
                 </li>
               </ul>
