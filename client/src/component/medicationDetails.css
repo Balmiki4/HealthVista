@@ -57,7 +57,7 @@
 }
 
 .no-medicine{
-  margin-bottom: 200px;
+  margin-bottom: 345px;
 }
 
 .error-medic{
@@ -82,7 +82,7 @@
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 2rem 0.5rem;
+  margin: 2rem 0.5rem 11.02rem;
 }
 
 .button-back button:hover {
