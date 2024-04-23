@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
         </div>
 
-          <div className="col-12 d-flex justify-content-center legal-info mb-100">
+          <div className="pri col-12 d-flex justify-content-center legal-info mb-100 ">
             <Link to="/Privacy" className="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Privacy Policy
             </Link>

@@ -177,7 +177,7 @@ const Dashboard = () => {
                 <p>
                   Customize Your Experience: Fine-tune Your Settings with Ease.
                 </p>
-                <Link to="/Settings">
+                <Link to="/ProfileSettings">
                   <button class="btn btn-outline-success feature-learn-now-btn ">
                     Settings
                   </button>
