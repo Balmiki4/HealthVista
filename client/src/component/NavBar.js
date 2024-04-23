@@ -143,7 +143,7 @@ const NavBar = () => {
               <button className="btn btn-outline-light me-2">Sign Up</button>
             </Link>
             <Link to="/login">
-              <button className="btn btn-dark">Sign In</button>
+              <button className="btn btn-outline-info">Sign In</button>
             </Link>
           </div>
         )}

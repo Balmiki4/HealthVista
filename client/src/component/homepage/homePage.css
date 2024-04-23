@@ -8,6 +8,7 @@ body {
   background-color: #faf9f7;
   min-height: 100vh;
   margin: 0;
+  overflow: hidden;
 }
 .btn-outline-light:hover {
   background-color: var(--color-secondary);
