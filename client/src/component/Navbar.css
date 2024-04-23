@@ -31,3 +31,6 @@ nav-link{
 .vista{
     color: var(--color-secondary);
 }
+.dropdown-item{
+  cursor: pointer;
+}

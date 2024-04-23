@@ -58,7 +58,7 @@ function WellnessPage() {
 
  return (
    <div className="WellnessPage">
-     <h1 className="page-title">🌿 WellnessVideos 🌿</h1>
+     <h1 className="page-title">🌿 Wellness Videos 🌿</h1>
      <div className="filter-container mb-10">
        <label htmlFor="filter">Filter by:</label>
        <select id="filter" onChange={handleFilterChange} value={filter}>

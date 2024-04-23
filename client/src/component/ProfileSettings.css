@@ -1,0 +1,13 @@
+.pscontainer{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    background: var(--color-secondary);
+    padding-bottom: 0px;
+    border-radius: 20px; /* Add border radius for rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    max-width: 600px; /* Limit maximum width of the container */
+    margin-top: 6.1vh;
+    padding: 1rem 0 1rem;
+    margin: 22.5vh 0;
+}
