@@ -21,6 +21,7 @@ import Nutrition from "./component/Nutrition/Nutrition"
 import PlanDetails from "./component/PlanDetails";
 import Privacy from "./component/Privacy";
 import TermsOfService from "./component/TermsOfService";
+import ProfileSettings from "./component/ProfileSettings";
 import Dashboard from "./component/dashboard/Dashboard";
 import medication from "./component/medicationDetails"
 import UpgradePlan from "./component/payment Plan/UpgradePlan";
@@ -52,6 +53,7 @@ const App = () => {
           <Route path="/article" exact component={article}></Route>
           <Route path="/PlanDetails" exact component={PlanDetails}></Route>
           <Route path="/Privacy" exact component={Privacy}></Route>
+          <Route path="/ProfileSettings" exact component={ProfileSettings}></Route>
           <Route
             path="/TermsOfService"
             exact
