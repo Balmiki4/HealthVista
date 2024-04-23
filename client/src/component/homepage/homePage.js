@@ -21,7 +21,7 @@ const homePage = () => {
               Health Companion.
             </p>
             <div className="logins">
-              <Link to="/">
+              <Link to="/LearnMore">
                 <button class="btn btn-outline-light hero-learn-btn">
                   Learn More
                 </button>
@@ -150,7 +150,7 @@ const homePage = () => {
       </div>
 
 
-      <div className="faq">
+      <div className="faq pt-0">
         <div class="conainer">
           <div class="row">
             <div class="col-md-3">

@@ -26,6 +26,7 @@ import Dashboard from "./component/dashboard/Dashboard";
 import medication from "./component/medicationDetails"
 import UpgradePlan from "./component/payment Plan/UpgradePlan";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LearnMorePage from "./component/Learn More/LearnMore";
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/LearnMore" exact component={LearnMorePage}></Route>
           <Route path="/UpgradePlan" exact component={UpgradePlan}></Route>
           <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/Nutrition" exact component={Nutrition}></Route>
