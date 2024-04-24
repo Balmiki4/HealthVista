@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import "./login.css";
-import user_icon from "./img/person.png";
-import password_icon from "./img/password.png";
+import user_icon from "../img/person.png";
+import password_icon from "../img/password.png";
 import { Alert } from "react-bootstrap";
 
 const LoginPage = () => {

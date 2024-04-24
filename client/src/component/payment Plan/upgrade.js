@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import UpgradePlan from "./payment Plan/UpgradePlan"; // Import UpgradePlan component
+import UpgradePlan from "./UpgradePlan"; // Import UpgradePlan component
 import {
   FaBrain,
   FaUtensils,

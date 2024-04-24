@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./homePage.css";
-import PopupForm from "../PopupFrom";
+import PopupForm from "../pop up form/PopupFrom";
 import insurance from "../img/dashboard_img/insurance.jpg";
 import wellness from "../img/dashboard_img/wellness.jpg";
 import dashboard from "../img/dashboard.jpg";

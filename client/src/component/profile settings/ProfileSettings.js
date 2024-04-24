@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import UpgradePlan from "./payment Plan/UpgradePlan";
+import UpgradePlan from "../payment Plan/UpgradePlan";
 import "./ProfileSettings.css";
 import { useHistory } from "react-router-dom";
 

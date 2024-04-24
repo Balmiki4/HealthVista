@@ -2,29 +2,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import NavBar from "./component/NavBar";
+import NavBar from "./component/nav bar/NavBar";
 import homePage from "./component/homepage/homePage";
-import login from "./component/login";
-import forgot from "./component/forgot";
-import signup from "./component/signup";
-import wellnesspage from "./component/wellnesspage";
+import login from "./component/login page/login";
+import forgot from "./component/forgot page/forgot";
+import signup from "./component/Sign up page/signup";
+import wellnesspage from "./component/wellness page/wellnesspage";
 import PaymentPlan from "./component/payment Plan/PaymentPlan";
 import SuccessPage from "./component/Success page/SuccessPage";
-import ProfilePage from "./component/createProfile";
-import Footer from "./component/Footer";
+import ProfilePage from "./component/Create Profile page/createProfile";
+import Footer from "./component/footer/Footer";
 import Vista from "./component/vista/Vista";
-import insurancepage from "./component/insurancepage";
-import Map from "./component/map";
-import article from "./component/article"
-import medic from "./component/medication"
+import insurancepage from "./component/insurance page/insurancepage";
+import Map from "./component/map page/map";
+import article from "./component/article page/article"
+import medic from "./component/medication page/medication"
 import Nutrition from "./component/Nutrition/Nutrition"
-import PlanDetails from "./component/PlanDetails";
-import Privacy from "./component/Privacy";
-import TermsOfService from "./component/TermsOfService";
-import ProfileSettings from "./component/ProfileSettings";
+import PlanDetails from "./component/insurance page/PlanDetails";
+import Privacy from "./component/legal pages/Privacy";
+import TermsOfService from "./component/legal pages/TermsOfService";
+import ProfileSettings from "./component/profile settings/ProfileSettings";
 import CancelPage from "./component/cancel page/CancelPage";
 import Dashboard from "./component/dashboard/Dashboard";
-import medication from "./component/medicationDetails"
+import medication from "./component/medication page/medicationDetails"
 import UpgradePlan from "./component/payment Plan/UpgradePlan";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LearnMorePage from "./component/Learn More/LearnMore";

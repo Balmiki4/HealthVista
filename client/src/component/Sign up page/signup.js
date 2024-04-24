@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import user_icon from "./img/person.png";
-import email_icon from "./img/email.png";
-import password_icon from "./img/password.png";
+import user_icon from "../img/person.png";
+import email_icon from "../img/email.png";
+import password_icon from "../img/password.png";
 const Signup = () => {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [formData, setFormData] = useState({

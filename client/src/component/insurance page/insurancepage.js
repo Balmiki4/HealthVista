@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./insurancepage.css";
-import age_icon from "./img/icons/age.png";
-import gender_icon from "./img/icons/gender.png";
-import zipCode_icon from "./img/icons/mail.png";
-import income_icon from "./img/icons/dollar.png";
-import city_icon from "./img/icons/city.png";
-import state_icon from "./img/icons/state.png";
-import year_icon from "./img/icons/calendar.png";
-import PlanDetails from "./PlanDetails";
-import Upgrade from "./upgrade.js";
+import age_icon from "../img/icons/age.png";
+import gender_icon from "../img/icons/gender.png";
+import zipCode_icon from "../img/icons/mail.png";
+import income_icon from "../img/icons/dollar.png";
+import city_icon from "../img/icons/city.png";
+import state_icon from "../img/icons/state.png";
+import year_icon from "../img/icons/calendar.png";
+import PlanDetails from "./PlanDetails.js";
+import Upgrade from "../payment Plan/upgrade.js";
 
 const statesList = [
   "AL",

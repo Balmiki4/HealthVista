@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, InputGroup, Spinner } from "react-bootstrap";
 import "./map.css";
-import reading_icon from "./img/reading_book.png";
-import hospital_icon from "./img/hv_icon.png";
+import reading_icon from "../img/reading_book.png";
+import hospital_icon from "../img/hv_icon.png";
 
 const Map = () => {
   const [zipCode, setZipCode] = useState("");

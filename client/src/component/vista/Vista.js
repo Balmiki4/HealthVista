@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "./Vista.css";
-import Upgrade from "../upgrade.js"; // Import the Upgrade component
+import Upgrade from "../payment Plan/upgrade.js"; // Import the Upgrade component
 
 function Vista() {
   const [messages, setMessages] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import user_icon from "./img/person.png";
-import password_icon from "./img/password.png";
+import user_icon from "../img/person.png";
+import password_icon from "../img/password.png";
 import "./forgot.css";
 
 const ForgotPassword = ({ onForgotPassword, onResetPassword }) => {

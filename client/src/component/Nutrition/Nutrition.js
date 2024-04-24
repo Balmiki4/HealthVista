@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Nutrition.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Upgrade from "../upgrade.js"; // Import the Upgrade component
+import Upgrade from "../payment Plan/upgrade.js"; // Import the Upgrade component
 import { useHistory } from "react-router-dom";
 
 const Nutrition = () => {
