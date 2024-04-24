@@ -10,12 +10,6 @@ const ProfilePage = () => {
     const history = useHistory();
 
 
-    useEffect(() => {
-    if (!sessionStorage.getItem("user_id")) {
-        history.push("/login");
-      } 
-    }, []);
-
 
     const [formData, setFormData] = useState({
         firstName: '',
