@@ -25,7 +25,7 @@ const Nutrition = () => {
     fetchFoods();
     fetchPastLogs();
     const midnight = new Date();
-    midnight.setHours(17, 56, 0, 0); // Set time to midnight
+    midnight.setHours(24, 0, 0, 0); // Set time to midnight
     const timeUntilMidnight = midnight.getTime() - Date.now();
     setTimeout(moveToPastLog, timeUntilMidnight); // Move items at midnight
 
