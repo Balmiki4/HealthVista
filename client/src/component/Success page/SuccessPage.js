@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import "./SuccessPage.css";
 
 function SuccessPage() {
   const history = useHistory();
@@ -30,7 +31,7 @@ function SuccessPage() {
   };
 
   return (
-    <div className="conainer feature ct1">
+    <div className="conainer feature success-page">
       <div class="heading">
         <h1 className="secondary-heading">Payment Successful!</h1>
         <h3 className="font-only-heading">
@@ -38,7 +39,7 @@ function SuccessPage() {
         </h3>
         <div class="separator"></div>
         {countdown > 0 ? (
-          <p>Redirecting in {countdown}...</p>
+          <p>Redirecting to login in {countdown}...</p>
         ) : (
           <p>Redirecting in </p>
         )}

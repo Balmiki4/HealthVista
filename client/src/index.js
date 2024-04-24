@@ -9,7 +9,7 @@ import forgot from "./component/forgot";
 import signup from "./component/signup";
 import wellnesspage from "./component/wellnesspage";
 import PaymentPlan from "./component/payment Plan/PaymentPlan";
-import SuccessPage from "./component/SuccessPage";
+import SuccessPage from "./component/Success page/SuccessPage";
 import ProfilePage from "./component/createProfile";
 import Footer from "./component/Footer";
 import Vista from "./component/vista/Vista";
@@ -22,6 +22,7 @@ import PlanDetails from "./component/PlanDetails";
 import Privacy from "./component/Privacy";
 import TermsOfService from "./component/TermsOfService";
 import ProfileSettings from "./component/ProfileSettings";
+import CancelPage from "./component/cancel page/CancelPage";
 import Dashboard from "./component/dashboard/Dashboard";
 import medication from "./component/medicationDetails"
 import UpgradePlan from "./component/payment Plan/UpgradePlan";
@@ -35,6 +36,7 @@ const App = () => {
       <div className="">
         <NavBar />
         <Switch>
+          <Route path="/cancel" exact component={CancelPage}></Route>
           <Route path="/LearnMore" exact component={LearnMorePage}></Route>
           <Route path="/UpgradePlan" exact component={UpgradePlan}></Route>
           <Route path="/dashboard" exact component={Dashboard}></Route>
