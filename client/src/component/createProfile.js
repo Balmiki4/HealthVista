@@ -1,11 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './createProfile.css';
 import { useLocation } from "react-router-dom";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfilePage = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const customerId = searchParams.get("customerId");
+    const history = useHistory();
+
+
+    useEffect(() => {
+    if (!sessionStorage.getItem("user_id")) {
+        history.push("/login");
+      } 
+    }, []);
+
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -56,7 +66,6 @@ const ProfilePage = () => {
                 },
                 body: JSON.stringify({...formData, customerId }),
             });
-    
             if (response.ok) {
                 const responseData = await response.json();
                 console.log('Profile successfully created!');
@@ -70,6 +79,8 @@ const ProfilePage = () => {
                 });
                 const customerId = responseData.customerId;
                 setErrors({});
+
+                history.push(`/login`);
             } else {
                 console.log('Error creating profile');
             }
